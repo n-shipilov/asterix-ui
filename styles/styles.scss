@@ -1,0 +1,80 @@
+@import "./variables";
+
+:root {
+  @include color;
+  @include typography;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--st-text-body-font-size);
+  font-weight: var(--st-text-body-font-weight);
+  line-height: var(--st-text-body-line-height);
+  color: var(--st-color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  letter-spacing: inherit;
+  border: none;
+  background-color: transparent;
+  outline-style: none;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+h1 {
+  font-size: var(--st-text-header-1-font-size);
+  font-weight: var(--st-text-header-font-weight);
+  line-height: var(--st-text-header-1-line-height);
+}
+
+h2 {
+  font-size: var(--st-text-header-2-font-size);
+  font-weight: var(--st-text-header-font-weight);
+  line-height: var(--st-text-header-2-line-height);
+}
+
+::placeholder {
+  color: var(--st-color-text-hint);
+}

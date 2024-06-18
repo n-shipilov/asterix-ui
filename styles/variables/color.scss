@@ -1,0 +1,30 @@
+@mixin brand {
+  --st-color-brand-primary: #5282ff;
+  --st-color-brand-primary-hover: #4e79eb;
+}
+
+@mixin background {
+  --st-color-background-primary: #ffffff;
+}
+
+@mixin base {
+  --st-color-base-generic: rgba(0, 0, 0, 0.05);
+  --st-color-base-generic-hover: rgba(0, 0, 0, 0.1);
+
+  --st-color-base-error: #f04f76;
+}
+
+@mixin border {
+  --st-color-border-primary: rgba(0, 0, 0, 0.1);
+  --st-color-border-primary-hover: rgba(0, 0, 0, 0.15);
+  --st-color-border-primary-active: rgba(0, 0, 0, 0.3);
+}
+
+@mixin text {
+  --st-color-text-primary: rgba(0, 0, 0, 0.85);
+  --st-color-text-secondary: rgba(0, 0, 0, 0.5);
+  --st-color-text-light-primary: rgba(255, 255, 255, 0.85);
+  --st-color-text-light-secondary: rgba(255, 255, 255, 0.5);
+  --st-color-text-hint: rgba(0, 0, 0, 0.3);
+  --st-color-text-light-hint: rgba(255, 255, 255, 0.3);
+}

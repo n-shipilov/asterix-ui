@@ -1,0 +1,8 @@
+@use "../variables";
+
+$block: ".#{variables.$ns}form";
+
+#{$block} {
+  display: grid;
+  gap: 16px;
+}

@@ -1,0 +1,95 @@
+@use "../variables";
+
+$block: ".#{variables.$ns}dialog";
+$overlay: ".#{variables.$ns}dialog-overlay";
+
+#{$overlay} {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  background-color: rgba(43, 45, 51, 0.3);
+  z-index: 1000;
+  overflow: auto;
+
+  &-enter {
+    opacity: 0;
+
+    & #{$block} {
+      transform: scale(0.9);
+    }
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transition: all 0.16s;
+
+    & #{$block} {
+      transition: all 0.16s;
+      transform: scale(1);
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+
+    & #{$block} {
+      transform: scale(1);
+    }
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transition: all 0.16s;
+  }
+}
+
+#{$block} {
+  position: relative;
+  margin: 24px;
+  border-radius: 8px;
+  background-color: var(--st-color-background-primary);
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
+
+  &_size {
+    &_s {
+      width: 480px;
+    }
+
+    &_m {
+      width: 720px;
+    }
+
+    &_l {
+      width: 900px;
+    }
+  }
+
+  &__header {
+    padding: 24px 24px 12px;
+  }
+
+  &__title {
+  }
+
+  &__btn-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  &__content {
+    padding: 12px 24px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 16px;
+    padding: 12px 24px 24px;
+  }
+}

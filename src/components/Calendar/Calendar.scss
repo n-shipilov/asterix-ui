@@ -1,0 +1,109 @@
+@use "../variables";
+
+$block: ".#{variables.$ns}calendar";
+
+#{$block} {
+  width: 268px;
+  padding: 8px;
+  text-transform: capitalize;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__controls {
+    display: flex;
+  }
+
+  &__body {
+  }
+
+  &__grid {
+    display: grid;
+
+    &_mode {
+      &_days {
+        grid-template-rows: 36px 1fr;
+
+        & #{$block}__grid-rowgroup {
+          grid-template-columns: repeat(7, 36px);
+          grid-template-rows: repeat(6, 36px);
+        }
+      }
+
+      &_months {
+        & #{$block}__grid-rowgroup {
+          padding-top: 12px;
+          grid-template-columns: repeat(3, auto);
+          grid-template-rows: repeat(4, 60px);
+        }
+      }
+
+      &_years {
+        & #{$block}__grid-rowgroup {
+          padding-top: 12px;
+          grid-template-columns: repeat(3, auto);
+          grid-template-rows: repeat(4, 60px);
+        }
+      }
+    }
+  }
+
+  &__grid-row {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+  }
+
+  &__grid-rowgroup {
+    display: grid;
+  }
+
+  &__weekday {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+
+    // &_today,
+    // &_current {
+    //   &:before {
+    //     position: absolute;
+    //     inset-block-start: 50%;
+    //     display: block;
+    //     width: 4px;
+    //     height: 4px;
+    //     content: "";
+    //     border-radius: 50%;
+    //     background-color: var(--st-color-text-primary);
+    //     transform: translateY(8px);
+    //   }
+    // }
+
+    &_out-of-boundary {
+      opacity: 0.6;
+    }
+
+    &_weekend {
+      color: var(--st-color-base-error);
+    }
+
+    &_selected {
+      color: var(--st-color-text-light-primary);
+      background-color: var(--st-color-brand-primary);
+    }
+
+    &:hover:not(#{$block}__item_selected) {
+      background-color: var(--st-color-base-generic);
+    }
+  }
+}

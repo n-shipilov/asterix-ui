@@ -1,0 +1,44 @@
+@use "../variables";
+
+$block: ".#{variables.$ns}spinner";
+
+#{$block} {
+  box-sizing: border-box;
+  display: inline-flex;
+  border: 2px solid;
+  border-radius: 50%;
+  animation: #{variables.$ns}spin 1s linear infinite;
+
+  &_size {
+    &_s {
+      width: 16px;
+      height: 16px;
+    }
+
+    &_m {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &_view {
+    &_default {
+      border-color: rgba(77, 87, 209, 0.4);
+      border-bottom-color: var(--st-color-brand-primary);
+    }
+
+    &_inverted {
+      border-color: rgba(255, 255, 255, 0.4);
+      border-bottom-color: var(--st-color-background-primary);
+    }
+  }
+}
+
+@keyframes #{variables.$ns}spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

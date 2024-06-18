@@ -1,0 +1,71 @@
+@use "../variables";
+
+$block: ".#{variables.$ns}avatar";
+
+#{$block} {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 50%;
+  }
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &_size {
+    &_xs {
+      width: 24px;
+      height: 24px;
+      --initials-font-size: 9px;
+      --initials-line-height: 24px;
+    }
+
+    &_s {
+      width: 32px;
+      height: 32px;
+      --initials-font-size: 13px;
+      --initials-line-height: 32px;
+    }
+
+    &_m {
+      width: 40px;
+      height: 40px;
+      --initials-font-size: 16px;
+      --initials-line-height: 40px;
+    }
+
+    &_l {
+      width: 64px;
+      height: 64px;
+      --initials-font-size: 25px;
+      --initials-line-height: 64px;
+    }
+  }
+
+  &__initials {
+    width: 100%;
+    height: 100%;
+    font-size: var(--initials-font-size);
+    line-height: var(--initials-line-height);
+    font-weight: 500;
+    text-align: center;
+    background-color: var(--st-color-base-generic);
+    color: var(--st-color-text-secondary);
+  }
+}

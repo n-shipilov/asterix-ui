@@ -1,0 +1,120 @@
+@use "../variables";
+
+$block: ".#{variables.$ns}button";
+
+#{$block} {
+  position: relative;
+  height: var(--button-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--button-border-radius);
+  transition:
+    transform 0.1s ease-out,
+    background-color 0.16s linear;
+  transform: scale(1);
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &:focus {
+  }
+
+  &:has(#{$block}__icon:only-child) {
+    width: var(--button-height);
+    padding: 0;
+  }
+
+  &_size {
+    &_s {
+      --button-height: 28px;
+      --button-icon-size: 16px;
+      --button-border-radius: 6px;
+
+      padding: 0 12px;
+    }
+
+    &_m {
+      --button-height: 36px;
+      --button-icon-size: 20px;
+      --button-border-radius: 8px;
+
+      padding: 0 16px;
+    }
+  }
+
+  &_view {
+    &_primary {
+      background-color: var(--st-color-brand-primary);
+      --button-text-color: var(--st-color-text-light-primary);
+
+      &:hover {
+        background-color: var(--st-color-brand-primary-hover);
+      }
+    }
+
+    &_secondary {
+      background-color: var(--st-color-base-generic);
+      --button-text-color: var(--st-color-text-primary);
+
+      &:hover {
+        background-color: var(--st-color-base-generic-hover);
+      }
+    }
+
+    &_ghost {
+      background-color: transparent;
+      --button-text-color: var(--st-color-text-primary);
+
+      &:hover {
+        background-color: var(--st-color-base-generic);
+      }
+    }
+  }
+
+  &__icon {
+    width: var(--button-icon-size);
+    height: var(--button-icon-size);
+    color: var(--button-text-color);
+  }
+
+  &__text {
+    color: var(--button-text-color);
+  }
+
+  &_loading {
+    &::before {
+      position: absolute;
+      content: "";
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 4px,
+        var(--st-color-base-generic-hover) 4px,
+        var(--st-color-base-generic-hover) 8px
+      );
+      background-size: 150%;
+      background-clip: padding-box;
+      border-radius: 8px;
+      animation: loading-animation 0.5s linear infinite;
+      inset: 0;
+      z-index: -1;
+    }
+  }
+
+  &_disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+@keyframes loading-animation {
+  0% {
+    background-position: -12px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

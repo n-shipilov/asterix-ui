@@ -1,0 +1,38 @@
+@use "../../../variables";
+
+$block: ".#{variables.$ns}table";
+
+#{$block} {
+  &__sort {
+    display: inline-flex;
+    column-gap: 4px;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      & #{$block}__sort-indicator {
+        opacity: 1;
+      }
+    }
+
+    &_active {
+      & #{$block}__sort-indicator {
+        opacity: 1;
+        color: var(--st-color-text-primary);
+      }
+    }
+  }
+
+  &__sort-indicator {
+    opacity: 0;
+    color: var(--st-color-text-secondary);
+  }
+
+  &__cell {
+    &_align_right {
+      & #{$block}__sort {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+}

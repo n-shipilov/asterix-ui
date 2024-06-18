@@ -1,0 +1,72 @@
+@use "../variables";
+
+$block: ".#{variables.$ns}radio";
+
+#{$block} {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover:not(#{$block}_checked) {
+    #{$block}__control {
+      border-color: var(--st-color-border-primary-hover);
+    }
+  }
+
+  &__control {
+    width: 16px;
+    height: 16px;
+    appearance: none;
+    border: 1px solid var(--st-color-border-primary);
+    border-radius: 50%;
+    outline: none;
+    transition: all 0.16s linear;
+    cursor: inherit;
+  }
+
+  &__label {
+    margin-left: 8px;
+    white-space: nowrap;
+    transition: opacity 0.16s linear;
+  }
+
+  &_checked {
+    & #{$block}__control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--st-color-brand-primary);
+      border: none;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: var(--st-color-background-primary);
+      }
+    }
+  }
+
+  &_disabled {
+    cursor: default;
+
+    & #{$block}__control {
+      background-color: var(--st-color-base-generic);
+      border-color: transparent;
+    }
+
+    & #{$block}__label {
+      color: var(--st-color-text-hint);
+    }
+
+    &#{$block}_checked {
+      & #{$block}__control {
+        opacity: 0.6;
+        background-color: var(--st-color-brand-primary);
+      }
+    }
+  }
+}

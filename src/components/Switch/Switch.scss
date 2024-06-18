@@ -1,0 +1,80 @@
+@use "../variables";
+
+$block: ".#{variables.$ns}switch";
+
+#{$block} {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover:not(#{$block}_checked, #{$block}_indeterminate) {
+    & #{$block}__indicator:before {
+      border-color: var(--st-color-brand-primary);
+    }
+  }
+
+  &__indicator {
+    position: relative;
+    width: 32px;
+    height: 20px;
+    padding: 4px;
+    background-color: var(--st-color-base-generic-hover);
+    border-radius: 10px;
+    transition: all 0.16s linear;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: var(--st-color-background-primary);
+      border-radius: 50%;
+      transition: all 0.16s ease-out;
+    }
+  }
+
+  &__control {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    opacity: 0;
+    cursor: inherit;
+  }
+
+  &__label {
+    margin-left: 8px;
+    transition: color 0.16s linear;
+  }
+
+  &_checked {
+    & #{$block}__indicator {
+      background-color: var(--st-color-brand-primary);
+    }
+
+    & #{$block}__indicator::before {
+      transform: translateX(100%);
+    }
+  }
+
+  &_disabled {
+    cursor: default;
+
+    & #{$block}__indicator::before {
+    }
+
+    & #{$block}__label {
+      color: var(--st-color-text-hint);
+    }
+
+    &#{$block}_checked {
+      & #{$block}__indicator {
+        opacity: 0.6;
+        background-color: var(--st-color-brand-primary);
+      }
+    }
+  }
+}

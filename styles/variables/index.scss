@@ -1,0 +1,14 @@
+@use "./color";
+@use "./typography";
+
+@mixin color {
+  @include color.brand;
+  @include color.background;
+  @include color.base;
+  @include color.border;
+  @include color.text;
+}
+
+@mixin typography {
+  @include typography.variables;
+}

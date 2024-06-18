@@ -1,0 +1,88 @@
+@use "../variables";
+
+$wrapper: ".#{variables.$ns}table-wrapper";
+$block: ".#{variables.$ns}table";
+
+#{$wrapper} {
+  display: inline-flex;
+  overflow: auto;
+
+  &_scroll {
+    &_vertical {
+      & #{$block}__head {
+        position: sticky;
+        top: 0px;
+        background-color: var(--st-color-background-primary);
+      }
+    }
+  }
+}
+
+#{$block} {
+  border-spacing: 0;
+
+  &__head &__cell {
+    font-weight: var(--st-text-subheader-font-weight);
+  }
+
+  &__body &__row {
+    &:last-child {
+      & #{$block}__cell {
+        border-bottom: none;
+      }
+    }
+
+    &:not(#{$block}__row_empty, #{$block}__row_selected):hover {
+      background-color: var(--st-color-base-simple-hover);
+    }
+  }
+
+  &__row {
+    &_selected {
+      background-color: var(--st-color-base-selection);
+
+      &:hover {
+        background-color: var(--st-color-base-selection-hover);
+      }
+    }
+  }
+
+  &__row_empty &__cell {
+    text-align: center;
+  }
+
+  &__cell {
+    height: 40px;
+    padding: 8px;
+    border-bottom: 1px solid var(--st-color-border-primary);
+    text-align: left;
+    overflow-wrap: break-word;
+
+    &_align {
+      &_center {
+        text-align: center;
+      }
+
+      &_right {
+        text-align: right;
+      }
+    }
+
+    &_checkbox {
+      width: 40px;
+      padding: 11px; // TODO: подумать как иначе выровнять по горизонтали
+    }
+
+    // TODO: Пока свойства word-wrap нет
+    &:not(#{$block}__cell_word-wrap) {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+  }
+}
