@@ -1,0 +1,53 @@
+@use "../../variables";
+
+$block: ".#{variables.$ns}toast";
+
+#{$block} {
+  position: relative;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  padding: 16px 40px 16px 44px;
+  border-radius: 8px;
+  background-color: var(--st-color-backround-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  &_type {
+    &_success {
+      background-color: var(--st-color-background-success);
+    }
+
+    &_error {
+      background-color: var(--st-color-background-danger);
+    }
+  }
+
+  &__title {
+    font-weight: var(--st-text-subheader-font-weight);
+  }
+
+  &__icon {
+    position: absolute;
+    left: 16px;
+    display: flex;
+  }
+
+  &__content {
+    overflow-wrap: break-word;
+  }
+
+  &__btn-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    display: flex;
+    padding: 4px;
+    border-radius: 6px;
+    transition: background-color 0.16s ease;
+
+    &:hover {
+      background-color: var(--st-color-base-simple-hover);
+    }
+  }
+}

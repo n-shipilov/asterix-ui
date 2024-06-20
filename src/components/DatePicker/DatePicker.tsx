@@ -24,6 +24,14 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
 
+    const parts = value.split("/");
+
+    const monthValue = parts.filter((part) => part.includes("M"));
+    const dayValue = parts.filter((part) => part.includes("D"));
+    const yearValue = parts.filter((part) => part.includes("Y"));
+
+    console.log(monthValue, dayValue, yearValue);
+
     setValue(value);
   };
 

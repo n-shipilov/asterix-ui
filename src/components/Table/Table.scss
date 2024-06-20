@@ -33,7 +33,7 @@ $block: ".#{variables.$ns}table";
     }
 
     &:not(#{$block}__row_empty, #{$block}__row_selected):hover {
-      background-color: var(--st-color-base-simple-hover);
+      background-color: var(--st-color-base-generic);
     }
   }
 
