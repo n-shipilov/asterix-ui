@@ -74,20 +74,20 @@ $block: ".#{variables.$ns}calendar";
     cursor: pointer;
     border-radius: 8px;
 
-    // &_today,
-    // &_current {
-    //   &:before {
-    //     position: absolute;
-    //     inset-block-start: 50%;
-    //     display: block;
-    //     width: 4px;
-    //     height: 4px;
-    //     content: "";
-    //     border-radius: 50%;
-    //     background-color: var(--st-color-text-primary);
-    //     transform: translateY(8px);
-    //   }
-    // }
+    &_today,
+    &_current {
+      &:before {
+        position: absolute;
+        inset-block-start: 50%;
+        display: block;
+        width: 4px;
+        height: 4px;
+        content: "";
+        border-radius: 50%;
+        background-color: var(--st-color-text-primary);
+        transform: translateY(8px);
+      }
+    }
 
     &_out-of-boundary {
       opacity: 0.6;

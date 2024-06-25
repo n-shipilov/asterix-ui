@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Input } from "../Input";
 import { Popup } from "../Popup";
 import { Calendar } from "../Calendar";
@@ -13,46 +13,15 @@ type DatePickerProps = {
 };
 
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
-  const { locale, format = "MM/DD/YYYY" } = props;
+  const { locale = "default", format = "DD.MM.YYYY" } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [value, setValue] = useState("");
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [open, setOpen] = useState(false);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-
-    const parts = value.split("/");
-
-    const monthValue = parts.filter((part) => part.includes("M"));
-    const dayValue = parts.filter((part) => part.includes("D"));
-    const yearValue = parts.filter((part) => part.includes("Y"));
-
-    console.log(monthValue, dayValue, yearValue);
-
-    setValue(value);
-  };
-
-  useLayoutEffect(() => {
-    const inputElement = inputRef.current;
-    if (!inputElement) {
-      return;
-    }
-    inputElement.setSelectionRange(0, 2);
-  });
-
   const handleFocus = () => {
-    if (value) {
-      return;
-    } else {
-      setValue(format);
-    }
-  };
-
-  const handleBlur = () => {
-    setValue("");
+    setOpen(true);
   };
 
   const handleSelectDate = (date: Date) => {
@@ -60,15 +29,15 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     setOpen(false);
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {};
+
   return (
     <>
       <div className={block()}>
         <Input
           controlRef={inputRef}
           placeholder="Select date"
-          value={value}
           onFocus={handleFocus}
-          onBlur={handleBlur}
           onChange={handleChange}
         />
       </div>

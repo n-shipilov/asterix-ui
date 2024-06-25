@@ -1,19 +1,28 @@
 import { ReactNode, forwardRef } from "react";
 import { CloseIcon } from "../../CloseIcon";
 import { Icon } from "../../Icon";
-import { SvgIcon } from "../../SvgIcon";
+import { InfoIcon } from "../../InfoIcon";
 import { cn } from "../../utils/cn";
 import { useToasterContext } from "../ToasterProvider/ToasterProvider";
 import { InternalToastProps, ToastType } from "../types";
 import "./Toast.scss";
+import { CloseCircleIcon } from "../../CloseCircleIcon";
 
 const block = cn("toast");
 
 const TITLE_ICONS: Record<ToastType, ReactNode> = {
-  info: <Icon data={SvgIcon} size={20} color="#FF668B" />,
-  success: <Icon data={SvgIcon} size={20} color="#FF668B" />,
-  warning: <Icon data={SvgIcon} size={20} color="#FF668B" />,
-  error: <Icon data={SvgIcon} size={20} color="#FF668B" />,
+  info: (
+    <Icon data={InfoIcon} size={20} color="var(--st-color-brand-primary)" />
+  ),
+  success: (
+    <Icon data={InfoIcon} size={20} color="var(--st-color-base-success)" />
+  ),
+  warning: (
+    <Icon data={InfoIcon} size={20} color="var(--st-color-base-warning)" />
+  ),
+  error: (
+    <Icon data={CloseCircleIcon} size={20} color="var(--st-color-base-error)" />
+  ),
 };
 
 export const Toast = forwardRef<HTMLDivElement, InternalToastProps>(
