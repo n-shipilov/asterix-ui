@@ -1,2 +1,2 @@
-export * from "./use-fork-ref";
-export * from "./use-outside-click";
+export * from "./useForkRef";
+export * from "./useOutsideClick";

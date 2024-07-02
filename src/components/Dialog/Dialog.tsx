@@ -21,7 +21,7 @@ const overlay = cn("dialog-overlay");
 export const Dialog: React.FC<DialogProps> = (props) => {
   const { children, size = "s", title = "Dialog title", open, onClose } = props;
 
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  const nodeRef = React.useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     if (open) {
@@ -49,7 +49,7 @@ export const Dialog: React.FC<DialogProps> = (props) => {
 
   return (
     <CSSTransition
-      nodeRef={containerRef}
+      nodeRef={nodeRef}
       classNames={overlay()}
       in={open}
       timeout={160}
@@ -57,11 +57,7 @@ export const Dialog: React.FC<DialogProps> = (props) => {
       unmountOnExit
     >
       <Portal>
-        <div
-          ref={containerRef}
-          className={overlay()}
-          onClick={handleOutsideClick}
-        >
+        <div ref={nodeRef} className={overlay()} onClick={handleOutsideClick}>
           <div
             className={dialog({ size })}
             role="dialog"
