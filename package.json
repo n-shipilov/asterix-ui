@@ -1,6 +1,16 @@
 {
   "name": "asterix-ui",
-  "version": "1.0.4",
+  "version": "1.0.11",
+  "keywords": [
+    "component",
+    "design-system",
+    "asterix-ui",
+    "react",
+    "react-component",
+    "ui",
+    "uikit",
+    "web"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -42,9 +52,25 @@
     "storybook": "^8.1.10",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
+    "vite-plugin-css-injected-by-js": "^3.5.1",
     "vite-plugin-dts": "^3.9.1"
   },
   "peerDependencies": {
     "react": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "styles"
+  ],
+  "main": "./dist/asterui.umd.cjs",
+  "module": "./dist/asterui.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/asterui.js",
+      "require": "./dist/asterui.umd.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles/*": "./styles/*"
   }
 }
