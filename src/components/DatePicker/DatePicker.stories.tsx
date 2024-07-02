@@ -10,5 +10,6 @@ type Story = StoryObj<typeof DatePicker>;
 export const Default: Story = {
   args: {
     // format: "DD.MM.YYYY",
+    locale: "en-US",
   },
 };

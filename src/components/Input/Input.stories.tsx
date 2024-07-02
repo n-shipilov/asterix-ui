@@ -13,12 +13,3 @@ export const Default: Story = {
     disabled: false,
   },
 };
-
-export const Type: Story = {
-  args: {},
-  render: (args) => (
-    <div style={{ display: "flex", gap: "20px" }}>
-      <Input {...args} type="number" />
-    </div>
-  ),
-};
