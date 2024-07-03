@@ -1,15 +1,14 @@
 {
   "name": "asterix-ui",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "keywords": [
-    "component",
-    "design-system",
-    "asterix-ui",
+    "web",
     "react",
     "react-component",
+    "design-system",
     "ui",
     "uikit",
-    "web"
+    "asterix-ui"
   ],
   "type": "module",
   "scripts": {

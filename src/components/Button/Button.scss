@@ -108,6 +108,15 @@ $block: ".#{variables.$ns}button";
     cursor: default;
     pointer-events: none;
   }
+
+  &_selected {
+    background-color: var(--st-color-base-selection);
+    --button-text-color: var(--st-color-text-primary);
+
+    &:hover {
+      background-color: var(--st-color-base-selection-hover);
+    }
+  }
 }
 
 @keyframes loading-animation {

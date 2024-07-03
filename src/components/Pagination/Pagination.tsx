@@ -106,7 +106,8 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
               size="s"
               className={block("number")}
               style={{ width: "28px" }}
-              view={pageNumber === page ? "primary" : "ghost"}
+              view="ghost"
+              selected={pageNumber === page}
               onClick={() => onChange(pageNumber, pageSize)}
               key={index}
             >

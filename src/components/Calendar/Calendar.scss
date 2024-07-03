@@ -85,7 +85,7 @@ $block: ".#{variables.$ns}calendar";
         content: "";
         border-radius: 50%;
         background-color: var(--st-color-text-primary);
-        transform: translateY(8px);
+        transform: translateY(10px);
       }
     }
 
@@ -98,8 +98,7 @@ $block: ".#{variables.$ns}calendar";
     }
 
     &_selected {
-      color: var(--st-color-text-light-primary);
-      background-color: var(--st-color-brand-primary);
+      background-color: var(--st-color-base-selection);
     }
 
     &:hover:not(#{$block}__item_selected) {

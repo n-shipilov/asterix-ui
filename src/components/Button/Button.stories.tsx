@@ -45,15 +45,24 @@ export const Icon: Story = {
     <div style={{ display: "flex", gap: "20px" }}>
       <Button {...args}>Button text</Button>
       <Button {...args}>
-        <IconComponent data={SvgIcon} />
+        <IconComponent
+          data={SvgIcon}
+          size={args.size === "s" ? "16px" : "20px"}
+        />
         Button text
       </Button>
       <Button {...args}>
         Button text
-        <IconComponent data={SvgIcon} />
+        <IconComponent
+          data={SvgIcon}
+          size={args.size === "s" ? "16px" : "20px"}
+        />
       </Button>
       <Button {...args}>
-        <IconComponent data={SvgIcon} />
+        <IconComponent
+          data={SvgIcon}
+          size={args.size === "s" ? "16px" : "20px"}
+        />
       </Button>
     </div>
   ),

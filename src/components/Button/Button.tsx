@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
 import { cn } from "../utils/cn";
 import "./Button.scss";
+import { Icon } from "../Icon";
 
-export type ButtonSize = "s" | "m";
+type ButtonSize = "s" | "m";
 
-export type ButtonView = "primary" | "secondary" | "ghost";
+type ButtonView = "primary" | "secondary" | "ghost";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   /** Размер кнопки */
@@ -15,6 +16,8 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   /** Состояние загрузки */
   loading?: boolean;
+  /** Состояние */
+  selected?: boolean;
 };
 
 const button = cn("button");
@@ -29,6 +32,7 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
       view = "primary",
       disabled,
       loading,
+      selected,
       ...attrs
     } = props;
 
@@ -40,23 +44,24 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
         view,
         disabled: disabled || loading,
         loading,
+        selected,
       },
       className
     );
 
     const preparedChildren = (children: React.ReactNode) => {
-      const items = React.Children.toArray(children);
+      const items = React.Children.toArray(children) as React.ReactElement[];
 
       if (items.length === 1) {
-        const onlyItem = items[0];
+        const oneChildElement = items[0];
 
-        if (typeof onlyItem === "string" || typeof onlyItem === "number") {
-          return <span className={button("text")}>{onlyItem}</span>;
+        if (oneChildElement.type === Icon) {
+          return <span className={button("icon")}>{oneChildElement}</span>;
         } else {
-          return <span className={button("icon")}>{onlyItem}</span>;
+          return <span className={button("text")}>{oneChildElement}</span>;
         }
       } else {
-        if (typeof items[0] === "string" || typeof items[0] === "number") {
+        if (items[1].type === Icon) {
           return (
             <>
               <span className={button("text")}>{items[0]}</span>

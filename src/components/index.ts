@@ -11,6 +11,7 @@ export * from "./Popup";
 export * from "./Portal";
 export * from "./Radio";
 export * from "./RadioGroup";
+export * from "./Segmented";
 export * from "./Select";
 export * from "./Spinner";
 export * from "./Switch";
