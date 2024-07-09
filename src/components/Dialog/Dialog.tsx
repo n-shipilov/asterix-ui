@@ -7,7 +7,7 @@ import { Icon } from "../Icon";
 import { CloseIcon } from "../CloseIcon";
 import "./Dialog.scss";
 
-type DialogProps = {
+export type DialogProps = {
   children?: React.ReactNode;
   size?: "s" | "m" | "l";
   title?: string;

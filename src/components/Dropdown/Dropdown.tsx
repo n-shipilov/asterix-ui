@@ -4,7 +4,7 @@ import { DropdownOption, Option } from "./Option";
 import { PlacementType, Popup } from "../Popup";
 import "./Dropdown.scss";
 
-type DropdownProps = {
+export type DropdownProps = {
   children: React.ReactElement;
   placement?: PlacementType;
   options?: DropdownOption[];

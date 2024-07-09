@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { cn } from "../utils/cn";
 import "./Textarea.scss";
 
-type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const textarea = cn("textarea");
 

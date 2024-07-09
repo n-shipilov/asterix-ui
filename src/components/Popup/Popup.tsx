@@ -20,7 +20,7 @@ export type PlacementType =
   | "left"
   | "left-end";
 
-type PopupProps = {
+export type PopupProps = {
   /** Элемент, относительно которого позиционируется всплывающее окно */
   anchorRef: React.RefObject<HTMLElement>;
   /** Содержимое всплывающего окна */

@@ -2,7 +2,7 @@ import { Children, cloneElement, forwardRef, useState } from "react";
 import { cn } from "../utils/cn";
 import "./RadioGroup.scss";
 
-type RadioGroupProps = React.InputHTMLAttributes<HTMLInputElement> & {
+export type RadioGroupProps = React.InputHTMLAttributes<HTMLInputElement> & {
   /** The content of the radio group */
   children: React.ReactNode;
   /** Sets the direction of the radio group */

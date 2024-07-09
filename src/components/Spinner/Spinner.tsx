@@ -6,7 +6,7 @@ type SpinnerSize = "s" | "m";
 
 type SpinnerView = "default" | "inverted";
 
-type SpinnerProps = {
+export type SpinnerProps = {
   size?: SpinnerSize;
   view?: SpinnerView;
 };

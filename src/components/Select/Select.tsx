@@ -16,7 +16,7 @@ type BaseSelectProps = Omit<
   "value" | "onChange"
 >;
 
-type SelectProps = BaseSelectProps & {
+export type SelectProps = BaseSelectProps & {
   options?: SelectOption[];
   value?: SelectOption;
   searchable?: boolean;

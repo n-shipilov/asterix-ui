@@ -5,10 +5,18 @@ import { Icon } from "../Icon";
 import { ChevronLeft } from "../ChevronLeft";
 import { ChevronRight } from "../ChevronRight";
 import { useCalendar } from "./hooks/useCalendar";
-import { CalendarProps } from "./types";
 import { checkIsToday } from "./utils/checkIsToday";
 import { checkDateIsEqual } from "./utils/checkDateIsEqual";
+import { ModeType } from "./types";
 import "./Calendar.scss";
+
+export type CalendarProps = {
+  mode?: ModeType;
+  locale?: string;
+  firstDayOfWeek?: number;
+  selectedDate?: Date;
+  onSelectDate: (date: Date) => void;
+};
 
 const block = cn("calendar");
 

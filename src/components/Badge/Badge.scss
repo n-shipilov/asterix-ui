@@ -1,0 +1,56 @@
+@use "../variables";
+
+$block: ".#{variables.$ns}badge";
+
+#{$block} {
+  height: var(--badge-height);
+  display: inline-flex;
+  column-gap: 4px;
+  border-radius: var(--badge-border);
+
+  &_size {
+    &_s {
+      --badge-height: 20px;
+      --badge-border: 4px;
+      --badge-font-size: var(--st-text-caption-font-size);
+      --badge-line-height: var(--st-text-caption-line-height);
+
+      padding: 2px 8px;
+    }
+
+    &_m {
+      --badge-height: 24px;
+      --badge-border: 6px;
+      --badge-font-size: var(--st-text-caption-font-size);
+      --badge-line-height: var(--st-text-caption-line-height);
+
+      padding: 4px 8px;
+    }
+
+    &_l {
+      --badge-height: 28px;
+      --badge-border: 8px;
+      --badge-font-size: var(--st-text-body-font-size);
+      --badge-line-height: var(--st-text-body-line-height);
+
+      padding: 4px 12px;
+    }
+  }
+
+  &_theme {
+    &_normal {
+      background-color: var(--st-color-base-generic);
+    }
+
+    &_success {
+    }
+
+    &_danger {
+    }
+  }
+
+  &__text {
+    font-size: var(--badge-font-size);
+    line-height: var(--badge-line-height);
+  }
+}

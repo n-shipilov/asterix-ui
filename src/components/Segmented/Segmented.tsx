@@ -6,7 +6,7 @@ import "./Segmented.scss";
 type SegmentedSize = "s" | "m";
 type SegmentedWidth = "auto" | "max";
 
-type SegmentedProps = Omit<
+export type SegmentedProps = Omit<
   React.HTMLProps<HTMLInputElement>,
   "value" | "onChange" | "ref" | "size"
 > & {

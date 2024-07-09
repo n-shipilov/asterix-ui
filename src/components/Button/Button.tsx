@@ -7,16 +7,11 @@ type ButtonSize = "s" | "m";
 
 type ButtonView = "primary" | "secondary" | "ghost";
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  /** Размер кнопки */
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: ButtonSize;
-  /** Вид кнопки */
   view?: ButtonView;
-  /** Состояние */
   disabled?: boolean;
-  /** Состояние загрузки */
   loading?: boolean;
-  /** Состояние */
   selected?: boolean;
 };
 

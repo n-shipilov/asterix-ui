@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { cn } from "../utils/cn";
 import "./Radio.scss";
 
-const radio = cn("radio");
-
-type RadioProps = React.InputHTMLAttributes<HTMLInputElement> & {
+export type RadioProps = React.InputHTMLAttributes<HTMLInputElement> & {
   /** The content of the radio (usually a label) */
   children?: React.ReactNode;
 };
+
+const radio = cn("radio");
 
 export const Radio: React.FC<RadioProps> = (props) => {
   const { children, checked = false, disabled, ...attrs } = props;

@@ -3,18 +3,18 @@ import { cn } from "../utils/cn";
 import { PlacementType, Popup } from "../Popup";
 import "./Tooltip.scss";
 
-type TooltipProps = TooltipDelayProps & {
+type TooltipDelayProps = {
+  openDelay?: number;
+  closeDelay?: number;
+};
+
+export type TooltipProps = TooltipDelayProps & {
   children: React.ReactElement;
   /** Положение тултипа */
   placement?: PlacementType;
   /** Текст */
   text?: string;
   offset?: [number, number];
-};
-
-type TooltipDelayProps = {
-  openDelay?: number;
-  closeDelay?: number;
 };
 
 const tooltip = cn("tooltip");

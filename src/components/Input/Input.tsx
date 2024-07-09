@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { cn } from "../utils/cn";
 import "./Input.scss";
 
-type InputProps<T> = React.InputHTMLAttributes<HTMLInputElement> & {
+export type InputProps<T> = React.InputHTMLAttributes<HTMLInputElement> & {
   controlRef?: React.Ref<T>;
 };
 

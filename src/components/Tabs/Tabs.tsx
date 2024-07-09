@@ -3,7 +3,7 @@ import { cn } from "../utils/cn";
 import { Tab, TabProps } from "./Tab";
 import "./Tabs.scss";
 
-type TabsProps = {
+export type TabsProps = {
   activeTab?: string;
   items: TabProps[];
   onChange?: (label: string) => void;

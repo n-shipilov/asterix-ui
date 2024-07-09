@@ -13,7 +13,7 @@ type BaseFormProps = Omit<
   "onSubmit"
 >;
 
-type FormProps<FieldValues> = BaseFormProps & {
+export type FormProps<FieldValues> = BaseFormProps & {
   defaultValues?: DefaultValues<FieldValues>;
   mode?: keyof ValidationMode;
   onSubmit?: (data: FieldValues, event?: React.BaseSyntheticEvent) => void;

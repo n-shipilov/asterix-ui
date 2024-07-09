@@ -2,7 +2,7 @@ import { forwardRef, useEffect, useState } from "react";
 import { cn } from "../utils/cn";
 import "./Switch.scss";
 
-type SwitchProps = React.InputHTMLAttributes<HTMLInputElement> & {
+export type SwitchProps = React.InputHTMLAttributes<HTMLInputElement> & {
   children?: React.ReactNode;
 };
 

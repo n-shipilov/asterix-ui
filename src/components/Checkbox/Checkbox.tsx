@@ -4,7 +4,7 @@ import { CheckboxDashIcon } from "./CheckboxDashIcon";
 import { CheckboxTickIcon } from "./CheckboxTickIcon";
 import "./Checkbox.scss";
 
-type CheckboxProps = React.InputHTMLAttributes<HTMLInputElement> & {
+export type CheckboxProps = React.InputHTMLAttributes<HTMLInputElement> & {
   children?: React.ReactNode;
   indeterminate?: boolean;
 };
