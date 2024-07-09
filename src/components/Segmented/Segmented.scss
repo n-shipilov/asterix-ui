@@ -4,6 +4,7 @@ $block: ".#{variables.$ns}segmented";
 
 #{$block} {
   height: var(--segmented-height);
+  line-height: var(--segmented-height);
   display: inline-flex;
   background-color: var(--st-color-base-generic);
   border-radius: var(--segmented-border);
@@ -83,7 +84,6 @@ $block: ".#{variables.$ns}segmented";
     &-label {
       display: inline-block;
       padding: var(--segmented-item-padding);
-      line-height: 36px;
     }
   }
 

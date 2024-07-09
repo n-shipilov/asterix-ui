@@ -7,8 +7,8 @@ type SegmentedSize = "s" | "m";
 type SegmentedWidth = "auto" | "max";
 
 type SegmentedProps = Omit<
-  React.HTMLProps<HTMLDivElement>,
-  "value" | "onChange" | "ref"
+  React.HTMLProps<HTMLInputElement>,
+  "value" | "onChange" | "ref" | "size"
 > & {
   value?: string;
   size?: SegmentedSize;
