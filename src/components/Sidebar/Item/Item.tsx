@@ -1,5 +1,8 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { cn } from "../../utils/cn";
+import "./Item.scss";
+import { Tooltip } from "../../../components/Tooltip";
 
 export type SidebarItem = {
   icon?: React.ReactNode;
@@ -15,21 +18,31 @@ type ItemProps = SidebarItem & {
 const block = cn("sidebar-item");
 
 export const Item: React.FC<ItemProps> = (props) => {
-  const { icon, link, label } = props;
+  const { icon, link, label, collapsed } = props;
 
-  return (
-    <li className={block()}>
+  const item = (
+    <li
+      className={block({
+        collapsed: collapsed,
+      })}
+    >
       <NavLink
         to={link}
-        className={({ isActive }) =>
-          isActive
-            ? "sidebar-item__link sidebar-item__link_active"
-            : "sidebar-item__link"
-        }
+        className={({ isActive }) => block("link", { active: isActive })}
       >
         <div className={block("icon")}>{icon}</div>
         <div className={block("label")}>{label}</div>
       </NavLink>
     </li>
   );
+
+  if (collapsed) {
+    return (
+      <Tooltip placement="right" text={label} offset={[0, 12]} openDelay={300}>
+        {item}
+      </Tooltip>
+    );
+  }
+
+  return item;
 };
