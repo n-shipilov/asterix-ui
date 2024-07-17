@@ -1,10 +1,10 @@
 import React, { forwardRef, useRef, useState } from "react";
+import { ChevronBottom } from "../ChevronBottom";
+import { DropdownOption } from "../Dropdown/Option";
+import { Icon } from "../Icon";
+import { Popup } from "../Popup";
 import { cn } from "../utils/cn";
 import "./Select.scss";
-import { DropdownOption } from "../Dropdown/Option";
-import { Popup } from "../Popup";
-import { Icon } from "../Icon";
-import { ChevronBottom } from "../ChevronBottom";
 
 type SelectOption = {
   key: React.Key;

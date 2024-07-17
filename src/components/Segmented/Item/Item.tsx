@@ -7,11 +7,11 @@ export type SegmentedOption = {
   disabled?: boolean;
 };
 
-export interface ItemProps {
+export type ItemProps = {
   option: SegmentedOption;
   checked?: boolean;
   ref?: React.ForwardedRef<HTMLLabelElement>;
-}
+};
 
 export type ComponentProps = {
   onChange?: (value: string) => void;

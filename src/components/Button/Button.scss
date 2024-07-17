@@ -111,7 +111,7 @@ $block: ".#{variables.$ns}button";
 
   &_selected {
     background-color: var(--st-color-base-selection);
-    --button-text-color: var(--st-color-text-primary);
+    --button-text-color: var(--st-color-brand-primary-hover);
 
     &:hover {
       background-color: var(--st-color-base-selection-hover);

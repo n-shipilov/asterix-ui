@@ -108,7 +108,7 @@ $block: ".#{variables.$ns}select";
     }
 
     &:hover {
-      background-color: var(--st-color-base-simple-hover);
+      background-color: var(--st-color-base-generic);
     }
   }
 }
