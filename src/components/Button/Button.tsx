@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { cn } from "../utils/cn";
-import "./Button.scss";
 import { Icon } from "../Icon";
+import "./Button.scss";
 
 type ButtonSize = "s" | "m";
 

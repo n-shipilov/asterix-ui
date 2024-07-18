@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Tooltip } from "components";
 import { cn } from "../../utils/cn";
 import "./Item.scss";
-import { Tooltip } from "../../../components/Tooltip";
 
 export type SidebarItem = {
   icon?: React.ReactNode;

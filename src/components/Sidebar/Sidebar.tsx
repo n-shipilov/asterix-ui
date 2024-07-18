@@ -1,10 +1,10 @@
 import React from "react";
-import { useLocalStorage } from "../../hooks";
+import { useLocalStorage } from "hooks";
+import { Icon } from "../Icon";
+import { SvgIcon } from "../SvgIcon";
 import { cn } from "../utils/cn";
 import { Item, SidebarItem } from "./Item";
 import "./Sidebar.scss";
-import { Icon } from "../Icon";
-import { SvgIcon } from "../SvgIcon";
 
 export type SidebarProps = {
   items: SidebarItem[];
