@@ -1,6 +1,9 @@
 export * from "./Avatar";
+export * from "./Badge";
 export * from "./Button";
+export * from "./Calendar";
 export * from "./Checkbox";
+export * from "./DatePicker";
 export * from "./Dialog";
 export * from "./Dropdown";
 export * from "./Form";
@@ -13,6 +16,7 @@ export * from "./Radio";
 export * from "./RadioGroup";
 export * from "./Segmented";
 export * from "./Select";
+export * from "./Sidebar";
 export * from "./Spinner";
 export * from "./Switch";
 export * from "./Table";

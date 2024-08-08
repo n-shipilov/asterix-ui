@@ -9,7 +9,7 @@ $block: ".#{variables.$ns}sidebar";
   height: 100vh;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--st-color-border-primary);
+  border-right: 1px solid #e7e8eb;
   background-color: #f3f4f5;
   --list-padding: 0 12px;
   --toggle-padding: 10px 12px;
