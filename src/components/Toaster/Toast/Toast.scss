@@ -2,14 +2,14 @@ $block: ".#{variables.$ns}toast";
 
 #{$block} {
   position: relative;
-  width: 360px;
   display: flex;
+  width: 360px;
   flex-direction: column;
-  row-gap: 4px;
   padding: 16px 40px 16px 44px;
   border-radius: 8px;
   background-color: var(--st-color-backround-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+  row-gap: 4px;
 
   &_type {
     &_success {

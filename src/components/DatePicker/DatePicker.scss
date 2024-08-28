@@ -2,8 +2,8 @@ $block: ".#{variables.$ns}date-picker";
 
 #{$block} {
   &__popup {
-    background-color: var(--st-color-background-primary);
-    box-shadow: 0px 4px 12px 0px #00000014;
     border-radius: 8px;
+    background-color: var(--st-color-background-primary);
+    box-shadow: 0 4px 12px 0 #00000014;
   }
 }

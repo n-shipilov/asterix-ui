@@ -168,8 +168,7 @@ export const Selection: Story = {
     data: data.slice(0, 5),
     columns: columns,
     rowSelection: {
-      onChange: (selectedRowKeys) =>
-        console.log("selectedRowKeys:", selectedRowKeys),
+      onChange: (selectedRowKeys) => console.log("selectedRowKeys:", selectedRowKeys),
     },
     rowKey: "id",
   },

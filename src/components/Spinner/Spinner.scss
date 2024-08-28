@@ -21,12 +21,12 @@ $block: ".#{variables.$ns}spinner";
 
   &_view {
     &_default {
-      border-color: rgba(77, 87, 209, 0.4);
+      border-color: rgb(77 87 209 / 40%);
       border-bottom-color: var(--st-color-brand-primary);
     }
 
     &_inverted {
-      border-color: rgba(255, 255, 255, 0.4);
+      border-color: rgb(255 255 255 / 40%);
       border-bottom-color: var(--st-color-background-primary);
     }
   }

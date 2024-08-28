@@ -9,7 +9,7 @@ $block: ".#{variables.$ns}table";
     &_vertical {
       & #{$block}__head {
         position: sticky;
-        top: 0px;
+        top: 0;
         background-color: var(--st-color-background-primary);
       }
     }
@@ -53,8 +53,8 @@ $block: ".#{variables.$ns}table";
     height: 40px;
     padding: 8px;
     border-bottom: 1px solid var(--st-color-border-primary);
-    text-align: left;
     overflow-wrap: break-word;
+    text-align: left;
 
     &_align {
       &_center {
@@ -73,9 +73,9 @@ $block: ".#{variables.$ns}table";
 
     // TODO: Пока свойства word-wrap нет
     &:not(#{$block}__cell_word-wrap) {
-      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 

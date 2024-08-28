@@ -15,15 +15,15 @@ $block: ".#{variables.$ns}table";
 
     &_active {
       & #{$block}__sort-indicator {
-        opacity: 1;
         color: var(--st-color-text-primary);
+        opacity: 1;
       }
     }
   }
 
   &__sort-indicator {
-    opacity: 0;
     color: var(--st-color-text-secondary);
+    opacity: 0;
   }
 
   &__cell {

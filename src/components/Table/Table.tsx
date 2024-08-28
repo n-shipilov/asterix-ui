@@ -9,17 +9,8 @@ import "./Table.scss";
 export const tableWrapper = cn("table-wrapper");
 export const table = cn("table");
 
-export const Table = <RecordType extends object>(
-  props: TableProps<RecordType>
-) => {
-  const {
-    data,
-    columns,
-    rowKey = "key",
-    rowSelection,
-    scroll,
-    ...attrs
-  } = props;
+export const Table = <RecordType extends object>(props: TableProps<RecordType>) => {
+  const { data, columns, rowKey = "key", rowSelection, scroll, ...attrs } = props;
 
   const providerProps = {
     data,

@@ -12,9 +12,7 @@ export const TableBody: React.FC = () => {
   return (
     <tbody className={table("body")}>
       {getSortedData().length > 0 ? (
-        getSortedData().map((row, index) => (
-          <Row row={row} rowIndex={index} key={row[rowKey!]} />
-        ))
+        getSortedData().map((row, index) => <Row row={row} rowIndex={index} key={row[rowKey!]} />)
       ) : (
         <Empty />
       )}

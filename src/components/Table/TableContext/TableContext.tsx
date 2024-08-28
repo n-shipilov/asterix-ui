@@ -6,16 +6,12 @@ type TableContext<RecordType> = TableProps<RecordType> & {
   setSorting: React.Dispatch<React.SetStateAction<SortState>>;
 
   selectedRowKeys: Array<string | number>;
-  setSelectedRowKeys: React.Dispatch<
-    React.SetStateAction<Array<string | number>>
-  >;
+  setSelectedRowKeys: React.Dispatch<React.SetStateAction<Array<string | number>>>;
 };
 
 export const TableContext = createContext({});
 
-export const TableProvider = <RecordType extends Object>(
-  props: TableProviderProps<RecordType>
-) => {
+export const TableProvider = <RecordType extends object>(props: TableProviderProps<RecordType>) => {
   const { children, data, columns, rowKey, rowSelection, scroll } = props;
 
   const [sorting, setSorting] = useState<SortState>({
@@ -23,9 +19,9 @@ export const TableProvider = <RecordType extends Object>(
     order: undefined,
   });
 
-  const [selectedRowKeys, setSelectedRowKeys] = useState<
-    Array<string | number>
-  >(rowSelection?.selectedRowKeys ?? []);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<Array<string | number>>(
+    rowSelection?.selectedRowKeys ?? [],
+  );
 
   const context: TableContext<RecordType> = {
     data,
@@ -45,9 +41,7 @@ export const TableProvider = <RecordType extends Object>(
     setSelectedRowKeys,
   };
 
-  return (
-    <TableContext.Provider value={context}>{children}</TableContext.Provider>
-  );
+  return <TableContext.Provider value={context}>{children}</TableContext.Provider>;
 };
 
 export const useTableContext = (): TableContext<any> => {

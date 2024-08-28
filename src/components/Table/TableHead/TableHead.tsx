@@ -7,8 +7,7 @@ import { SelectionService } from "../Services";
 
 export const TableHead: React.FC = () => {
   const { columns, rowSelection } = useTableContext();
-  const { isAllRowChecked, isIndeterminate, handleAllRowSelect } =
-    SelectionService();
+  const { isAllRowChecked, isIndeterminate, handleAllRowSelect } = SelectionService();
 
   return (
     <thead className={table("head")}>

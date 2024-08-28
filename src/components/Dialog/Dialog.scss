@@ -6,7 +6,7 @@ $overlay: ".#{variables.$ns}dialog-overlay";
   z-index: 1000;
   display: grid;
   overflow: auto;
-  background-color: rgba(43, 45, 51, 0.3);
+  background-color: rgb(43 45 51 / 30%);
   inset: 0;
   place-items: center center;
 
@@ -47,7 +47,7 @@ $overlay: ".#{variables.$ns}dialog-overlay";
   border-radius: 8px;
   margin: 24px;
   background-color: var(--st-color-background-primary);
-  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%);
 
   &_size {
     &_s {
