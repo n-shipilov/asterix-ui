@@ -13,13 +13,7 @@ const radioGroup = cn("radio-group");
 
 export const RadioGroup: React.FC<RadioGroupProps> = forwardRef(
   (props, ref: React.Ref<HTMLInputElement>) => {
-    const {
-      children,
-      direction = "horizontal",
-      value,
-      onChange,
-      ...attrs
-    } = props;
+    const { children, direction = "horizontal", value, onChange, ...attrs } = props;
 
     const [groupValue, setGroupValue] = useState(value);
 
@@ -49,5 +43,5 @@ export const RadioGroup: React.FC<RadioGroupProps> = forwardRef(
         })}
       </div>
     );
-  }
+  },
 );

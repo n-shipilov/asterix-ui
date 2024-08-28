@@ -21,22 +21,12 @@ const block = cn("segmented");
 
 export const Segmented: React.FC<SegmentedProps> = forwardRef(
   (props, ref: React.Ref<HTMLInputElement>) => {
-    const {
-      className,
-      value,
-      size = "m",
-      width = "auto",
-      options,
-      disabled,
-      onChange,
-    } = props;
+    const { className, value, size = "m", width = "auto", options, disabled, onChange } = props;
 
     const plateRef = React.useRef<HTMLDivElement>(null);
     const optionRef = React.useRef<HTMLLabelElement>();
 
-    const [currentValue, setCurrentValue] = useState(
-      value ? value : options[0].value
-    );
+    const [currentValue, setCurrentValue] = useState(value ? value : options[0].value);
 
     const optionItems = options.map((option) => ({
       ...option,
@@ -48,14 +38,12 @@ export const Segmented: React.FC<SegmentedProps> = forwardRef(
       onChange && onChange(value);
     };
 
-    const handlePlateTransitionEnd: React.TransitionEventHandler<
-      HTMLDivElement
-    > = (event) => {
+    const handlePlateTransitionEnd: React.TransitionEventHandler<HTMLDivElement> = (event) => {
       event.currentTarget.hidden = true;
     };
 
-    const handleCheckedOptionMount: React.Ref<HTMLLabelElement> =
-      React.useCallback((checkedOptionNode: HTMLLabelElement | null) => {
+    const handleCheckedOptionMount: React.Ref<HTMLLabelElement> = React.useCallback(
+      (checkedOptionNode: HTMLLabelElement | null) => {
         if (!checkedOptionNode) {
           return;
         }
@@ -82,7 +70,9 @@ export const Segmented: React.FC<SegmentedProps> = forwardRef(
         }
 
         optionRef.current = checkedOptionNode;
-      }, []);
+      },
+      [],
+    );
 
     return (
       <div className={block({ size, width, disabled }, className)} ref={ref}>
@@ -97,13 +87,11 @@ export const Segmented: React.FC<SegmentedProps> = forwardRef(
             option={item}
             key={index}
             checked={item.value === currentValue}
-            ref={
-              item.value === currentValue ? handleCheckedOptionMount : undefined
-            }
+            ref={item.value === currentValue ? handleCheckedOptionMount : undefined}
             onChange={handleChange}
           />
         ))}
       </div>
     );
-  }
+  },
 );

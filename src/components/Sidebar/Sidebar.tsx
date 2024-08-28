@@ -31,10 +31,7 @@ export const Sidebar: React.FC<SidebarProps> = (props) => {
       </ul>
       <ul className={block("footer")}>
         <li>
-          <button
-            className={block("toggle")}
-            onClick={() => setCollapsed((prev) => !prev)}
-          >
+          <button className={block("toggle")} onClick={() => setCollapsed((prev) => !prev)}>
             <Icon className={block("toggle-icon")} data={SvgIcon} />
             <div className={block("toggle-label")}>Collapse menu</div>
           </button>

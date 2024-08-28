@@ -2,12 +2,12 @@ $block: ".#{variables.$ns}toast-list";
 
 #{$block} {
   position: fixed;
-  bottom: 16px;
+  z-index: 1;
   right: 16px;
+  bottom: 16px;
   display: flex;
   flex-direction: column;
   row-gap: 8px;
-  z-index: 1;
 }
 
 .item-enter {
@@ -17,8 +17,8 @@ $block: ".#{variables.$ns}toast-list";
 
 .item-enter-active {
   opacity: 1;
-  transition: all 300ms ease-in;
   transform: translateX(0);
+  transition: all 300ms ease-in;
 }
 
 .item-exit {
@@ -28,6 +28,6 @@ $block: ".#{variables.$ns}toast-list";
 
 .item-exit-active {
   opacity: 0;
-  transition: all 300ms ease-in;
   transform: translateX(10px);
+  transition: all 300ms ease-in;
 }

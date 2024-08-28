@@ -13,7 +13,7 @@ export type DropdownProps = {
   onOpenToggle?: (value: boolean) => void;
   onOptionSelect?: (
     event: React.MouseEvent<HTMLElement, MouseEvent>,
-    option: DropdownOption
+    option: DropdownOption,
   ) => void;
 };
 
@@ -36,7 +36,7 @@ export const Dropdown: React.FC<DropdownProps> = (props) => {
 
   const handleOptionClick = (
     event: React.MouseEvent<HTMLElement, MouseEvent>,
-    option: DropdownOption
+    option: DropdownOption,
   ) => {
     onOptionSelect && onOptionSelect(event, option);
     setVisible(false);
@@ -70,18 +70,12 @@ export const Dropdown: React.FC<DropdownProps> = (props) => {
         <div
           className={dropdown()}
           style={{
-            width: aligned
-              ? anchorRef.current?.getBoundingClientRect().width
-              : "",
+            width: aligned ? anchorRef.current?.getBoundingClientRect().width : "",
           }}
         >
           <ul className={dropdown("list")} role="listbox">
             {options?.map((option) => (
-              <Option
-                key={option.key}
-                option={option}
-                onClick={handleOptionClick}
-              />
+              <Option key={option.key} option={option} onClick={handleOptionClick} />
             ))}
           </ul>
         </div>

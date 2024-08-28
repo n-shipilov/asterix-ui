@@ -26,10 +26,7 @@ export const Item: React.FC<ItemProps> = (props) => {
         collapsed: collapsed,
       })}
     >
-      <NavLink
-        to={link}
-        className={({ isActive }) => block("link", { active: isActive })}
-      >
+      <NavLink to={link} className={({ isActive }) => block("link", { active: isActive })}>
         <div className={block("icon")}>{icon}</div>
         <div className={block("label")}>{label}</div>
       </NavLink>

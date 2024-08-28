@@ -1,17 +1,9 @@
-import {
-  useForm,
-  FormProvider,
-  DefaultValues,
-  ValidationMode,
-} from "react-hook-form";
+import { useForm, FormProvider, DefaultValues, ValidationMode } from "react-hook-form";
 import { cn } from "../utils/cn";
 import { Field } from "./Field";
 import "./Form.scss";
 
-type BaseFormProps = Omit<
-  React.FormHTMLAttributes<HTMLFormElement>,
-  "onSubmit"
->;
+type BaseFormProps = Omit<React.FormHTMLAttributes<HTMLFormElement>, "onSubmit">;
 
 export type FormProps<FieldValues> = BaseFormProps & {
   defaultValues?: DefaultValues<FieldValues>;
@@ -21,17 +13,8 @@ export type FormProps<FieldValues> = BaseFormProps & {
 
 const form = cn("form");
 
-export const Form = <FieldValues extends Record<string, any>>(
-  props: FormProps<FieldValues>
-) => {
-  const {
-    children,
-    className,
-    defaultValues,
-    mode = "all",
-    onSubmit,
-    ...attrs
-  } = props;
+export const Form = <FieldValues extends Record<string, any>>(props: FormProps<FieldValues>) => {
+  const { children, className, defaultValues, mode = "all", onSubmit, ...attrs } = props;
 
   const methods = useForm<FieldValues>({
     defaultValues,

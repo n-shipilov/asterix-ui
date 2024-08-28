@@ -3,16 +3,12 @@ $overlay: ".#{variables.$ns}dialog-overlay";
 
 #{$overlay} {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  background-color: rgba(43, 45, 51, 0.3);
   z-index: 1000;
+  display: grid;
   overflow: auto;
+  background-color: rgba(43, 45, 51, 0.3);
+  inset: 0;
+  place-items: center center;
 
   &-enter {
     opacity: 0;
@@ -27,8 +23,8 @@ $overlay: ".#{variables.$ns}dialog-overlay";
     transition: all 0.16s;
 
     & #{$block} {
-      transition: all 0.16s;
       transform: scale(1);
+      transition: all 0.16s;
     }
   }
 
@@ -48,10 +44,10 @@ $overlay: ".#{variables.$ns}dialog-overlay";
 
 #{$block} {
   position: relative;
-  margin: 24px;
   border-radius: 8px;
+  margin: 24px;
   background-color: var(--st-color-background-primary);
-  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
 
   &_size {
     &_s {
@@ -71,9 +67,6 @@ $overlay: ".#{variables.$ns}dialog-overlay";
     padding: 24px 24px 12px;
   }
 
-  &__title {
-  }
-
   &__btn-close {
     position: absolute;
     top: 16px;
@@ -87,7 +80,7 @@ $overlay: ".#{variables.$ns}dialog-overlay";
   &__footer {
     display: flex;
     justify-content: flex-end;
-    column-gap: 16px;
     padding: 12px 24px 24px;
+    column-gap: 16px;
   }
 }

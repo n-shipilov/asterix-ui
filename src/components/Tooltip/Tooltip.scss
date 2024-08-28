@@ -1,13 +1,13 @@
 $block: ".#{variables.$ns}tooltip";
 
 #{$block} {
+  overflow: hidden;
   max-width: 300px;
   padding: 6px 12px;
   border-radius: 6px;
-  color: var(--st-color-text-light-primary);
   background-color: var(--st-color-text-primary);
+  color: var(--st-color-text-light-primary);
   opacity: 0.85;
   text-align: center;
-  overflow: hidden;
   text-overflow: ellipsis;
 }

@@ -2,22 +2,19 @@ $block: ".#{variables.$ns}button";
 
 #{$block} {
   position: relative;
-  height: var(--button-height);
   display: inline-flex;
+  height: var(--button-height);
   align-items: center;
   justify-content: center;
-  gap: 8px;
   border-radius: var(--button-border-radius);
+  gap: 8px;
+  transform: scale(1);
   transition:
     transform 0.1s ease-out,
     background-color 0.16s linear;
-  transform: scale(1);
 
   &:active {
     transform: scale(0.96);
-  }
-
-  &:focus {
   }
 
   &:has(#{$block}__icon:only-child) {
@@ -45,8 +42,9 @@ $block: ".#{variables.$ns}button";
 
   &_view {
     &_primary {
-      background-color: var(--st-color-brand-primary);
       --button-text-color: var(--st-color-text-light-primary);
+
+      background-color: var(--st-color-brand-primary);
 
       &:hover {
         background-color: var(--st-color-brand-primary-hover);
@@ -54,8 +52,9 @@ $block: ".#{variables.$ns}button";
     }
 
     &_secondary {
-      background-color: var(--st-color-base-generic);
       --button-text-color: var(--st-color-text-primary);
+
+      background-color: var(--st-color-base-generic);
 
       &:hover {
         background-color: var(--st-color-base-generic-hover);
@@ -63,8 +62,9 @@ $block: ".#{variables.$ns}button";
     }
 
     &_ghost {
-      background-color: transparent;
       --button-text-color: var(--st-color-text-primary);
+
+      background-color: transparent;
 
       &:hover {
         background-color: var(--st-color-base-generic);
@@ -85,7 +85,10 @@ $block: ".#{variables.$ns}button";
   &_loading {
     &::before {
       position: absolute;
-      content: "";
+      z-index: -1;
+      border-radius: 8px;
+      animation: loading-animation 0.5s linear infinite;
+      background-clip: padding-box;
       background-image: repeating-linear-gradient(
         -45deg,
         transparent,
@@ -94,11 +97,8 @@ $block: ".#{variables.$ns}button";
         var(--st-color-base-generic-hover) 8px
       );
       background-size: 150%;
-      background-clip: padding-box;
-      border-radius: 8px;
-      animation: loading-animation 0.5s linear infinite;
+      content: "";
       inset: 0;
-      z-index: -1;
     }
   }
 
@@ -108,8 +108,9 @@ $block: ".#{variables.$ns}button";
   }
 
   &_selected {
-    background-color: var(--st-color-base-selection);
     --button-text-color: var(--st-color-brand-primary-hover);
+
+    background-color: var(--st-color-base-selection);
 
     &:hover {
       background-color: var(--st-color-base-selection-hover);
@@ -121,6 +122,7 @@ $block: ".#{variables.$ns}button";
   0% {
     background-position: -12px 0;
   }
+
   100% {
     background-position: 0 0;
   }

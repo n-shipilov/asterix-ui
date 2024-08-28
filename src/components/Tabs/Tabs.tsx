@@ -14,17 +14,14 @@ export const tabs = cn("tabs");
 export const Tabs: React.FC<TabsProps> = (props) => {
   const { activeTab, items, onChange } = props;
 
-  const [selectTab, setSelectTab] = useState<string>(
-    activeTab ? activeTab : items[0].label
-  );
+  const [selectTab, setSelectTab] = useState<string>(activeTab ? activeTab : items[0].label);
 
   const handleSelectTab = (label: string) => {
     setSelectTab(label);
     onChange && onChange(label);
   };
 
-  const getTabContent = (tab: string) =>
-    items.find((item) => item.label === tab)?.content;
+  const getTabContent = (tab: string) => items.find((item) => item.label === tab)?.content;
 
   return (
     <div className={tabs()}>

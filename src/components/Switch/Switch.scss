@@ -17,30 +17,30 @@ $block: ".#{variables.$ns}switch";
     width: 32px;
     height: 20px;
     padding: 4px;
-    background-color: var(--st-color-base-generic-hover);
     border-radius: 10px;
+    background-color: var(--st-color-base-generic-hover);
     transition: all 0.16s linear;
 
     &::before {
-      content: "";
       position: absolute;
       width: 12px;
       height: 12px;
-      background-color: var(--st-color-background-primary);
       border-radius: 50%;
+      background-color: var(--st-color-background-primary);
+      content: "";
       transition: all 0.16s ease-out;
     }
   }
 
   &__control {
     position: absolute;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: none;
-    opacity: 0;
     cursor: inherit;
+    opacity: 0;
   }
 
   &__label {
@@ -61,17 +61,14 @@ $block: ".#{variables.$ns}switch";
   &_disabled {
     cursor: default;
 
-    & #{$block}__indicator::before {
-    }
-
     & #{$block}__label {
       color: var(--st-color-text-hint);
     }
 
     &#{$block}_checked {
       & #{$block}__indicator {
-        opacity: 0.6;
         background-color: var(--st-color-brand-primary);
+        opacity: 0.6;
       }
     }
   }

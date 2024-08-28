@@ -66,11 +66,7 @@ export const Dialog: React.FC<DialogProps> = (props) => {
           >
             <div className={dialog("header")}>
               <h2 className={dialog("title")}>{title}</h2>
-              <Button
-                className={dialog("btn-close")}
-                view="ghost"
-                onClick={onClose}
-              >
+              <Button className={dialog("btn-close")} view="ghost" onClick={onClose}>
                 <Icon data={CloseIcon} />
               </Button>
             </div>

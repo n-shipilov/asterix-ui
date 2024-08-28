@@ -2,8 +2,8 @@ $block: ".#{variables.$ns}pagination";
 
 #{$block} {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   user-select: none;
 
   &__page-sizer {
@@ -19,8 +19,8 @@ $block: ".#{variables.$ns}pagination";
 
   &__dots {
     display: flex;
+    width: 28px;
     align-items: center;
     justify-content: center;
-    width: 28px;
   }
 }

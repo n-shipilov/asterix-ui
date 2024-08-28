@@ -42,7 +42,7 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
             indeterminate,
             disabled,
           },
-          className
+          className,
         )}
         style={style}
         data-qa="asd"
@@ -61,10 +61,8 @@ export const Checkbox: React.FC<CheckboxProps> = forwardRef(
             {...attrs}
           />
         </span>
-        {children ? (
-          <span className={checkbox("label")}>{children}</span>
-        ) : null}
+        {children ? <span className={checkbox("label")}>{children}</span> : null}
       </label>
     );
-  }
+  },
 );

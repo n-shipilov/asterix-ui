@@ -14,13 +14,8 @@ export const Input: React.FC<InputProps<HTMLInputElement>> = forwardRef(
 
     return (
       <div className={input({ disabled }, className)} ref={ref}>
-        <input
-          className={input("control")}
-          ref={controlRef}
-          disabled={disabled}
-          {...attrs}
-        ></input>
+        <input className={input("control")} ref={controlRef} disabled={disabled} {...attrs}></input>
       </div>
     );
-  }
+  },
 );

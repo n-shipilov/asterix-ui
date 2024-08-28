@@ -11,19 +11,13 @@ type SelectOption = {
   label?: string;
 };
 
-type BaseSelectProps = Omit<
-  React.InputHTMLAttributes<HTMLDivElement>,
-  "value" | "onChange"
->;
+type BaseSelectProps = Omit<React.InputHTMLAttributes<HTMLDivElement>, "value" | "onChange">;
 
 export type SelectProps = BaseSelectProps & {
   options?: SelectOption[];
   value?: SelectOption;
   searchable?: boolean;
-  onChange?: (
-    event: React.MouseEvent<HTMLElement, MouseEvent>,
-    option: SelectOption
-  ) => void;
+  onChange?: (event: React.MouseEvent<HTMLElement, MouseEvent>, option: SelectOption) => void;
 };
 
 const select = cn("select");
@@ -54,7 +48,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
 
     const handleOptionSelect = (
       event: React.MouseEvent<HTMLElement, MouseEvent>,
-      option: DropdownOption
+      option: DropdownOption,
     ) => {
       const { icon, disabled, ...selectOption } = option;
       setSelectValue(selectOption);
@@ -70,7 +64,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
     };
 
     const filteredOptions = options?.filter((option) =>
-      option.label?.toLowerCase().includes(searchValue.toLowerCase())
+      option.label?.toLowerCase().includes(searchValue.toLowerCase()),
     );
 
     return (
@@ -131,5 +125,5 @@ export const Select: React.FC<SelectProps> = forwardRef(
         </Popup>
       </>
     );
-  }
+  },
 );

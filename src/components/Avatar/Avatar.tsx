@@ -19,9 +19,7 @@ export const Avatar: React.FC<AvatarProps> = (props) => {
     if (text) {
       const words = text.split(" ");
       const result =
-        words.length > 1
-          ? [words[0][0], words[1][0]].filter(Boolean).join("")
-          : text.slice(0, 2);
+        words.length > 1 ? [words[0][0], words[1][0]].filter(Boolean).join("") : text.slice(0, 2);
 
       return result.toUpperCase();
     }
@@ -32,11 +30,7 @@ export const Avatar: React.FC<AvatarProps> = (props) => {
 
   return (
     <div className={block({ size }, className)}>
-      {src ? (
-        <img src={src} alt="" />
-      ) : (
-        <div className={block("initials")}>{displayText}</div>
-      )}
+      {src ? <img src={src} alt="" /> : <div className={block("initials")}>{displayText}</div>}
     </div>
   );
 };

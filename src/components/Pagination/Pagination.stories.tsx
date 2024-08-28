@@ -26,6 +26,7 @@ export const Default: Story = {
     total: 50,
   },
   render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const state = useState(args);
     return <Pagination {...state} />;
   },

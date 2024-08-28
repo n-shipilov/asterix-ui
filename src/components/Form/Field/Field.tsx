@@ -1,10 +1,5 @@
 import { cloneElement } from "react";
-import {
-  Controller,
-  Message,
-  ValidationRule,
-  useFormContext,
-} from "react-hook-form";
+import { Controller, Message, ValidationRule, useFormContext } from "react-hook-form";
 import { Checkbox, Input, RadioGroup, Select } from "../../../components";
 import { cn } from "../../utils/cn";
 import "./Field.scss";
@@ -108,11 +103,7 @@ export const Field: React.FC<FieldProps> = (props) => {
         </label>
       )}
       {children && controlledComponent(children)}
-      {errors[name] && (
-        <span className={field("error")}>
-          {errors[name]?.message as string}
-        </span>
-      )}
+      {errors[name] && <span className={field("error")}>{errors[name]?.message as string}</span>}
     </div>
   );
 };

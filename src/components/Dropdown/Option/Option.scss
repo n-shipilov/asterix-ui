@@ -3,11 +3,11 @@ $block: ".#{variables.$ns}dropdown-option";
 #{$block} {
   display: inline-flex;
   align-items: center;
-  column-gap: 8px;
   padding: 8px 12px;
+  column-gap: 8px;
   cursor: pointer;
-  user-select: none;
   transition: background-color 0.16s linear;
+  user-select: none;
 
   &__icon {
     display: flex;
@@ -29,11 +29,11 @@ $block: ".#{variables.$ns}dropdown-option";
   }
 
   &_disabled {
-    opacity: 0.6;
     cursor: not-allowed;
+    opacity: 0.6;
   }
 
-  &:not(.dropdown-option_disabled):not(.dropdown-option_selected):hover {
+  &:not(#{$block}_disabled, #{$block}_selected):hover {
     background-color: var(--st-color-base-generic);
   }
 }

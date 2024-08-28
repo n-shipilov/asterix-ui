@@ -1,5 +1,4 @@
 $block: ".#{variables.$ns}popup";
-
 $transition-distance: 10px;
 
 #{$block} {
@@ -49,8 +48,8 @@ $transition-distance: 10px;
   &__content {
     position: relative;
     animation-duration: 0.1s;
-    animation-timing-function: ease-out;
     animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
   }
 }
 
@@ -59,6 +58,7 @@ $transition-distance: 10px;
     opacity: 1;
     transform: translateY(0);
   }
+
   100% {
     opacity: 0;
     transform: translateY($transition-distance);
@@ -70,6 +70,7 @@ $transition-distance: 10px;
     opacity: 0;
     transform: translateY($transition-distance);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -81,6 +82,7 @@ $transition-distance: 10px;
     opacity: 1;
     transform: translateY(0);
   }
+
   100% {
     opacity: 0;
     transform: translateY(-$transition-distance);
@@ -92,6 +94,7 @@ $transition-distance: 10px;
     opacity: 0;
     transform: translateY(-$transition-distance);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -103,6 +106,7 @@ $transition-distance: 10px;
     opacity: 1;
     transform: translateX(0);
   }
+
   100% {
     opacity: 0;
     transform: translateX(-$transition-distance);
@@ -114,6 +118,7 @@ $transition-distance: 10px;
     opacity: 0;
     transform: translateX(-$transition-distance);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -125,6 +130,7 @@ $transition-distance: 10px;
     opacity: 1;
     transform: translateX(0);
   }
+
   100% {
     opacity: 0;
     transform: translateX($transition-distance);
@@ -136,6 +142,7 @@ $transition-distance: 10px;
     opacity: 0;
     transform: translateX($transition-distance);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);

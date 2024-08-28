@@ -23,7 +23,6 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
       className,
       children = "Button text",
       size = "m",
-      type = "button",
       view = "primary",
       disabled,
       loading,
@@ -41,7 +40,7 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
         loading,
         selected,
       },
-      className
+      className,
     );
 
     const preparedChildren = (children: React.ReactNode) => {
@@ -83,5 +82,5 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
         {preparedChildren(children)}
       </button>
     );
-  }
+  },
 );

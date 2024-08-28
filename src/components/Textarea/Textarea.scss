@@ -22,14 +22,14 @@ $block: ".#{variables.$ns}textarea";
     padding: 8px 12px;
     border: 1px solid var(--st-color-border-primary);
     border-radius: 8px;
-    transition: border-color 0.16s linear;
     resize: vertical;
+    transition: border-color 0.16s linear;
   }
 
   &_disabled {
     & #{$block}__control {
-      background-color: var(--st-color-base-generic);
       border-color: transparent;
+      background-color: var(--st-color-base-generic);
     }
   }
 }

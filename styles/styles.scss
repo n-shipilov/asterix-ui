@@ -11,13 +11,13 @@ html {
 
 body {
   margin: 0;
+  color: var(--st-color-text-primary);
   font-family: var(--font-family-sans);
   font-size: var(--st-text-body-font-size);
-  font-weight: var(--st-text-body-font-weight);
-  line-height: var(--st-text-body-line-height);
-  color: var(--st-color-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: var(--st-text-body-font-weight);
+  line-height: var(--st-text-body-line-height);
 }
 
 *,
@@ -37,10 +37,10 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
-  letter-spacing: inherit;
   border: none;
   background-color: transparent;
+  font: inherit;
+  letter-spacing: inherit;
   outline-style: none;
 }
 
@@ -54,8 +54,8 @@ button {
 }
 
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 a {

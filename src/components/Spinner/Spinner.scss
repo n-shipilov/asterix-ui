@@ -1,8 +1,8 @@
 $block: ".#{variables.$ns}spinner";
 
 #{$block} {
-  box-sizing: border-box;
   display: inline-flex;
+  box-sizing: border-box;
   border: 2px solid;
   border-radius: 50%;
   animation: #{variables.$ns}spin 1s linear infinite;
@@ -36,6 +36,7 @@ $block: ".#{variables.$ns}spinner";
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

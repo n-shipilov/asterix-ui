@@ -1,21 +1,23 @@
 $block: ".#{variables.$ns}sidebar";
 
 #{$block} {
-  position: sticky;
-  top: 0;
-  width: 256px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid #e7e8eb;
-  background-color: #f3f4f5;
   --list-padding: 0 12px;
   --toggle-padding: 10px 12px;
 
+  position: sticky;
+  top: 0;
+  display: flex;
+  width: 256px;
+  height: 100vh;
+  flex-direction: column;
+  border-right: 1px solid #e7e8eb;
+  background-color: #f3f4f5;
+
   &_collapsed {
-    width: 56px;
     --list-padding: 0 8px;
     --toggle-padding: 10px;
+
+    width: 56px;
   }
 
   &__logo {
@@ -33,19 +35,19 @@ $block: ".#{variables.$ns}sidebar";
   }
 
   &__toggle {
+    display: flex;
     width: 100%;
     height: 40px;
-    display: flex;
     align-items: center;
-    column-gap: 12px;
     padding: var(--toggle-padding);
     border-radius: 8px;
+    column-gap: 12px;
     cursor: pointer;
 
     &-icon {
+      display: flex;
       width: 20px;
       height: 20px;
-      display: flex;
       flex-shrink: 0;
 
       & > svg {

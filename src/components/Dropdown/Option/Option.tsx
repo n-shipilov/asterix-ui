@@ -11,10 +11,7 @@ export type DropdownOption = {
 
 type OptionProps = {
   option: DropdownOption;
-  onClick?: (
-    event: React.MouseEvent<HTMLElement>,
-    option: DropdownOption
-  ) => void;
+  onClick?: (event: React.MouseEvent<HTMLElement>, option: DropdownOption) => void;
 };
 
 const dropdownOption = cn("dropdown-option");
@@ -37,9 +34,7 @@ export const Option: React.FC<OptionProps> = (props) => {
       onClick={handleClick}
       role="option"
     >
-      {option.icon && (
-        <div className={dropdownOption("icon")}>{option.icon}</div>
-      )}
+      {option.icon && <div className={dropdownOption("icon")}>{option.icon}</div>}
       <div className={dropdownOption("title")}>{option.label}</div>
     </li>
   );

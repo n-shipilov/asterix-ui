@@ -12,6 +12,7 @@ type Story = StoryObj<typeof Dialog>;
 export const Default: Story = {
   args: {},
   render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [open, setOpen] = useState(false);
 
     return (
@@ -20,8 +21,8 @@ export const Default: Story = {
           Open dialog
         </Button>
         <Dialog {...args} open={open} onClose={() => setOpen(false)}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
         </Dialog>
       </>
     );

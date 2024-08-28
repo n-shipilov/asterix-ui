@@ -11,7 +11,7 @@ type Story = StoryObj<typeof Form>;
 export const Default: Story = {
   args: {},
   render: () => (
-    <Form onSubmit={(data, event) => console.log("data", data)}>
+    <Form onSubmit={(data) => console.log("data", data)}>
       <Form.Field
         label="Email"
         name="email"

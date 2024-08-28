@@ -33,8 +33,8 @@ $block: ".#{variables.$ns}select";
     border: 1px solid var(--st-color-border-primary);
     border-radius: 8px;
     background-color: var(--st-color-background-primary);
-    transition: border-color 0.16s linear;
     cursor: pointer;
+    transition: border-color 0.16s linear;
     user-select: none;
   }
 
@@ -67,37 +67,39 @@ $block: ".#{variables.$ns}select";
 
   &__popup {
     padding: 8px 0;
-    background-color: var(--st-color-background-primary);
-    box-shadow: 0px 4px 12px 0px #00000014;
     border-radius: 8px;
+    background-color: var(--st-color-background-primary);
+    box-shadow: 0 4px 12px 0 #00000014;
   }
 
   &__items {
-    max-height: 252px;
     display: flex;
-    flex-direction: column;
     overflow: hidden auto;
+    max-height: 252px;
+    flex-direction: column;
 
     &::-webkit-scrollbar {
       width: 4px;
     }
+
     &::-webkit-scrollbar-track {
       width: 4px;
     }
+
     &::-webkit-scrollbar-thumb {
-      background-color: var(--st-color-border-primary);
       border-radius: 4px;
+      background-color: var(--st-color-border-primary);
     }
   }
 
   &__item {
     display: inline-flex;
     align-items: center;
-    column-gap: 8px;
     padding: 8px 12px;
+    column-gap: 8px;
     cursor: pointer;
-    user-select: none;
     transition: background-color 0.16s linear;
+    user-select: none;
 
     &-title {
       overflow: hidden;

@@ -15,18 +15,18 @@ $block: ".#{variables.$ns}radio";
   &__control {
     width: 16px;
     height: 16px;
-    appearance: none;
     border: 1px solid var(--st-color-border-primary);
     border-radius: 50%;
+    appearance: none;
+    cursor: inherit;
     outline: none;
     transition: all 0.16s linear;
-    cursor: inherit;
   }
 
   &__label {
     margin-left: 8px;
-    white-space: nowrap;
     transition: opacity 0.16s linear;
+    white-space: nowrap;
   }
 
   &_checked {
@@ -34,16 +34,16 @@ $block: ".#{variables.$ns}radio";
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: var(--st-color-brand-primary);
       border: none;
+      background-color: var(--st-color-brand-primary);
 
       &::before {
-        content: "";
         position: absolute;
         width: 6px;
         height: 6px;
         border-radius: 50%;
         background-color: var(--st-color-background-primary);
+        content: "";
       }
     }
   }
@@ -52,8 +52,8 @@ $block: ".#{variables.$ns}radio";
     cursor: default;
 
     & #{$block}__control {
-      background-color: var(--st-color-base-generic);
       border-color: transparent;
+      background-color: var(--st-color-base-generic);
     }
 
     & #{$block}__label {
@@ -62,8 +62,8 @@ $block: ".#{variables.$ns}radio";
 
     &#{$block}_checked {
       & #{$block}__control {
-        opacity: 0.6;
         background-color: var(--st-color-brand-primary);
+        opacity: 0.6;
       }
     }
   }

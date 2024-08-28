@@ -8,16 +8,18 @@ $block: ".#{variables.$ns}sidebar-item";
   }
 
   &__link {
-    height: 40px;
+    --svg-fill: var(--st-color-text-secondary);
+
     display: flex;
+    height: 40px;
     align-items: center;
-    column-gap: 12px;
     padding: var(--padding);
     border-radius: 8px;
-    --svg-fill: var(--st-color-text-secondary);
+    column-gap: 12px;
 
     &_active {
       --svg-fill: var(--st-color-text-primary);
+
       background-color: var(--st-color-base-generic);
     }
 
@@ -27,9 +29,9 @@ $block: ".#{variables.$ns}sidebar-item";
   }
 
   &__icon {
+    display: flex;
     width: 20px;
     height: 20px;
-    display: flex;
 
     & > svg {
       fill: var(--svg-fill);

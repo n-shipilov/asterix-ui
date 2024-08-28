@@ -1,10 +1,10 @@
 $block: ".#{variables.$ns}badge";
 
 #{$block} {
-  height: var(--badge-height);
   display: inline-flex;
-  column-gap: 4px;
+  height: var(--badge-height);
   border-radius: var(--badge-border);
+  column-gap: 4px;
 
   &_size {
     &_s {
@@ -38,12 +38,6 @@ $block: ".#{variables.$ns}badge";
   &_theme {
     &_normal {
       background-color: var(--st-color-base-generic);
-    }
-
-    &_success {
-    }
-
-    &_danger {
     }
   }
 

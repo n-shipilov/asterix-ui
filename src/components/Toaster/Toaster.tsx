@@ -16,12 +16,7 @@ export const Toaster: FC = () => {
         <TransitionGroup component={null}>
           {toasts?.map((toast) => {
             return (
-              <CSSTransition
-                key={toast.id}
-                nodeRef={toast.ref}
-                timeout={300}
-                classNames="item"
-              >
+              <CSSTransition key={toast.id} nodeRef={toast.ref} timeout={300} classNames="item">
                 <Toast {...toast} key={toast.id} />
               </CSSTransition>
             );

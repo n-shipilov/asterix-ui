@@ -18,9 +18,9 @@ $block: ".#{variables.$ns}form-field";
   &__error {
     display: flex;
     flex-direction: column;
-    row-gap: 4px;
     color: #f04f76;
     font-size: var(--st-text-caption-font-size);
     line-height: var(--st-text-caption-line-height);
+    row-gap: 4px;
   }
 }

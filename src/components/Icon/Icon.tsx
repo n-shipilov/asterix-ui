@@ -1,8 +1,6 @@
 import React from "react";
 
-export type SVGIconSvgrData = React.FunctionComponent<
-  React.SVGProps<SVGSVGElement>
->;
+export type SVGIconSvgrData = React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 export type SVGReactComponent = React.Component<React.SVGProps<SVGSVGElement>>;
 export type SVGIconStringData = string;
 

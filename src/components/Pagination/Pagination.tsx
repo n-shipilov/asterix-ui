@@ -27,8 +27,7 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
     total,
   });
 
-  const getNumberOfPages = (pageSize: number, total = 0) =>
-    Math.floor((total - 1) / pageSize) + 1;
+  const getNumberOfPages = (pageSize: number, total = 0) => Math.floor((total - 1) / pageSize) + 1;
 
   const handleNextPage = () => {
     onChange(page + 1, pageSize);
@@ -62,9 +61,7 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
       <div className={block("page-sizer")}>
         Показывать
         <Dropdown
-          onOptionSelect={(_, option) =>
-            handleChangePageSize(option.key as number)
-          }
+          onOptionSelect={(_, option) => handleChangePageSize(option.key as number)}
           options={[
             {
               key: 10,
@@ -88,12 +85,7 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
         элементов из {total}
       </div>
       <div className={block("numbers")}>
-        <Button
-          size="s"
-          view="ghost"
-          disabled={page === 1}
-          onClick={handlePreviousPage}
-        >
+        <Button size="s" view="ghost" disabled={page === 1} onClick={handlePreviousPage}>
           <Icon data={ChevronLeft} size="16" />
         </Button>
         {items.map((pageNumber, index) => {

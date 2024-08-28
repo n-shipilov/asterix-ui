@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Toaster } from "./Toaster";
-import {
-  ToasterProvider,
-  useToasterContext,
-} from "./ToasterProvider/ToasterProvider";
+import { ToasterProvider, useToasterContext } from "./ToasterProvider/ToasterProvider";
 import { Button } from "../Button";
 
 export default {

@@ -53,12 +53,7 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
         onFocus: () => setVisible(true),
         onBlur: () => setVisible(false),
       })}
-      <Popup
-        anchorRef={anchorRef}
-        placement={placement}
-        open={visible}
-        offset={offset}
-      >
+      <Popup anchorRef={anchorRef} placement={placement} open={visible} offset={offset}>
         <div className={tooltip()}>{text}</div>
       </Popup>
     </>

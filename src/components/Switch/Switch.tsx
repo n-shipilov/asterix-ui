@@ -30,7 +30,7 @@ export const Switch: React.FC<SwitchProps> = forwardRef(
             checked: value,
             disabled,
           },
-          className
+          className,
         )}
       >
         <span className={switcher("indicator")}>
@@ -44,10 +44,8 @@ export const Switch: React.FC<SwitchProps> = forwardRef(
             {...attrs}
           />
         </span>
-        {children ? (
-          <span className={switcher("label")}>{children}</span>
-        ) : null}
+        {children ? <span className={switcher("label")}>{children}</span> : null}
       </label>
     );
-  }
+  },
 );

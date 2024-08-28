@@ -38,14 +38,7 @@ export type PopupProps = {
 const popup = cn("popup");
 
 export const Popup: React.FC<PopupProps> = (props) => {
-  const {
-    anchorRef,
-    children,
-    offset = [0, 8],
-    placement,
-    open,
-    onClose,
-  } = props;
+  const { anchorRef, children, offset = [0, 8], placement, open, onClose } = props;
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -65,9 +58,7 @@ export const Popup: React.FC<PopupProps> = (props) => {
       <CSSTransition
         nodeRef={containerRef}
         in={open}
-        addEndListener={(done) =>
-          containerRef.current?.addEventListener("animationend", done)
-        }
+        addEndListener={(done) => containerRef.current?.addEventListener("animationend", done)}
         classNames={popup()}
         mountOnEnter
         unmountOnExit
