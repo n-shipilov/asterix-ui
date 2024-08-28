@@ -12,7 +12,7 @@ type SelectOption = {
 };
 
 type BaseSelectProps = Omit<
-  React.InputHTMLAttributes<HTMLButtonElement>,
+  React.InputHTMLAttributes<HTMLDivElement>,
   "value" | "onChange"
 >;
 
@@ -31,12 +31,14 @@ const select = cn("select");
 export const Select: React.FC<SelectProps> = forwardRef(
   (props, ref: React.Ref<HTMLInputElement>) => {
     const {
+      className,
       placeholder = "Select option",
       options,
       value,
       disabled,
       searchable,
       onChange,
+      ...attrs
     } = props;
 
     const controlRef = useRef<HTMLDivElement | null>(null);
@@ -74,9 +76,10 @@ export const Select: React.FC<SelectProps> = forwardRef(
     return (
       <>
         <div
-          className={select({ disabled, searchable })}
+          className={select({ disabled, searchable }, className)}
           ref={controlRef}
           onClick={handleOpenChange}
+          {...attrs}
         >
           <div className={select("control")} role="group" ref={ref}>
             {!searchValue &&

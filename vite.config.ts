@@ -27,6 +27,13 @@ export default defineConfig({
       },
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "components/variables";`,
+      },
+    },
+  },
   plugins: [
     react(),
     cssInjectedByJsPlugin({ useStrictCSP: true, relativeCSSInjection: false }),

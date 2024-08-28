@@ -30,6 +30,6 @@ export const Default: Story = {
     ],
   },
   render: (args) => {
-    return <Select {...args} />;
+    return <Select {...args} className="test" />;
   },
 };
