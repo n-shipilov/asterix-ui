@@ -5,8 +5,8 @@ import "./Avatar.scss";
 type AvatarSize = "xs" | "s" | "m" | "l";
 
 export type AvatarProps = HTMLAttributes<HTMLDivElement> & {
-  src?: string;
   size?: AvatarSize;
+  src?: string;
   text?: string;
 };
 

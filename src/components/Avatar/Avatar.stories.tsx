@@ -9,6 +9,7 @@ type Story = StoryObj<typeof Avatar>;
 
 export const Default: Story = {
   args: {
+    size: "xs",
     // src: "https://loremflickr.com/320/240?random=3",
     text: "Asterix",
   },
