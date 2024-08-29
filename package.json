@@ -73,13 +73,13 @@
     "dist",
     "styles"
   ],
-  "main": "./dist/asterui.umd.cjs",
-  "module": "./dist/asterui.js",
+  "main": "./dist/asterixui.umd.cjs",
+  "module": "./dist/asterixui.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/asterui.js",
-      "require": "./dist/asterui.umd.cjs",
+      "import": "./dist/asterixui.js",
+      "require": "./dist/asterixui.umd.cjs",
       "types": "./dist/index.d.ts"
     },
     "./styles/*": "./styles/*"
