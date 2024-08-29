@@ -15,8 +15,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/components/index.ts"),
-      name: "AsterUi",
-      fileName: "asterui",
+      name: "AsterixUi",
+      fileName: "asterixui",
     },
     rollupOptions: {
       external: ["react"],
