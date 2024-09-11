@@ -1,6 +1,6 @@
 import { cloneElement } from "react";
 import { Controller, Message, ValidationRule, useFormContext } from "react-hook-form";
-import { Checkbox, Input, RadioGroup, Select } from "../../../components";
+import { Checkbox, Input, RadioGroup, Select, Switch, Textarea } from "components";
 import { cn } from "../../utils/cn";
 import "./Field.scss";
 
@@ -12,7 +12,7 @@ type FieldRule = {
 type FieldProps = {
   children?: React.ReactElement;
   label?: string;
-  name: string;
+  name?: string;
   rules?: FieldRule;
 };
 
@@ -28,70 +28,75 @@ export const Field: React.FC<FieldProps> = (props) => {
 
   const getDefaultValue = (child: React.ReactElement) => {
     const { props, type } = child;
-    if (type === Input) {
+    if (type === Input || type === Textarea) {
       return "";
     }
-    if (type === Checkbox) {
+    if (type === Checkbox || type === Switch) {
       return false;
     }
   };
 
   const controlledComponent = (child: React.ReactElement) => {
-    return (
-      <Controller
-        control={control}
-        defaultValue={getDefaultValue(child)}
-        name={name}
-        rules={rules}
-        render={({ field }) => {
-          const { props } = child;
-          switch (child.type) {
-            case Input:
-              return cloneElement(child, {
-                ...props,
-                ...field,
-                value: props.value || field.value,
-                onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-                  props.onChange && props.onChange(event);
-                  field.onChange(event.target.value);
-                },
-              });
-            case Checkbox:
-              return cloneElement(child, {
-                ...props,
-                ...field,
-                checked: props.checked || field.value,
-                onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-                  props.onChange && props.onChange(event);
-                  field.onChange(event.target.checked);
-                },
-              });
-            case RadioGroup:
-              return cloneElement(child, {
-                ...props,
-                ...field,
-                value: props.value || field.value,
-                onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-                  props.onChange && props.onChange(event);
-                  field.onChange(event.target.value);
-                },
-              });
-            case Select:
-              return cloneElement(child, {
-                ...props,
-                ...field,
-                value: props.value || field.value,
-                onChange: (event: any, option: any) => {
-                  props.onChange && props.onChange(event, option);
-                  field.onChange(option);
-                },
-              });
-            default:
-              return child;
-          }
-        }}
-      />
-    );
+    if (name) {
+      return (
+        <Controller
+          control={control}
+          defaultValue={getDefaultValue(child)}
+          name={name}
+          rules={rules}
+          render={({ field }) => {
+            const { props } = child;
+            switch (child.type) {
+              case Input:
+              case Textarea:
+                return cloneElement(child, {
+                  ...props,
+                  ...field,
+                  value: props.value || field.value,
+                  onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+                    props.onChange && props.onChange(event);
+                    field.onChange(event.target.value);
+                  },
+                });
+              case Checkbox:
+              case Switch:
+                return cloneElement(child, {
+                  ...props,
+                  ...field,
+                  checked: props.checked || field.value,
+                  onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+                    props.onChange && props.onChange(event);
+                    field.onChange(event.target.checked);
+                  },
+                });
+              case RadioGroup:
+                return cloneElement(child, {
+                  ...props,
+                  ...field,
+                  value: props.value || field.value,
+                  onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+                    props.onChange && props.onChange(event);
+                    field.onChange(event.target.value);
+                  },
+                });
+              case Select:
+                return cloneElement(child, {
+                  ...props,
+                  ...field,
+                  value: props.value || field.value,
+                  onChange: (event: any, option: any) => {
+                    props.onChange && props.onChange(event, option);
+                    field.onChange(option);
+                  },
+                });
+              default:
+                return child;
+            }
+          }}
+        />
+      );
+    }
+    return child;
   };
 
   return (
@@ -103,7 +108,9 @@ export const Field: React.FC<FieldProps> = (props) => {
         </label>
       )}
       {children && controlledComponent(children)}
-      {errors[name] && <span className={field("error")}>{errors[name]?.message as string}</span>}
+      {name && errors[name] && (
+        <span className={field("error")}>{errors[name]?.message as string}</span>
+      )}
     </div>
   );
 };

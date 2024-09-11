@@ -101,13 +101,17 @@ $block: ".#{variables.$ns}select";
     transition: background-color 0.16s linear;
     user-select: none;
 
+    &_selected {
+      background-color: var(--st-color-base-selection);
+    }
+
     &-title {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    &:hover {
+    &:not(#{$block}__item_selected):hover {
       background-color: var(--st-color-base-generic);
     }
   }

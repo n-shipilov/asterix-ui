@@ -113,7 +113,9 @@ export const Select: React.FC<SelectProps> = forwardRef(
             <ul className={select("items")} role="listbox">
               {filteredOptions?.map((option) => (
                 <li
-                  className={select("item")}
+                  className={select("item", {
+                    selected: option?.key === selectValue?.key,
+                  })}
                   key={option.key}
                   onClick={(event) => handleOptionSelect(event, option)}
                 >
