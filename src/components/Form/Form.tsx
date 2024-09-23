@@ -8,17 +8,21 @@ type BaseFormProps = Omit<React.FormHTMLAttributes<HTMLFormElement>, "onSubmit">
 export type FormProps<FieldValues> = BaseFormProps & {
   defaultValues?: DefaultValues<FieldValues>;
   mode?: keyof ValidationMode;
+  values?: FieldValues;
   onSubmit?: (data: FieldValues, event?: React.BaseSyntheticEvent) => void;
 };
 
 const form = cn("form");
 
-export const Form = <FieldValues extends Record<string, any>>(props: FormProps<FieldValues>) => {
-  const { children, className, defaultValues, mode = "all", onSubmit, ...attrs } = props;
+export const Form = <FieldValues extends Record<string, unknown>>(
+  props: FormProps<FieldValues>,
+) => {
+  const { children, className, defaultValues, mode = "all", values, onSubmit, ...attrs } = props;
 
   const methods = useForm<FieldValues>({
     defaultValues,
     mode,
+    values,
   });
 
   return (
