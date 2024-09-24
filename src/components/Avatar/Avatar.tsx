@@ -26,11 +26,13 @@ export const Avatar: React.FC<AvatarProps> = (props) => {
     return "";
   };
 
-  const displayText = getAvatarDisplayText(text);
-
   return (
     <div className={block({ size }, className)}>
-      {src ? <img src={src} alt="" /> : <div className={block("initials")}>{displayText}</div>}
+      {src ? (
+        <img src={src} alt="" />
+      ) : (
+        <div className={block("initials")}>{getAvatarDisplayText(text)}</div>
+      )}
     </div>
   );
 };

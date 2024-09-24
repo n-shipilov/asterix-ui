@@ -35,7 +35,7 @@ export type PopupProps = {
   onClose?: () => void;
 };
 
-const popup = cn("popup");
+const block = cn("popup");
 
 export const Popup: React.FC<PopupProps> = (props) => {
   const { anchorRef, children, offset = [0, 8], placement, open, onClose } = props;
@@ -59,7 +59,7 @@ export const Popup: React.FC<PopupProps> = (props) => {
         nodeRef={containerRef}
         in={open}
         addEndListener={(done) => containerRef.current?.addEventListener("animationend", done)}
-        classNames={popup()}
+        classNames={block()}
         mountOnEnter
         unmountOnExit
         appear={true}
@@ -68,9 +68,9 @@ export const Popup: React.FC<PopupProps> = (props) => {
           ref={handleRef}
           style={styles.popper}
           {...attributes.popper}
-          className={popup({ open })}
+          className={block({ open })}
         >
-          <div className={popup("content")}>{children}</div>
+          <div className={block("content")}>{children}</div>
         </div>
       </CSSTransition>
     </Portal>

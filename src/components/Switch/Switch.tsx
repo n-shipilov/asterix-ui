@@ -1,4 +1,5 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef } from "react";
+import { useCheckbox } from "hooks";
 import { cn } from "../utils/cn";
 import "./Switch.scss";
 
@@ -6,45 +7,28 @@ export type SwitchProps = React.InputHTMLAttributes<HTMLInputElement> & {
   children?: React.ReactNode;
 };
 
-const switcher = cn("switch");
+const block = cn("switch");
 
 export const Switch: React.FC<SwitchProps> = forwardRef(
   (props, ref: React.Ref<HTMLInputElement>) => {
-    const { children, className, checked = false, disabled, ...attrs } = props;
+    const { children, className, disabled } = props;
 
-    const [value, setValue] = useState(checked);
-
-    useEffect(() => {
-      setValue(checked);
-    }, [checked]);
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      const { checked } = event.target;
-      setValue(checked);
-    };
+    const { checked, inputProps } = useCheckbox(props);
 
     return (
       <label
-        className={switcher(
+        className={block(
           {
-            checked: value,
+            checked,
             disabled,
           },
           className,
         )}
       >
-        <span className={switcher("indicator")}>
-          <input
-            type="checkbox"
-            className={switcher("control")}
-            ref={ref}
-            checked={value}
-            disabled={disabled}
-            onChange={handleChange}
-            {...attrs}
-          />
+        <span className={block("indicator")}>
+          <input className={block("control")} ref={ref} {...inputProps} />
         </span>
-        {children ? <span className={switcher("label")}>{children}</span> : null}
+        {children ? <span className={block("label")}>{children}</span> : null}
       </label>
     );
   },

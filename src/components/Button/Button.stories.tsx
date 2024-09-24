@@ -10,16 +10,15 @@ export default {
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  args: {},
-  render: (args) => (
-    <div style={{ display: "flex", gap: "20px" }}>
-      <Button {...args} />
-    </div>
-  ),
+  args: {
+    disabled: false,
+    selected: false,
+    loading: false,
+  },
+  render: (args) => <Button {...args} />,
 };
 
 export const View: Story = {
-  args: {},
   render: (args) => (
     <div style={{ display: "flex", gap: "20px" }}>
       <Button view="primary" {...args} />
@@ -30,7 +29,6 @@ export const View: Story = {
 };
 
 export const Size: Story = {
-  args: {},
   render: (args) => (
     <div style={{ display: "flex", gap: "20px" }}>
       <Button size="s" {...args} />
@@ -40,7 +38,6 @@ export const Size: Story = {
 };
 
 export const Icon: Story = {
-  args: {},
   render: (args) => (
     <div style={{ display: "flex", gap: "20px" }}>
       <Button {...args}>Button text</Button>

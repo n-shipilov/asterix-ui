@@ -8,6 +8,7 @@ type ButtonSize = "s" | "m";
 type ButtonView = "primary" | "secondary" | "ghost";
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  /** Размер кнопки */
   size?: ButtonSize;
   view?: ButtonView;
   disabled?: boolean;
@@ -15,7 +16,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   selected?: boolean;
 };
 
-const button = cn("button");
+const block = cn("button");
 
 export const Button: React.FC<ButtonProps> = React.forwardRef(
   (props, ref: React.Ref<HTMLButtonElement>) => {
@@ -32,7 +33,7 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
 
     const buttonRef = useRef<HTMLButtonElement>(null);
 
-    const additionalClasses = button(
+    const additionalClasses = block(
       {
         size,
         view,
@@ -47,26 +48,26 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
       const items = React.Children.toArray(children) as React.ReactElement[];
 
       if (items.length === 1) {
-        const oneChildElement = items[0];
+        const сhildElement = items[0];
 
-        if (oneChildElement.type === Icon) {
-          return <span className={button("icon")}>{oneChildElement}</span>;
+        if (сhildElement.type === Icon) {
+          return <span className={block("icon")}>{сhildElement}</span>;
         } else {
-          return <span className={button("text")}>{oneChildElement}</span>;
+          return <span className={block("text")}>{сhildElement}</span>;
         }
       } else {
         if (items[1].type === Icon) {
           return (
             <>
-              <span className={button("text")}>{items[0]}</span>
-              <span className={button("icon")}>{items[1]}</span>
+              <span className={block("text")}>{items[0]}</span>
+              <span className={block("icon")}>{items[1]}</span>
             </>
           );
         }
         return (
           <>
-            <span className={button("icon")}>{items[0]}</span>
-            <span className={button("text")}>{items[1]}</span>
+            <span className={block("icon")}>{items[0]}</span>
+            <span className={block("text")}>{items[1]}</span>
           </>
         );
       }
