@@ -10,11 +10,6 @@ export default {
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  args: {
-    disabled: false,
-    selected: false,
-    loading: false,
-  },
   render: (args) => <Button {...args} />,
 };
 
