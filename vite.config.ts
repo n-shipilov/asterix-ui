@@ -1,8 +1,8 @@
-import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { resolve } from "path";
-import dts from "vite-plugin-dts";
+import { defineConfig } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -39,6 +39,7 @@ export default defineConfig({
     react(),
     cssInjectedByJsPlugin({ useStrictCSP: true, relativeCSSInjection: false }),
     dts({
+      tsconfigPath: resolve(__dirname, "tsconfig.app.json"),
       insertTypesEntry: true,
     }),
   ],
