@@ -23,11 +23,24 @@ const Button = <Button view="primary" size="m" />;
 
 UIKit comes with base styling and theme. In order to everything look nice include this at the top of your entry file:
 
-```js
-// index.js
+```css
+// App.css
 
-import "asterix-ui/styles/styles.scss";
-import "asterix-ui/styles/fonts.scss";
+@import "asterix-ui/styles/styles";
+@import "asterix-ui/styles/fonts";
 
 // ...
+```
+
+UIKit supports different themes: light and dark. Your app must be rendered inside `ThemeProvider`:
+
+```jsx
+import { createRoot } from "react-dom/client";
+import { ThemeProvider } from "asterix-ui";
+
+createRoot(document.getElementById("root")!).render(
+  <ThemeProvider theme="light">
+    <App />
+  </ThemeProvider>
+);
 ```

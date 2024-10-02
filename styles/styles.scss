@@ -15,6 +15,16 @@
   }
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
+:root:has(body.st-root_theme_light) {
+  color-scheme: light;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+:root:has(body.st-root_theme_dark) {
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
 }
