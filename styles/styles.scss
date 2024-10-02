@@ -1,8 +1,18 @@
-@import "./variables";
+@import "./themes";
 
-:root {
-  @include color;
-  @include typography;
+.st-root {
+  background: var(--st-color-base-background);
+  color: var(--st-color-text-primary);
+
+  @include theme-common;
+
+  &_theme_light {
+    @include theme-light;
+  }
+
+  &_theme_dark {
+    @include theme-dark;
+  }
 }
 
 html {
@@ -11,13 +21,8 @@ html {
 
 body {
   margin: 0;
-  color: var(--st-color-text-primary);
-  font-family: var(--font-family-sans);
-  font-size: var(--st-text-body-font-size);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: var(--st-text-body-font-weight);
-  line-height: var(--st-text-body-line-height);
 }
 
 *,

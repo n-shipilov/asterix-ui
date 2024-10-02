@@ -98,7 +98,7 @@ $block: ".#{variables.$ns}segmented";
 
   &__plate::before,
   &__plate[hidden] ~ &__item_checked::before {
-    background-color: var(--st-color-background-primary);
+    background-color: var(--st-color-base-background);
     content: "";
   }
 }

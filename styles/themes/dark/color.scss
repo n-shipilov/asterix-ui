@@ -1,0 +1,34 @@
+@mixin base {
+  --st-color-base-background: rgb(39 39 39 / 100%);
+
+  --st-color-base-generic: rgb(255 255 255 / 10%);
+  --st-color-base-generic-hover: rgb(255 255 255 / 15%);
+
+  --st-color-base-selection: rgb(82 130 255 / 15%);
+  --st-color-base-selection-hover: rgb(82 130 255 / 30%);
+
+  --st-color-base-error: #f04f76;
+  --st-color-base-success: #30aa6e;
+  --st-color-base-warning: #f8cc2d;
+}
+
+@mixin brand {
+  --st-color-brand-primary: rgb(75 113 214 / 100%);
+  --st-color-brand-primary-hover: rgb(99 143 255 / 100%);
+}
+
+@mixin border {
+  --st-color-border-primary: rgb(255 255 255 / 10%);
+  --st-color-border-primary-hover: rgb(255 255 255 / 15%);
+  --st-color-border-primary-active: rgb(255 255 255 / 30%);
+}
+
+@mixin text {
+  --st-color-text-primary: rgb(255 255 255 / 85%);
+  --st-color-text-secondary: rgb(255 255 255 / 50%);
+  --st-color-text-hint: rgb(255 255 255 / 30%);
+
+  --st-color-text-light-primary: rgb(255 255 255 / 85%);
+  --st-color-text-light-secondary: rgb(255 255 255 / 50%);
+  --st-color-text-light-hint: rgb(255 255 255 / 30%);
+}

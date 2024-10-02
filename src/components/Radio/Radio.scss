@@ -42,7 +42,7 @@ $block: ".#{variables.$ns}radio";
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background-color: var(--st-color-background-primary);
+        background-color: var(--st-color-base-background);
         content: "";
       }
     }

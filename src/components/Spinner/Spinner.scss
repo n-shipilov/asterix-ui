@@ -27,7 +27,7 @@ $block: ".#{variables.$ns}spinner";
 
     &_inverted {
       border-color: rgb(255 255 255 / 40%);
-      border-bottom-color: var(--st-color-background-primary);
+      border-bottom-color: var(--st-color-base-background);
     }
   }
 }

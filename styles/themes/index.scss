@@ -1,0 +1,11 @@
+@import "./common";
+@import "./dark";
+@import "./light";
+
+@mixin theme-dark {
+  @include colors-dark;
+}
+
+@mixin theme-light {
+  @include colors-light;
+}

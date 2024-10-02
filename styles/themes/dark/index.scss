@@ -1,0 +1,8 @@
+@use "./color";
+
+@mixin colors-dark {
+  @include color.base;
+  @include color.brand;
+  @include color.border;
+  @include color.text;
+}

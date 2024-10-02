@@ -22,7 +22,8 @@ $block: ".#{variables.$ns}input";
     padding: 8px 12px;
     border: 1px solid var(--st-color-border-primary);
     border-radius: 8px;
-    background-color: var(--st-color-background-primary);
+    background-color: var(--st-color-base-background);
+    color: inherit;
     transition: border-color 0.16s linear;
   }
 

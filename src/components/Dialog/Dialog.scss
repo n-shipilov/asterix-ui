@@ -46,7 +46,7 @@ $overlay: ".#{variables.$ns}dialog-overlay";
   position: relative;
   border-radius: 8px;
   margin: 24px;
-  background-color: var(--st-color-background-primary);
+  background-color: var(--st-color-base-background);
   box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%);
 
   &_size {

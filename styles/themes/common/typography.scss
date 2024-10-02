@@ -1,5 +1,7 @@
 @mixin variables {
-  --font-family-sans: "Inter", "Helvetica", "Arial", sans-serif;
+  --st-font-family-sans: "Inter", "Helvetica", "Arial", sans-serif;
+
+  --st-text-body-font-family: var(--st-font-family-sans);
 
   // Header
   --st-text-header-1-font-size: 24px;
@@ -27,4 +29,9 @@
   --st-text-subheader-font-weight: 600;
   --st-text-body-font-weight: 400;
   --st-text-caption-font-weight: 400;
+
+  font-family: var(--st-text-body-font-family);
+  font-size: var(--st-text-body-font-size);
+  font-weight: var(--st-text-body-font-weight);
+  line-height: var(--st-text-body-line-height);
 }

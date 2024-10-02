@@ -26,7 +26,7 @@ $block: ".#{variables.$ns}switch";
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background-color: var(--st-color-background-primary);
+      background-color: var(--st-color-base-background);
       content: "";
       transition: all 0.16s ease-out;
     }

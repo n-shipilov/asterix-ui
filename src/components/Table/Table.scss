@@ -10,7 +10,7 @@ $block: ".#{variables.$ns}table";
       & #{$block}__head {
         position: sticky;
         top: 0;
-        background-color: var(--st-color-background-primary);
+        background-color: var(--st-color-base-background);
       }
     }
   }

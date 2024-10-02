@@ -3,7 +3,7 @@ $block: ".#{variables.$ns}dropdown";
 #{$block} {
   padding: 8px 0;
   border-radius: 8px;
-  background-color: var(--st-color-background-primary);
+  background-color: var(--st-color-base-background);
   box-shadow: 0 4px 12px 0 #00000014;
 
   &__list {

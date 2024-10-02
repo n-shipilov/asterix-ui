@@ -3,17 +3,27 @@ import "../styles/styles.scss";
 
 import type { Preview } from "@storybook/react";
 import { themes } from "./theme";
+import { WithTheme } from "./decorators/withTheme";
 
 const preview: Preview = {
+  decorators: [WithTheme],
   parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
     docs: {
       theme: themes.light,
+    },
+  },
+  globalTypes: {
+    theme: {
+      defaultValue: "light",
+      toolbar: {
+        title: "Theme",
+        icon: "mirror",
+        items: [
+          { value: "light", right: "☼", title: "Light" },
+          { value: "dark", right: "☾", title: "Dark" },
+        ],
+        dynamicTitle: true,
+      },
     },
   },
 };
