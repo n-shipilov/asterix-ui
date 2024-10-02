@@ -3,11 +3,11 @@ import { Checkbox } from "../../Checkbox";
 import { useTableContext } from "../TableContext";
 import { table } from "../Table";
 import { Sort } from "./Sort";
-import { SelectionService } from "../Services";
+import { useTableSelection } from "../hooks";
 
 export const TableHead: React.FC = () => {
   const { columns, rowSelection } = useTableContext();
-  const { isAllRowChecked, isIndeterminate, handleAllRowSelect } = SelectionService();
+  const { isAllRowChecked, isIndeterminate, handleAllRowSelect } = useTableSelection();
 
   return (
     <thead className={table("head")}>

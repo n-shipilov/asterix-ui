@@ -1,6 +1,6 @@
 import { useTableContext } from "../TableContext";
 
-export const SortService = () => {
+export const useTableSorting = () => {
   const { data, columns, sorting, setSorting } = useTableContext();
 
   const handleChangeSorting = (columnKey: string) => {
@@ -23,22 +23,18 @@ export const SortService = () => {
 
   const getSortedData = () => {
     if (sorting.column) {
-      const sorter = columns.find(
-        (column) => column.key === sorting.column
-      )?.sorter;
+      const sorter = columns.find((column) => column.key === sorting.column)?.sorter;
 
       if (typeof sorter === "boolean") {
         // Если column.sorter = boolean
         return data;
       } else if (typeof sorter === "function") {
         // Если column.sorter = CompareFn
-        return [...data].sort(
-          (a, b) => sorter(a, b) * (sorting.order === "asc" ? 1 : -1)
-        );
+        return [...data].sort((a, b) => sorter(a, b) * (sorting.order === "asc" ? 1 : -1));
       }
     }
     return data;
   };
 
-  return { handleChangeSorting, getSortedData };
+  return { sortedData: getSortedData(), handleChangeSorting };
 };

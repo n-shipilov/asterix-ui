@@ -1,8 +1,8 @@
 import React from "react";
+import { useTableSorting } from "../../hooks";
 import { table } from "../../Table";
-import { Column } from "../../types";
 import { useTableContext } from "../../TableContext";
-import { SortService } from "../../Services";
+import { Column } from "../../types";
 import "./Sort.scss";
 
 type SortProps = {
@@ -13,7 +13,7 @@ export const Sort: React.FC<SortProps> = (props) => {
   const { column } = props;
 
   const { sorting } = useTableContext();
-  const { handleChangeSorting } = SortService();
+  const { handleChangeSorting } = useTableSorting();
 
   const { key: columnKey, title } = column;
 

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { cn } from "../../../utils/cn";
 import { useTableContext } from "../../TableContext";
 import { Checkbox } from "../../../Checkbox";
-import { SelectionService } from "../../Services";
+import { useTableSelection } from "components/Table/hooks";
 
 const table = cn("table");
 
@@ -15,7 +15,7 @@ export const Row: FC<RowProps> = (props) => {
   const { row, rowIndex } = props;
 
   const { columns, rowSelection } = useTableContext();
-  const { isRowChecked, handleRowSelect } = SelectionService();
+  const { isRowChecked, handleRowSelect } = useTableSelection();
 
   return (
     <tr

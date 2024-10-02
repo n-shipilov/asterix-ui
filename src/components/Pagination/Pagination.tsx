@@ -12,6 +12,7 @@ import "./Pagination.scss";
 export type PaginationProps = {
   page: number;
   pageSize: number;
+  pageSizeOptions: string[] | number[];
   total?: number;
   onChange: (page: number, pageSize: number) => void;
 };
@@ -19,7 +20,7 @@ export type PaginationProps = {
 const block = cn("pagination");
 
 export const Pagination: React.FC<PaginationProps> = (props) => {
-  const { page = 1, pageSize = 10, total = 20, onChange } = props;
+  const { page = 1, pageSize = 10, pageSizeOptions = [10, 20, 50], total = 20, onChange } = props;
 
   const items = usePagination({
     page,
@@ -62,20 +63,10 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
         Показывать
         <Dropdown
           onOptionSelect={(_, option) => handleChangePageSize(option.key as number)}
-          options={[
-            {
-              key: 10,
-              label: "10",
-            },
-            {
-              key: 20,
-              label: "20",
-            },
-            {
-              key: 50,
-              label: "50",
-            },
-          ]}
+          options={pageSizeOptions.map((item) => ({
+            key: item,
+            label: item.toString(),
+          }))}
         >
           <Button size="s" view="secondary">
             {pageSize}

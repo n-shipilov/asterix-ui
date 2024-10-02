@@ -14,7 +14,7 @@ export type SegmentedProps = Omit<
   size?: SegmentedSize;
   width?: SegmentedWidth;
   options: SegmentedOption[];
-  onChange?: (value: any) => void;
+  onChange?: (value: string) => void;
 };
 
 const block = cn("segmented");

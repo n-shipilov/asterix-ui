@@ -17,7 +17,7 @@ const DialogWithHooks = (args: DialogProps) => {
       <Button view="secondary" onClick={() => setOpen(true)}>
         Open dialog
       </Button>
-      <Dialog open={open} onClose={() => setOpen(false)}>
+      <Dialog open={open} onClose={() => setOpen(false)} {...args}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua.
       </Dialog>
@@ -26,6 +26,5 @@ const DialogWithHooks = (args: DialogProps) => {
 };
 
 export const Default: Story = {
-  args: {},
   render: (args) => <DialogWithHooks {...args} />,
 };

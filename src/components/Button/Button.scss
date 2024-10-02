@@ -76,6 +76,7 @@ $block: ".#{variables.$ns}button";
     width: var(--button-icon-size);
     height: var(--button-icon-size);
     color: var(--button-text-color);
+    transition: color 0.15s linear;
   }
 
   &__text {
@@ -108,7 +109,19 @@ $block: ".#{variables.$ns}button";
     pointer-events: none;
 
     &:not(#{$block}_loading) {
-      --button-text-color: var(--st-color-text-light-secondary);
+      &#{$block}_view {
+        &_primary {
+          --button-text-color: var(--st-color-text-light-secondary);
+        }
+
+        &_secondary {
+          --button-text-color: var(--st-color-text-hint);
+        }
+
+        &_ghost {
+          --button-text-color: var(--st-color-text-hint);
+        }
+      }
     }
   }
 
