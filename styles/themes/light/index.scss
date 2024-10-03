@@ -1,6 +1,8 @@
+@use "./private";
 @use "./color";
 
-@mixin colors-light {
+@mixin st-colors-light {
+  @include private.st-colors-private-light;
   @include color.base;
   @include color.brand;
   @include color.border;

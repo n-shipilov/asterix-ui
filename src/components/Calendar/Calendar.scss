@@ -92,7 +92,7 @@ $block: ".#{variables.$ns}calendar";
     }
 
     &_weekend {
-      color: var(--st-color-base-error);
+      color: var(--st-color-text-danger);
     }
 
     &_selected {

@@ -3,9 +3,9 @@
 @import "./light";
 
 @mixin theme-dark {
-  @include colors-dark;
+  @include st-colors-dark;
 }
 
 @mixin theme-light {
-  @include colors-light;
+  @include st-colors-light;
 }

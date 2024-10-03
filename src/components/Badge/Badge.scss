@@ -1,9 +1,13 @@
 $block: ".#{variables.$ns}badge";
 
 #{$block} {
+  --background-color: none;
+  --text-color: none;
+
   display: inline-flex;
   height: var(--badge-height);
   border-radius: var(--badge-border);
+  background-color: var(--background-color);
   column-gap: 4px;
 
   &_size {
@@ -37,11 +41,32 @@ $block: ".#{variables.$ns}badge";
 
   &_theme {
     &_normal {
-      background-color: var(--st-color-base-generic);
+      --background-color: var(--st-color-base-generic);
+    }
+
+    &_success {
+      --background-color: var(--st-color-base-positive-light);
+      --text-color: var(--st-color-text-positive);
+    }
+
+    &_info {
+      --background-color: var(--st-color-base-info-light);
+      --text-color: var(--st-color-text-info);
+    }
+
+    &_warning {
+      --background-color: var(--st-color-base-warning-light);
+      --text-color: var(--st-color-text-warning);
+    }
+
+    &_danger {
+      --background-color: var(--st-color-base-danger-light);
+      --text-color: var(--st-color-text-danger);
     }
   }
 
   &__text {
+    color: var(--text-color);
     font-size: var(--badge-font-size);
     line-height: var(--badge-line-height);
   }

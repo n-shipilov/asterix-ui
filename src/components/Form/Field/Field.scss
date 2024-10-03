@@ -11,14 +11,14 @@ $block: ".#{variables.$ns}form-field";
 
   &__required-mark {
     margin-left: 2px;
-    color: #f04f76;
+    color: var(--st-color-text-danger);
     font-weight: var(--st-text-subheader-font-weight);
   }
 
   &__error {
     display: flex;
     flex-direction: column;
-    color: #f04f76;
+    color: var(--st-color-text-danger);
     font-size: var(--st-text-caption-font-size);
     line-height: var(--st-text-caption-line-height);
     row-gap: 4px;
