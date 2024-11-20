@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Table } from "./Table";
 import { ColumnsType } from "./types";
@@ -20,7 +21,7 @@ interface DataItem {
 const data: DataItem[] = [
   {
     id: 0,
-    name: "John Smith",
+    name: "Администрации муниципального образования «город Екатеринбург»",
     city: "New York",
     phone: "+1 123-456-7890",
     count: 82,
@@ -103,6 +104,7 @@ const columns: ColumnsType<any> = [
   {
     key: "name",
     title: "Name",
+    width: 200,
     sorter: (a, b) => a.name.localeCompare(b.name),
     render: (_, record, index) => {
       if (index % 2 === 0) {

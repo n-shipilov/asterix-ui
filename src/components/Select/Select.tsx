@@ -110,19 +110,23 @@ export const Select: React.FC<SelectProps> = forwardRef(
             className={select("popup")}
             style={{ width: controlRef.current?.getBoundingClientRect().width }}
           >
-            <ul className={select("items")} role="listbox">
-              {filteredOptions?.map((option) => (
-                <li
-                  className={select("item", {
-                    selected: option?.key === selectValue?.key,
-                  })}
-                  key={option.key}
-                  onClick={(event) => handleOptionSelect(event, option)}
-                >
-                  <span className={select("item-title")}>{option.label}</span>
-                </li>
-              ))}
-            </ul>
+            {filteredOptions && filteredOptions.length > 0 ? (
+              <ul className={select("items")} role="listbox">
+                {filteredOptions?.map((option) => (
+                  <li
+                    className={select("item", {
+                      selected: option?.key === selectValue?.key,
+                    })}
+                    key={option.key}
+                    onClick={(event) => handleOptionSelect(event, option)}
+                  >
+                    <span className={select("item-title")}>{option.label}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className={select("empty")}>По запросу «{searchValue}» ничего не найдено</p>
+            )}
           </div>
         </Popup>
       </>

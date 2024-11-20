@@ -17,19 +17,18 @@ export type Column<RecordType> = {
 
 export type ColumnsType<RecordType> = Column<RecordType>[];
 
-export type TableProps<RecordType> =
-  React.TableHTMLAttributes<HTMLTableElement> & {
-    /** Источник данных */
-    data: RecordType[];
-    /** Колонки таблицы */
-    columns: ColumnsType<RecordType>;
-    /** Уникальный ключ строки (по умолчанию "key") */
-    rowKey?: string | keyof RecordType;
-    /** Опции при выборе строки с помощью чекбокса  */
-    rowSelection?: RowSelection;
-    /** Параметры прокрутки таблицы */
-    scroll?: ScrollType;
-  };
+export type TableProps<RecordType> = React.TableHTMLAttributes<HTMLTableElement> & {
+  /** Источник данных */
+  data: RecordType[];
+  /** Колонки таблицы */
+  columns: ColumnsType<RecordType>;
+  /** Уникальный ключ строки (по умолчанию "key") */
+  rowKey?: string | keyof RecordType;
+  /** Опции при выборе строки с помощью чекбокса  */
+  rowSelection?: RowSelection;
+  /** Параметры прокрутки таблицы */
+  scroll?: ScrollType;
+};
 
 export type TableProviderProps<RecordType> = TableProps<RecordType> & {
   children: React.ReactNode;
