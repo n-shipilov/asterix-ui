@@ -1,17 +1,17 @@
-@import "./themes";
+@use "./themes";
 
 .st-root {
   background: var(--st-color-base-background);
   color: var(--st-color-text-primary);
 
-  @include theme-common;
+  @include themes.theme-common;
 
   &_theme_light {
-    @include theme-light;
+    @include themes.theme-light;
   }
 
   &_theme_dark {
-    @include theme-dark;
+    @include themes.theme-dark;
   }
 }
 
