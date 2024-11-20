@@ -1,5 +1,5 @@
 @use "./typography";
 
-@mixin theme-common {
+@mixin st-typography {
   @include typography.variables;
 }

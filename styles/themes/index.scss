@@ -1,11 +1,15 @@
-@import "./common";
-@import "./dark";
-@import "./light";
+@use "./common";
+@use "./dark";
+@use "./light";
+
+@mixin theme-common {
+  @include common.st-typography;
+}
 
 @mixin theme-dark {
-  @include st-colors-dark;
+  @include dark.st-colors-dark;
 }
 
 @mixin theme-light {
-  @include st-colors-light;
+  @include light.st-colors-light;
 }
