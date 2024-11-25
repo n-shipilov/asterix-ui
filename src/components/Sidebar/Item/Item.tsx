@@ -9,11 +9,11 @@ export type SidebarItem = {
   label: string;
   link?: string;
   children?: SidebarItem[];
-  onItemClick?: (item: SidebarItem, event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 };
 
 type ItemProps = SidebarItem & {
   collapsed?: boolean;
+  onItemClick?: (item: SidebarItem, event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 };
 
 const block = cn("sidebar-item");
@@ -25,6 +25,7 @@ export const Item: React.FC<ItemProps> = (props) => {
 
   const handleItemClick = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     event.preventDefault();
+    event.stopPropagation();
     onItemClick?.({ icon, link, label, children }, event);
   };
 

@@ -8,12 +8,13 @@ import "./Sidebar.scss";
 
 export type SidebarProps = {
   items: SidebarItem[];
+  onItemClick?: (item: SidebarItem, event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 };
 
 const block = cn("sidebar");
 
 export const Sidebar: React.FC<SidebarProps> = (props) => {
-  const { items } = props;
+  const { items, onItemClick } = props;
 
   const [collapsed, setCollapsed] = useLocalStorage("collapsed", false);
 
@@ -26,7 +27,7 @@ export const Sidebar: React.FC<SidebarProps> = (props) => {
       <div className={block("logo")}></div>
       <ul className={block("list")}>
         {items.map((item, index) => (
-          <Item collapsed={collapsed} {...item} key={index} />
+          <Item collapsed={collapsed} onItemClick={onItemClick} {...item} key={index} />
         ))}
       </ul>
       <ul className={block("footer")}>
