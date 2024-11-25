@@ -3,8 +3,19 @@ $block: ".#{variables.$ns}sidebar-item";
 #{$block} {
   --padding: 10px 12px;
 
+  position: relative;
+
   &_collapsed {
     --padding: 10px;
+
+    & #{$block}__submenu {
+      position: absolute;
+      top: -4px;
+      left: calc(100% + 16px);
+      padding: 4px;
+      border-radius: 8px;
+      background-color: var(--st-color-base-generic);
+    }
   }
 
   &__link {
@@ -16,6 +27,8 @@ $block: ".#{variables.$ns}sidebar-item";
     padding: var(--padding);
     border-radius: 8px;
     column-gap: 12px;
+    cursor: pointer;
+    user-select: none;
 
     &_active {
       --svg-fill: var(--st-color-text-primary);
@@ -40,7 +53,26 @@ $block: ".#{variables.$ns}sidebar-item";
 
   &__label {
     overflow: hidden;
+    flex: 1;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  &__toggle {
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.1s linear;
+
+    &_active {
+      transform: rotate(90deg);
+    }
+  }
+
+  &:not(#{$block}_collapsed) {
+    & #{$block}__submenu {
+      & #{$block}__link {
+        --padding: 10px 12px 10px 44px;
+      }
+    }
   }
 }

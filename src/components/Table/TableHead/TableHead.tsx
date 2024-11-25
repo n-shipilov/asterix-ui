@@ -13,14 +13,14 @@ export const TableHead: React.FC = () => {
     <thead className={table("head")}>
       <tr className={table("row")}>
         {rowSelection && (
-          <td className={table("cell", { checkbox: true })}>
+          <th className={table("cell", { checkbox: true })}>
             <Checkbox
               className={table("checkbox")}
               indeterminate={isIndeterminate}
               checked={isAllRowChecked}
               onChange={() => handleAllRowSelect()}
             />
-          </td>
+          </th>
         )}
         {columns.map((column, index) => {
           const { align, sorter, title } = column;

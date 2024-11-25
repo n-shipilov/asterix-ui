@@ -20,14 +20,6 @@ interface DataItem {
 
 const data: DataItem[] = [
   {
-    id: 0,
-    name: "Администрации муниципального образования «город Екатеринбург»",
-    city: "New York",
-    phone: "+1 123-456-7890",
-    count: 82,
-    date: "2023-03-15",
-  },
-  {
     id: 1,
     name: "Emily Johnson",
     city: "Los Angeles",
@@ -104,7 +96,6 @@ const columns: ColumnsType<any> = [
   {
     key: "name",
     title: "Name",
-    width: 200,
     sorter: (a, b) => a.name.localeCompare(b.name),
     render: (_, record, index) => {
       if (index % 2 === 0) {

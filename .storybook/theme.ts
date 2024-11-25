@@ -7,7 +7,7 @@ export const CloudThemeLight = create({
   fontBase: '"Inter", sans-serif',
   fontCode: "monospace",
 
-  brandTitle: `<div style="font-size: 18px; color: #027bf3; font-weight: 600;">Asterix UI</div>`,
+  brandTitle: `<div style="font-size: 18px; color: #4088FF; font-weight: 600;">Asterix UI</div>`,
   brandUrl: "",
   brandTarget: "_self",
 });

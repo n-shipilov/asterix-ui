@@ -1,7 +1,8 @@
+import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Sidebar } from "./Sidebar";
 import { SvgIcon } from "../SvgIcon";
-import { MemoryRouter } from "react-router-dom";
 
 export default {
   component: Sidebar,
@@ -34,8 +35,17 @@ export const Default: Story = {
       },
       {
         label: "Menu item 5",
-        link: "/5",
         icon: <SvgIcon />,
+        children: [
+          {
+            label: "Submenu item 1",
+            link: "/6",
+          },
+          {
+            label: "Submenu item 2",
+            link: "/7",
+          },
+        ],
       },
     ],
   },
