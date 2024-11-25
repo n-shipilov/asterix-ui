@@ -23,12 +23,17 @@ export const Item: React.FC<ItemProps> = (props) => {
 
   const [visibleSubmenu, setVisibleSubmenu] = useState(false);
 
+  const handleItemClick = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    event.preventDefault();
+    onItemClick?.({ icon, link, label, children }, event);
+  };
+
   const item = (
     <li
       className={block({
         collapsed: collapsed,
       })}
-      onClick={(event) => onItemClick?.({ icon, link, label, children }, event)}
+      onClick={handleItemClick}
     >
       {link ? (
         <a href={link} className={block("link")}>
