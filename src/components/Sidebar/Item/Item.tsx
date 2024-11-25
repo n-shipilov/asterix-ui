@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { Icon, Tooltip } from "components";
 import { cn } from "../../utils/cn";
 import "./Item.scss";
@@ -30,10 +29,10 @@ export const Item: React.FC<ItemProps> = (props) => {
       })}
     >
       {link ? (
-        <Link to={link} className={block("link")}>
+        <a href={link} className={block("link")}>
           {icon && <div className={block("icon")}>{icon}</div>}
           <div className={block("label")}>{label}</div>
-        </Link>
+        </a>
       ) : (
         <div className={block("link")} onClick={() => setVisibleSubmenu((prev) => !prev)}>
           {icon && <div className={block("icon")}>{icon}</div>}
