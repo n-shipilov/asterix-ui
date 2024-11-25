@@ -16,6 +16,7 @@ export const Default: Story = {
         label: "Menu item 1",
         link: "/1",
         icon: <SvgIcon />,
+        onItemClick: console.log,
       },
       {
         label: "Menu item 2",

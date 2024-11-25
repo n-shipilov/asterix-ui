@@ -9,6 +9,7 @@ export type SidebarItem = {
   label: string;
   link?: string;
   children?: SidebarItem[];
+  onItemClick?: (item: SidebarItem, event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 };
 
 type ItemProps = SidebarItem & {
@@ -18,7 +19,7 @@ type ItemProps = SidebarItem & {
 const block = cn("sidebar-item");
 
 export const Item: React.FC<ItemProps> = (props) => {
-  const { icon, link, label, children, collapsed } = props;
+  const { icon, link, label, children, collapsed, onItemClick } = props;
 
   const [visibleSubmenu, setVisibleSubmenu] = useState(false);
 
@@ -27,6 +28,7 @@ export const Item: React.FC<ItemProps> = (props) => {
       className={block({
         collapsed: collapsed,
       })}
+      onClick={(event) => onItemClick?.({ icon, link, label, children }, event)}
     >
       {link ? (
         <a href={link} className={block("link")}>
