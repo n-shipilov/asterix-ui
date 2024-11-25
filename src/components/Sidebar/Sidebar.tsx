@@ -17,7 +17,15 @@ export const Sidebar: React.FC<SidebarProps> = (props) => {
   const { items, onItemClick } = props;
 
   const [collapsed, setCollapsed] = useLocalStorage("collapsed", false);
-  const [selectedItem, setSelectedItem] = useState(items[0]);
+  const [selectedItemId, setSelectedItemId] = useState(items[0].id);
+
+  const handleItemClick = (
+    item: SidebarItem,
+    event: React.MouseEvent<HTMLLIElement, MouseEvent>,
+  ) => {
+    !item.children && setSelectedItemId(item.id);
+    onItemClick?.(item, event);
+  };
 
   return (
     <nav
@@ -28,7 +36,13 @@ export const Sidebar: React.FC<SidebarProps> = (props) => {
       <div className={block("logo")}></div>
       <ul className={block("list")}>
         {items.map((item, index) => (
-          <Item item={item} collapsed={collapsed} onItemClick={onItemClick} key={index} />
+          <Item
+            item={item}
+            collapsed={collapsed}
+            selectedItemId={selectedItemId}
+            onItemClick={handleItemClick}
+            key={index}
+          />
         ))}
       </ul>
       <ul className={block("footer")}>

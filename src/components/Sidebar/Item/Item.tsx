@@ -15,13 +15,14 @@ export type SidebarItem = {
 type ItemProps = {
   item: SidebarItem;
   collapsed?: boolean;
+  selectedItemId: string;
   onItemClick?: (item: SidebarItem, event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 };
 
 const block = cn("sidebar-item");
 
 export const Item: React.FC<ItemProps> = (props) => {
-  const { item, collapsed, onItemClick } = props;
+  const { item, collapsed, selectedItemId, onItemClick } = props;
 
   const { id, icon, link, label, children } = item;
 
@@ -44,7 +45,7 @@ export const Item: React.FC<ItemProps> = (props) => {
       onClick={(event) => handleItemClick(item, event)}
     >
       {link ? (
-        <a href={link} className={block("link")}>
+        <a href={link} className={block("link", { active: selectedItemId === id })}>
           {icon && <div className={block("icon")}>{icon}</div>}
           <div className={block("label")}>{label}</div>
         </a>
@@ -60,7 +61,12 @@ export const Item: React.FC<ItemProps> = (props) => {
       {children && visibleSubmenu && (
         <ul className={block("submenu")}>
           {children.map((item, index) => (
-            <Item item={item} key={index} onItemClick={onItemClick} />
+            <Item
+              item={item}
+              selectedItemId={selectedItemId}
+              onItemClick={onItemClick}
+              key={index}
+            />
           ))}
         </ul>
       )}
