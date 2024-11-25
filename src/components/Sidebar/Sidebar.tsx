@@ -5,7 +5,6 @@ import { SvgIcon } from "../SvgIcon";
 import { cn } from "../utils/cn";
 import { Item, SidebarItem } from "./Item";
 import "./Sidebar.scss";
-import { BrowserRouter } from "react-router-dom";
 
 export type SidebarProps = {
   items: SidebarItem[];
@@ -19,27 +18,25 @@ export const Sidebar: React.FC<SidebarProps> = (props) => {
   const [collapsed, setCollapsed] = useLocalStorage("collapsed", false);
 
   return (
-    <BrowserRouter>
-      <nav
-        className={block({
-          collapsed: collapsed,
-        })}
-      >
-        <div className={block("logo")}></div>
-        <ul className={block("list")}>
-          {items.map((item, index) => (
-            <Item collapsed={collapsed} {...item} key={index} />
-          ))}
-        </ul>
-        <ul className={block("footer")}>
-          <li>
-            <button className={block("toggle")} onClick={() => setCollapsed((prev) => !prev)}>
-              <Icon className={block("toggle-icon")} data={SvgIcon} />
-              <div className={block("toggle-label")}>Collapse menu</div>
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </BrowserRouter>
+    <nav
+      className={block({
+        collapsed: collapsed,
+      })}
+    >
+      <div className={block("logo")}></div>
+      <ul className={block("list")}>
+        {items.map((item, index) => (
+          <Item collapsed={collapsed} {...item} key={index} />
+        ))}
+      </ul>
+      <ul className={block("footer")}>
+        <li>
+          <button className={block("toggle")} onClick={() => setCollapsed((prev) => !prev)}>
+            <Icon className={block("toggle-icon")} data={SvgIcon} />
+            <div className={block("toggle-label")}>Collapse menu</div>
+          </button>
+        </li>
+      </ul>
+    </nav>
   );
 };
