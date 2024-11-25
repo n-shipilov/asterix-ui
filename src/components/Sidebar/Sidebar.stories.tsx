@@ -1,5 +1,4 @@
 import React from "react";
-import { MemoryRouter } from "react-router-dom";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Sidebar } from "./Sidebar";
 import { SvgIcon } from "../SvgIcon";
@@ -49,9 +48,5 @@ export const Default: Story = {
       },
     ],
   },
-  render: (args) => (
-    <MemoryRouter>
-      <Sidebar {...args} />
-    </MemoryRouter>
-  ),
+  render: (args) => <Sidebar {...args} />,
 };
