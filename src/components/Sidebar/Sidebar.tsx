@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocalStorage } from "hooks";
 import { Icon } from "../Icon";
 import { SvgIcon } from "../SvgIcon";
@@ -17,6 +17,7 @@ export const Sidebar: React.FC<SidebarProps> = (props) => {
   const { items, onItemClick } = props;
 
   const [collapsed, setCollapsed] = useLocalStorage("collapsed", false);
+  const [selectedItem, setSelectedItem] = useState(items[0]);
 
   return (
     <nav
@@ -27,7 +28,7 @@ export const Sidebar: React.FC<SidebarProps> = (props) => {
       <div className={block("logo")}></div>
       <ul className={block("list")}>
         {items.map((item, index) => (
-          <Item collapsed={collapsed} onItemClick={onItemClick} {...item} key={index} />
+          <Item item={item} collapsed={collapsed} onItemClick={onItemClick} key={index} />
         ))}
       </ul>
       <ul className={block("footer")}>

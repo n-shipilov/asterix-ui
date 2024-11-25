@@ -5,13 +5,15 @@ import "./Item.scss";
 import { ChevronRight } from "components/ChevronRight";
 
 export type SidebarItem = {
+  id: string;
   icon?: React.ReactNode;
   label: string;
   link?: string;
   children?: SidebarItem[];
 };
 
-type ItemProps = SidebarItem & {
+type ItemProps = {
+  item: SidebarItem;
   collapsed?: boolean;
   onItemClick?: (item: SidebarItem, event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 };
@@ -19,22 +21,27 @@ type ItemProps = SidebarItem & {
 const block = cn("sidebar-item");
 
 export const Item: React.FC<ItemProps> = (props) => {
-  const { icon, link, label, children, collapsed, onItemClick } = props;
+  const { item, collapsed, onItemClick } = props;
+
+  const { id, icon, link, label, children } = item;
 
   const [visibleSubmenu, setVisibleSubmenu] = useState(false);
 
-  const handleItemClick = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+  const handleItemClick = (
+    item: SidebarItem,
+    event: React.MouseEvent<HTMLLIElement, MouseEvent>,
+  ) => {
     event.preventDefault();
     event.stopPropagation();
-    onItemClick?.({ icon, link, label, children }, event);
+    onItemClick?.(item, event);
   };
 
-  const item = (
+  const renderItem = (
     <li
       className={block({
         collapsed: collapsed,
       })}
-      onClick={handleItemClick}
+      onClick={(event) => handleItemClick(item, event)}
     >
       {link ? (
         <a href={link} className={block("link")}>
@@ -53,7 +60,7 @@ export const Item: React.FC<ItemProps> = (props) => {
       {children && visibleSubmenu && (
         <ul className={block("submenu")}>
           {children.map((item, index) => (
-            <Item {...item} key={index} />
+            <Item item={item} key={index} onItemClick={onItemClick} />
           ))}
         </ul>
       )}
@@ -63,10 +70,10 @@ export const Item: React.FC<ItemProps> = (props) => {
   if (collapsed && !visibleSubmenu) {
     return (
       <Tooltip placement="right" text={label} offset={[0, 12]} openDelay={300}>
-        {item}
+        {renderItem}
       </Tooltip>
     );
   }
 
-  return item;
+  return renderItem;
 };
