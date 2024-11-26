@@ -33,7 +33,9 @@ $block: ".#{variables.$ns}sidebar-item";
     &_active {
       --svg-fill: var(--st-color-text-primary);
 
-      background-color: var(--st-color-base-generic);
+      &:not(div) {
+        background-color: var(--st-color-base-generic);
+      }
     }
 
     &:hover {

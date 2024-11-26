@@ -45,12 +45,22 @@ export const Item: React.FC<ItemProps> = (props) => {
       onClick={(event) => handleItemClick(item, event)}
     >
       {link ? (
-        <a href={link} className={block("link", { active: selectedItemId === id })}>
+        <a
+          href={link}
+          className={block("link", {
+            active: selectedItemId === id,
+          })}
+        >
           {icon && <div className={block("icon")}>{icon}</div>}
           <div className={block("label")}>{label}</div>
         </a>
       ) : (
-        <div className={block("link")} onClick={() => setVisibleSubmenu((prev) => !prev)}>
+        <div
+          className={block("link", {
+            active: children?.map((child) => child.id).includes(selectedItemId),
+          })}
+          onClick={() => setVisibleSubmenu((prev) => !prev)}
+        >
           {icon && <div className={block("icon")}>{icon}</div>}
           <div className={block("label")}>{label}</div>
           <div className={block("toggle", { active: visibleSubmenu })}>
