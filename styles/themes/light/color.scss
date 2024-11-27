@@ -4,8 +4,13 @@
   --st-color-base-generic: var(--st-color-private-black-50);
   --st-color-base-generic-hover: var(--st-color-private-black-150);
 
-  --st-color-base-selection: rgb(82 130 255 / 15%);
+  --st-color-base-selection: rgb(64 136 255 / 15%);
   --st-color-base-selection-hover: rgb(82 130 255 / 30%);
+
+  --st-color-base-info: var(--st-color-private-blue-600-solid);
+  --st-color-base-positive: var(--st-color-private-green-600-solid);
+  --st-color-base-warning: var(--st-color-private-yellow-700-solid);
+  --st-color-base-danger: var(--st-color-private-red-600-solid);
 
   --st-color-base-info-light: var(--st-color-private-blue-100);
   --st-color-base-positive-light: var(--st-color-private-green-100);

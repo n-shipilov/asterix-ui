@@ -3,15 +3,23 @@ $block: ".#{variables.$ns}input";
 #{$block} {
   position: relative;
 
-  &:hover:not(#{$block}_disabled) {
+  &:hover:not(#{$block}_disabled, #{$block}_state_error) {
     & #{$block}__control {
       border-color: var(--st-color-border-primary-hover);
     }
   }
 
-  &:focus-within:not(#{$block}_disabled) {
+  &:focus-within:not(#{$block}_disabled, #{$block}_state_error) {
     & #{$block}__control {
       border-color: var(--st-color-border-primary-active);
+    }
+  }
+
+  &_state {
+    &_error {
+      & #{$block}__control {
+        border-color: var(--st-color-base-danger);
+      }
     }
   }
 

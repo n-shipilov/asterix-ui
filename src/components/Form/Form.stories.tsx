@@ -1,6 +1,8 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button, Checkbox, Input, Radio, RadioGroup, Select, Switch, Textarea } from "components";
 import { Form } from "./Form";
+import { Segmented } from "../Segmented/Segmented";
 
 export default {
   component: Form,
@@ -90,6 +92,24 @@ export const FormControls: Story = {
             {
               key: "blue",
               label: "Blue",
+            },
+          ]}
+        />
+      </Form.Field>
+      <Form.Field label="Segmented" name="segmented">
+        <Segmented
+          options={[
+            {
+              label: "Value 1",
+              value: "Value 1",
+            },
+            {
+              label: "Value 2",
+              value: "Value 2",
+            },
+            {
+              label: "Value 3",
+              value: "Value 3",
             },
           ]}
         />

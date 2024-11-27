@@ -1,4 +1,4 @@
-import { Message, ValidationRule, useFormContext } from "react-hook-form";
+import { FieldError, Message, ValidationRule, useFormContext } from "react-hook-form";
 import { cn } from "../../utils/cn";
 import { Control } from "../Control";
 import "./Field.scss";
@@ -33,7 +33,15 @@ export const Field: React.FC<FieldProps> = (props) => {
           {rules?.required && <span className={field("required-mark")}>*</span>}
         </label>
       )}
-      {children && <Control child={children} control={control} name={name} rules={rules} />}
+      {children && (
+        <Control
+          child={children}
+          control={control}
+          name={name}
+          rules={rules}
+          error={name ? (errors[name] as FieldError) : undefined}
+        />
+      )}
       {name && errors[name] && (
         <span className={field("error")}>{errors[name]?.message as string}</span>
       )}
