@@ -7,24 +7,19 @@ $block: ".#{variables.$ns}input";
   display: flex;
   border: 1px solid var(--st-color-border-primary);
   border-radius: 8px;
+  transition: border-color 0.16s linear;
 
   &:hover:not(#{$block}_disabled, #{$block}_state_error) {
-    & #{$block}__control {
-      border-color: var(--st-color-border-primary-hover);
-    }
+    border-color: var(--st-color-border-primary-hover);
   }
 
   &:focus-within:not(#{$block}_disabled, #{$block}_state_error) {
-    & #{$block}__control {
-      border-color: var(--st-color-border-primary-active);
-    }
+    border-color: var(--st-color-border-primary-active);
   }
 
   &_state {
     &_error {
-      & #{$block}__control {
-        border-color: var(--st-color-base-danger);
-      }
+      border-color: var(--st-color-base-danger);
     }
   }
 
@@ -36,7 +31,6 @@ $block: ".#{variables.$ns}input";
 
     // background-color: var(--st-color-base-background);
     color: inherit;
-    transition: border-color 0.16s linear;
   }
 
   &__btn-clear {
