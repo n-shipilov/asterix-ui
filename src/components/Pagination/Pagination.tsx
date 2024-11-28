@@ -12,7 +12,7 @@ import "./Pagination.scss";
 export type PaginationProps = {
   page: number;
   pageSize: number;
-  pageSizeOptions: string[] | number[];
+  pageSizeOptions?: string[] | number[];
   total?: number;
   onChange: (page: number, pageSize: number) => void;
 };
