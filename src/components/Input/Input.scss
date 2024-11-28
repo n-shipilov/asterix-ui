@@ -1,12 +1,10 @@
 $block: ".#{variables.$ns}input";
 
 #{$block} {
-  --input-height: 36px;
-
   position: relative;
   display: flex;
   border: 1px solid var(--st-color-border-primary);
-  border-radius: 8px;
+  border-radius: var(--input-border-radius);
   transition: border-color 0.16s linear;
 
   &:hover:not(#{$block}_disabled, #{$block}_state_error) {
@@ -23,11 +21,25 @@ $block: ".#{variables.$ns}input";
     }
   }
 
+  &_size {
+    &_s {
+      --input-height: 28px;
+      --input-border-radius: 6px;
+      --input-padding: 4px 8px;
+    }
+
+    &_m {
+      --input-height: 36px;
+      --input-border-radius: 8px;
+      --input-padding: 8px 12px;
+    }
+  }
+
   &__control {
     position: relative;
     width: 100%;
     height: var(--input-height);
-    padding: 8px 12px;
+    padding: var(--input-padding);
 
     // background-color: var(--st-color-base-background);
     color: inherit;

@@ -6,12 +6,15 @@ import { useForkRef } from "hooks";
 import { cn } from "../utils/cn";
 import "./Input.scss";
 
-export type InputProps<T> = React.InputHTMLAttributes<HTMLInputElement> & {
+type InputSize = "s" | "m";
+
+export type InputProps<T> = Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> & {
   controlRef?: React.Ref<T>;
   // TODO: возможно стоит использовать тип, не зависящий от библиотеки react-hook-form
   // Может и весь объект ошибки здесь не нужен
-  error?: FieldError;
+  size?: InputSize;
   hasClear?: boolean;
+  error?: FieldError;
 };
 
 const input = cn("input");
@@ -24,8 +27,11 @@ export const Input: React.FC<InputProps<HTMLInputElement>> = forwardRef(
       controlRef,
       value,
       onChange,
-      error,
+
+      size = "m",
       hasClear = false,
+
+      error,
       ...attrs
     } = props;
 
@@ -63,7 +69,7 @@ export const Input: React.FC<InputProps<HTMLInputElement>> = forwardRef(
     const isClearControlVisible = hasClear && !disabled && inputValue;
 
     return (
-      <div className={input({ disabled, state_error: !!error }, className)} ref={ref}>
+      <div className={input({ size, disabled, state_error: !!error }, className)} ref={ref}>
         <input
           className={input("control")}
           ref={handleRef}

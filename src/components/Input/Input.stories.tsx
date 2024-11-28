@@ -12,5 +12,6 @@ export const Default: Story = {
     placeholder: "Placeholder",
     disabled: false,
     hasClear: false,
+    size: "s",
   },
 };
