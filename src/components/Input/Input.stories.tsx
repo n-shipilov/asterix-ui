@@ -11,5 +11,6 @@ export const Default: Story = {
   args: {
     placeholder: "Placeholder",
     disabled: false,
+    hasClear: false,
   },
 };
