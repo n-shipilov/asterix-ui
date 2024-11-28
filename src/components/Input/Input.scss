@@ -3,6 +3,7 @@ $block: ".#{variables.$ns}input";
 #{$block} {
   position: relative;
   display: flex;
+  height: var(--input-height);
   border: 1px solid var(--st-color-border-primary);
   border-radius: var(--input-border-radius);
   transition: border-color 0.16s linear;
@@ -43,7 +44,6 @@ $block: ".#{variables.$ns}input";
   &__control {
     position: relative;
     width: 100%;
-    height: var(--input-height);
     padding: var(--input-padding);
 
     // background-color: var(--st-color-base-background);
@@ -66,5 +66,9 @@ $block: ".#{variables.$ns}input";
         color: var(--st-color-text-primary);
       }
     }
+  }
+
+  &::-ms-clear {
+    display: none;
   }
 }
