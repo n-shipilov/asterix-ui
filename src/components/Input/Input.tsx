@@ -24,10 +24,10 @@ export const Input: React.FC<InputProps<HTMLInputElement>> = forwardRef(
     const {
       className,
       disabled,
-      controlRef,
       value,
       onChange,
 
+      controlRef,
       size = "m",
       hasClear = false,
 
