@@ -7,6 +7,7 @@ import { Item, SidebarItem } from "./Item";
 import "./Sidebar.scss";
 
 export type SidebarProps = {
+  className?: string;
   items: SidebarItem[];
   onItemClick?: (item: SidebarItem, event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 };
@@ -14,7 +15,7 @@ export type SidebarProps = {
 const block = cn("sidebar");
 
 export const Sidebar: React.FC<SidebarProps> = (props) => {
-  const { items, onItemClick } = props;
+  const { className, items, onItemClick } = props;
 
   const [collapsed, setCollapsed] = useLocalStorage("collapsed", false);
   const [selectedItemId, setSelectedItemId] = useState(items[0].id);
@@ -23,15 +24,18 @@ export const Sidebar: React.FC<SidebarProps> = (props) => {
     item: SidebarItem,
     event: React.MouseEvent<HTMLLIElement, MouseEvent>,
   ) => {
-    !item.children && setSelectedItemId(item.id);
     onItemClick?.(item, event);
+    return !item.children && setSelectedItemId(item.id);
   };
 
   return (
     <nav
-      className={block({
-        collapsed: collapsed,
-      })}
+      className={block(
+        {
+          collapsed: collapsed,
+        },
+        className,
+      )}
     >
       <div className={block("logo")}></div>
       <ul className={block("list")}>
