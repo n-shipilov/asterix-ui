@@ -6,9 +6,11 @@ import { useForkRef } from "hooks";
 import { cn } from "../utils/cn";
 import "./Input.scss";
 
+type BaseInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">;
+
 type InputSize = "s" | "m";
 
-export type InputProps<T> = Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> & {
+export type InputProps<T> = BaseInputProps & {
   controlRef?: React.Ref<T>;
   // TODO: возможно стоит использовать тип, не зависящий от библиотеки react-hook-form
   // Может и весь объект ошибки здесь не нужен

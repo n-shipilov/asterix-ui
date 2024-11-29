@@ -4,9 +4,9 @@ $block: ".#{variables.$ns}select";
   position: relative;
   display: flex;
   overflow: hidden;
-  height: 36px;
+  height: var(--select-height);
   border: 1px solid var(--st-color-border-primary);
-  border-radius: 8px;
+  border-radius: var(--select-border-radius);
   cursor: pointer;
   transition: border-color 0.16s linear;
 
@@ -30,10 +30,24 @@ $block: ".#{variables.$ns}select";
     cursor: text;
   }
 
+  &_size {
+    &_s {
+      --select-border-radius: 6px;
+      --select-height: 28px;
+      --select-padding: 4px 8px;
+    }
+
+    &_m {
+      --select-border-radius: 8px;
+      --select-height: 36px;
+      --select-padding: 8px 12px;
+    }
+  }
+
   &__control {
     position: relative;
     width: 100%;
-    padding: 8px 12px;
+    padding: var(--select-padding);
 
     // user-select: none;
   }

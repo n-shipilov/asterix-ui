@@ -6,14 +6,20 @@ import { Popup } from "../Popup";
 import { cn } from "../utils/cn";
 import "./Select.scss";
 
+type BaseSelectProps = Omit<
+  React.InputHTMLAttributes<HTMLDivElement>,
+  "value" | "onChange" | "size"
+>;
+
+type SelectSize = "s" | "m";
+
 type SelectOption = {
   key: React.Key;
   label?: string;
 };
 
-type BaseSelectProps = Omit<React.InputHTMLAttributes<HTMLDivElement>, "value" | "onChange">;
-
 export type SelectProps = BaseSelectProps & {
+  size?: SelectSize;
   options?: SelectOption[];
   value?: SelectOption;
   searchable?: boolean;
@@ -27,6 +33,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
     const {
       className,
       placeholder = "Select option",
+      size,
       options,
       value,
       disabled,
@@ -71,7 +78,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
     return (
       <>
         <div
-          className={select({ disabled, searchable }, className)}
+          className={select({ disabled, searchable, size }, className)}
           ref={controlRef}
           onClick={handleOpenChange}
           {...attrs}
