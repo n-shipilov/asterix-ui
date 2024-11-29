@@ -33,7 +33,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
     const {
       className,
       placeholder = "Select option",
-      size,
+      size = "m",
       options,
       value,
       disabled,
