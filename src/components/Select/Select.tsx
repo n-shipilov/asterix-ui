@@ -86,7 +86,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
           <div className={select("control")} role="group" ref={ref}>
             {!searchValue &&
               (selectValue ? (
-                <span className={select("value")}>{selectValue.label}</span>
+                <span className={select("value", { unactive: open })}>{selectValue.label}</span>
               ) : (
                 <span className={select("placeholder")}>{placeholder}</span>
               ))}

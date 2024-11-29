@@ -48,8 +48,7 @@ $block: ".#{variables.$ns}select";
     position: relative;
     width: 100%;
     padding: var(--select-padding);
-
-    // user-select: none;
+    user-select: none;
   }
 
   &__placeholder {
@@ -59,7 +58,11 @@ $block: ".#{variables.$ns}select";
 
   &__value {
     position: absolute;
-    transition: color 0.16s linear;
+    transition: color 0.1s linear;
+
+    &_unactive {
+      color: var(--st-color-text-hint);
+    }
   }
 
   &__input {
