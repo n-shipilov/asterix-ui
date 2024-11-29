@@ -1,6 +1,7 @@
 $block: ".#{variables.$ns}form";
 
 #{$block} {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }

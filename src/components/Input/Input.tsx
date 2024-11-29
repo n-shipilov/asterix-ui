@@ -60,6 +60,8 @@ export const Input: React.FC<InputProps<HTMLInputElement>> = forwardRef(
 
         control.value = "";
 
+        innerControlRef.current?.focus();
+
         if (onChange) {
           onChange(syntheticEvent);
         }

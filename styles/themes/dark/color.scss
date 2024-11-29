@@ -1,11 +1,16 @@
 @mixin base {
-  --st-color-base-background: rgb(39 39 39 / 100%);
+  --st-color-base-background: rgb(27 27 27);
 
   --st-color-base-generic: var(--st-color-private-white-100);
   --st-color-base-generic-hover: var(--st-color-private-white-150);
 
   --st-color-base-selection: rgb(82 130 255 / 20%);
   --st-color-base-selection-hover: rgb(82 130 255 / 35%);
+
+  --st-color-base-info: var(--st-color-private-blue-600-solid);
+  --st-color-base-positive: var(--st-color-private-green-600-solid);
+  --st-color-base-warning: var(--st-color-private-yellow-700-solid);
+  --st-color-base-danger: var(--st-color-private-red-600-solid);
 
   --st-color-base-info-light: var(--st-color-private-blue-150);
   --st-color-base-positive-light: var(--st-color-private-green-150);
@@ -14,8 +19,8 @@
 }
 
 @mixin brand {
-  --st-color-brand-primary: rgb(75 113 214 / 100%);
-  --st-color-brand-primary-hover: rgb(99 143 255 / 100%);
+  --st-color-brand-primary: rgb(64 136 255 / 100%);
+  --st-color-brand-primary-hover: rgb(50 118 222 / 100%);
 }
 
 @mixin border {

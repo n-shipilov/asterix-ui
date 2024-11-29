@@ -10,8 +10,8 @@ $block: ".#{variables.$ns}sidebar";
   width: 256px;
   height: 100vh;
   flex-direction: column;
-  border-right: 1px solid #e7e8eb;
-  background-color: #f3f4f5;
+  border-right: 1px solid var(--st-color-border-primary);
+  background-color: var(--st-color-base-generic);
 
   &_collapsed {
     --list-padding: 0 8px;

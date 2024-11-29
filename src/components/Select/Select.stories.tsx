@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Select } from "./Select";
 
@@ -30,6 +31,6 @@ export const Default: Story = {
     ],
   },
   render: (args) => {
-    return <Select {...args} className="test" />;
+    return <Select {...args} />;
   },
 };

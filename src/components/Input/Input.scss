@@ -46,9 +46,11 @@ $block: ".#{variables.$ns}input";
     position: relative;
     width: 100%;
     padding: var(--input-padding);
-
-    // background-color: var(--st-color-base-background);
     color: inherit;
+
+    &::-ms-clear {
+      display: none;
+    }
   }
 
   &__btn-clear {
@@ -67,9 +69,5 @@ $block: ".#{variables.$ns}input";
         color: var(--st-color-text-primary);
       }
     }
-  }
-
-  &::-ms-clear {
-    display: none;
   }
 }

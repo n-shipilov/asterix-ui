@@ -44,6 +44,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
 
     const handleOpenChange = () => {
       setOpen((prev) => !prev);
+      inputRef.current?.focus();
     };
 
     const handleOptionSelect = (
@@ -54,7 +55,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
       setSelectValue(selectOption);
       setSearchValue("");
       setOpen(false);
-      onChange && onChange(event, selectOption);
+      return onChange && onChange(event, selectOption);
     };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

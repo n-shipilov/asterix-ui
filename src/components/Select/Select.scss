@@ -2,6 +2,13 @@ $block: ".#{variables.$ns}select";
 
 #{$block} {
   position: relative;
+  display: flex;
+  overflow: hidden;
+  height: 36px;
+  border: 1px solid var(--st-color-border-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.16s linear;
 
   &:hover:not(#{$block}_disabled) {
     & #{$block}__control {
@@ -20,26 +27,15 @@ $block: ".#{variables.$ns}select";
   }
 
   &_searchable {
-    & #{$block}__control {
-      cursor: text;
-    }
+    cursor: text;
   }
 
   &__control {
     position: relative;
     width: 100%;
-    height: 36px;
-    border: 1px solid var(--st-color-border-primary);
-    border-radius: 8px;
-    background-color: var(--st-color-base-background);
-    cursor: pointer;
-    transition: border-color 0.16s linear;
-    user-select: none;
+    padding: 8px 12px;
 
-    & > * {
-      width: 100%;
-      padding: 8px 36px 8px 12px;
-    }
+    // user-select: none;
   }
 
   &__placeholder {
@@ -54,13 +50,18 @@ $block: ".#{variables.$ns}select";
 
   &__input {
     position: relative;
+    width: 100%;
+
+    &::-ms-clear {
+      display: none;
+    }
   }
 
   &__toggle {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    display: inline-flex;
+    display: flex;
+    width: 36px;
+    align-items: center;
+    justify-content: center;
 
     & svg {
       transition: transform 0.16s linear;
