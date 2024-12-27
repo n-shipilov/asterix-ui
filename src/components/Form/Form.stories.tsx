@@ -35,6 +35,10 @@ export const Default: Story = {
         name="password"
         rules={{
           required: "Field is required",
+          minLength: {
+            value: 6,
+            message: "The minimum password length should be 6",
+          },
         }}
       >
         <Input type="password" placeholder="Enter your password" />

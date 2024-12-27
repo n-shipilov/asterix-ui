@@ -26,3 +26,5 @@ export * from "./Tabs";
 export * from "./Textarea";
 export * from "./Toaster";
 export * from "./Tooltip";
+
+export * from "./SvgIcon";

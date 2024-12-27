@@ -2,11 +2,11 @@ $block: ".#{variables.$ns}popup";
 $transition-distance: 10px;
 
 #{$block} {
-  visibility: hidden;
+  // visibility: hidden;
 
   &_open,
   &-exit-active {
-    visibility: visible;
+    // visibility: visible;
   }
 
   &-enter-active {

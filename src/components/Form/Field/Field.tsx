@@ -6,6 +6,8 @@ import "./Field.scss";
 export type FieldRule = {
   required?: Message | ValidationRule<boolean>;
   pattern?: ValidationRule<RegExp>;
+  minLength?: ValidationRule<number>;
+  maxLength?: ValidationRule<number>;
 };
 
 type FieldProps = {

@@ -53,6 +53,8 @@ export const Popup: React.FC<PopupProps> = (props) => {
 
   useOutsideClick([containerRef, anchorRef], onClose);
 
+  console.log(containerRef);
+
   return (
     <Portal>
       <CSSTransition

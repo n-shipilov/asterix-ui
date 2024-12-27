@@ -26,8 +26,8 @@ UIKit comes with base styling and theme. In order to everything look nice includ
 ```css
 // App.css
 
-@import "asterix-ui/styles/styles";
-@import "asterix-ui/styles/fonts";
+@use "asterix-ui/styles/styles";
+@use "asterix-ui/styles/fonts";
 
 // ...
 ```
