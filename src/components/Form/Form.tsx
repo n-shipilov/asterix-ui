@@ -38,6 +38,8 @@ export const Form = <FieldValues extends Record<string, unknown>>(
   );
 };
 
+export const useCustomWatch = (control: any) => useWatch({ control });
+
 Form.Field = Field;
 Form.useForm = useForm;
 Form.useWatch = useWatch;
