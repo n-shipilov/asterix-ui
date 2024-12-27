@@ -1,4 +1,4 @@
-import { useForm, FormProvider, DefaultValues, ValidationMode } from "react-hook-form";
+import { useForm, FormProvider, DefaultValues, ValidationMode, useWatch } from "react-hook-form";
 import { cn } from "../utils/cn";
 import { Field } from "./Field";
 import "./Form.scss";
@@ -39,5 +39,5 @@ export const Form = <FieldValues extends Record<string, unknown>>(
 };
 
 Form.Field = Field;
-// Form.useForm = useForm;
-// Form.useWatch = useWatch;
+Form.useForm = useForm;
+Form.useWatch = useWatch;
