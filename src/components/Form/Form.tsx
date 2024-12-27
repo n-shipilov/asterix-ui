@@ -1,6 +1,7 @@
-import { useForm, FormProvider, DefaultValues, ValidationMode, useWatch } from "react-hook-form";
+import { useForm, FormProvider, DefaultValues, ValidationMode } from "react-hook-form";
 import { cn } from "../utils/cn";
 import { Field } from "./Field";
+import { useFormWatch } from "./useWatch";
 import "./Form.scss";
 
 type BaseFormProps = Omit<React.FormHTMLAttributes<HTMLFormElement>, "onSubmit">;
@@ -25,6 +26,8 @@ export const Form = <FieldValues extends Record<string, unknown>>(
     values,
   });
 
+  useFormWatch(methods.control);
+
   return (
     <FormProvider {...methods}>
       <form
@@ -40,4 +43,4 @@ export const Form = <FieldValues extends Record<string, unknown>>(
 
 Form.Field = Field;
 Form.useForm = useForm;
-Form.useWatch = useWatch;
+Form.useWatch = useFormWatch;
