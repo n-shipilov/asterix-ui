@@ -78,15 +78,17 @@ export const Select: React.FC<SelectProps> = forwardRef(
     return (
       <>
         <div
-          className={select({ disabled, searchable, size }, className)}
+          className={select({ disabled, searchable, size, open }, className)}
           ref={controlRef}
-          onClick={handleOpenChange}
+          onClick={!disabled ? handleOpenChange : undefined}
           {...attrs}
         >
           <div className={select("control")} role="group" ref={ref}>
             {!searchValue &&
               (selectValue ? (
-                <span className={select("value", { unactive: open })}>{selectValue.label}</span>
+                <span className={select("value", { unactive: open, disabled })}>
+                  {selectValue.label}
+                </span>
               ) : (
                 <span className={select("placeholder")}>{placeholder}</span>
               ))}
@@ -99,10 +101,9 @@ export const Select: React.FC<SelectProps> = forwardRef(
               ></input>
             )}
           </div>
-          <div className={select("toggle")}>
+          <div className={select("toggle", { disabled })}>
             <Icon
               data={ChevronBottom}
-              fill="var(--st-color-text-primary)"
               size={16}
               style={{ transform: open ? "rotate(180deg)" : "" }}
             />

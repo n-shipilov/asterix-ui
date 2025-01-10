@@ -24,7 +24,6 @@ export const Field: React.FC<FieldProps> = (props) => {
 
   const {
     formState: { errors },
-    control,
   } = useFormContext();
 
   return (
@@ -38,7 +37,6 @@ export const Field: React.FC<FieldProps> = (props) => {
       {children && (
         <Control
           child={children}
-          control={control}
           name={name}
           rules={rules}
           error={name ? (errors[name] as FieldError) : undefined}

@@ -12,10 +12,10 @@ type InputSize = "s" | "m";
 
 export type InputProps<T> = BaseInputProps & {
   controlRef?: React.Ref<T>;
-  // TODO: возможно стоит использовать тип, не зависящий от библиотеки react-hook-form
-  // Может и весь объект ошибки здесь не нужен
   size?: InputSize;
   hasClear?: boolean;
+  // TODO: возможно стоит использовать тип, не зависящий от библиотеки react-hook-form
+  // Может и весь объект ошибки здесь не нужен
   error?: FieldError;
 };
 

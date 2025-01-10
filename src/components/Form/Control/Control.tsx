@@ -1,24 +1,25 @@
 import { cloneElement } from "react";
 import {
-  Control as ControlType,
   Controller,
   ControllerRenderProps,
   FieldError,
   FieldValues,
+  useFormContext,
 } from "react-hook-form";
 import { Checkbox, Input, RadioGroup, Segmented, Select, Switch, Textarea } from "components";
 import { FieldRule } from "../Field";
 
 type ControlProps = {
   child: React.ReactElement;
-  control: ControlType<FieldValues, any>;
   name?: string;
   rules?: FieldRule;
   error?: FieldError;
 };
 
 export const Control: React.FC<ControlProps> = (props) => {
-  const { child, control, name, rules, error } = props;
+  const { child, name, rules, error } = props;
+
+  const { control } = useFormContext();
 
   const getDefaultValue = (child: React.ReactElement) => {
     const { props, type } = child;

@@ -8,18 +8,22 @@ $block: ".#{variables.$ns}select";
   border: 1px solid var(--st-color-border-primary);
   border-radius: var(--select-border-radius);
   cursor: pointer;
-  transition: border-color 0.16s linear;
+  transition:
+    border-color 0.15s linear,
+    background-color 0.15s linear;
+
+  &_disabled {
+    border-color: transparent;
+    background-color: var(--st-color-base-generic);
+    cursor: default;
+  }
 
   &:hover:not(#{$block}_disabled) {
-    & #{$block}__control {
-      border-color: var(--st-color-border-primary-hover);
-    }
+    border-color: var(--st-color-border-primary-hover);
   }
 
   &_open:not(#{$block}_disabled) {
-    & #{$block}__control {
-      border-color: var(--st-color-border-primary-active) !important;
-    }
+    border-color: var(--st-color-border-primary-active) !important;
 
     & #{$block}__value {
       color: var(--st-color-text-secondary);
@@ -58,9 +62,10 @@ $block: ".#{variables.$ns}select";
 
   &__value {
     position: absolute;
-    transition: color 0.1s linear;
+    transition: color 0.15s linear;
 
-    &_unactive {
+    &_unactive,
+    &_disabled {
       color: var(--st-color-text-hint);
     }
   }
@@ -81,7 +86,14 @@ $block: ".#{variables.$ns}select";
     justify-content: center;
 
     & svg {
+      fill: var(--st-color-text-secondary);
       transition: transform 0.16s linear;
+    }
+
+    &_disabled {
+      & svg {
+        fill: var(--st-color-text-hint);
+      }
     }
   }
 

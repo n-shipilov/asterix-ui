@@ -6,18 +6,30 @@ import "./Form.scss";
 type BaseFormProps = Omit<React.FormHTMLAttributes<HTMLFormElement>, "onSubmit">;
 
 export type FormProps<FieldValues> = BaseFormProps & {
+  // TODO: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  form?: any;
   defaultValues?: DefaultValues<FieldValues>;
   mode?: keyof ValidationMode;
   values?: FieldValues;
   onSubmit?: (data: FieldValues, event?: React.BaseSyntheticEvent) => void;
 };
 
-const form = cn("form");
+const block = cn("form");
 
 export const Form = <FieldValues extends Record<string, unknown>>(
   props: FormProps<FieldValues>,
 ) => {
-  const { children, className, defaultValues, mode = "all", values, onSubmit, ...attrs } = props;
+  const {
+    children,
+    className,
+    form,
+    defaultValues,
+    mode = "all",
+    values,
+    onSubmit,
+    ...attrs
+  } = props;
 
   const methods = useForm<FieldValues>({
     defaultValues,
@@ -25,10 +37,12 @@ export const Form = <FieldValues extends Record<string, unknown>>(
     values,
   });
 
+  const providerProps = form ?? methods;
+
   return (
-    <FormProvider {...methods}>
+    <FormProvider {...providerProps}>
       <form
-        className={form({}, className)}
+        className={block({}, className)}
         onSubmit={onSubmit && methods.handleSubmit(onSubmit)}
         {...attrs}
       >
@@ -37,8 +51,6 @@ export const Form = <FieldValues extends Record<string, unknown>>(
     </FormProvider>
   );
 };
-
-export const useCustomWatch = (control: any) => useWatch({ control });
 
 Form.Field = Field;
 Form.useForm = useForm;

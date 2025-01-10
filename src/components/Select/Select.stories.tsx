@@ -11,6 +11,7 @@ type Story = StoryObj<typeof Select>;
 export const Default: Story = {
   args: {
     placeholder: "Select option",
+    disabled: false,
     size: "m",
     options: [
       {
