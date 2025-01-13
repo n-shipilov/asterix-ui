@@ -1,4 +1,4 @@
-import { Children, cloneElement, forwardRef, useState } from "react";
+import { Children, cloneElement, forwardRef, useEffect, useState } from "react";
 import { cn } from "../utils/cn";
 import "./RadioGroup.scss";
 
@@ -17,10 +17,14 @@ export const RadioGroup: React.FC<RadioGroupProps> = forwardRef(
 
     const [groupValue, setGroupValue] = useState(value);
 
+    useEffect(() => {
+      setGroupValue(value);
+    }, [value]);
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = event.target;
       setGroupValue(value);
-      onChange && onChange(event);
+      onChange?.(event);
     };
 
     return (

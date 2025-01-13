@@ -25,9 +25,7 @@ export const useCheckbox = (props: UseCheckboxProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
 
-    if (onChange) {
-      onChange(event);
-    }
+    onChange?.(event);
   };
 
   const inputProps: React.InputHTMLAttributes<HTMLInputElement> &

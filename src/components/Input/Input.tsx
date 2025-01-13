@@ -44,7 +44,7 @@ export const Input: React.FC<InputProps<HTMLInputElement>> = forwardRef(
     const [inputValue, setInputValue] = useState(value ?? "");
 
     useEffect(() => {
-      if (value) setInputValue(value);
+      setInputValue(value ?? "");
     }, [value]);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

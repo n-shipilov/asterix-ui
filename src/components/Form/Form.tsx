@@ -1,41 +1,21 @@
-import { useForm, FormProvider, DefaultValues, ValidationMode, useWatch } from "react-hook-form";
+import { useForm, FormProvider, useWatch, UseFormReturn, FieldValues } from "react-hook-form";
 import { cn } from "../utils/cn";
 import { Field } from "./Field";
 import "./Form.scss";
 
 type BaseFormProps = Omit<React.FormHTMLAttributes<HTMLFormElement>, "onSubmit">;
 
-export type FormProps<FieldValues> = BaseFormProps & {
-  // TODO: any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  form?: any;
-  defaultValues?: DefaultValues<FieldValues>;
-  mode?: keyof ValidationMode;
-  values?: FieldValues;
-  onSubmit?: (data: FieldValues, event?: React.BaseSyntheticEvent) => void;
+export type FormProps<T extends FieldValues> = BaseFormProps & {
+  form?: UseFormReturn<T, unknown, undefined>;
+  onSubmit?: (data: T, event?: React.BaseSyntheticEvent) => void;
 };
 
 const block = cn("form");
 
-export const Form = <FieldValues extends Record<string, unknown>>(
-  props: FormProps<FieldValues>,
-) => {
-  const {
-    children,
-    className,
-    form,
-    defaultValues,
-    mode = "all",
-    values,
-    onSubmit,
-    ...attrs
-  } = props;
+export const Form = <T extends Record<string, unknown>>(props: FormProps<T>) => {
+  const { children, className, form, onSubmit, ...attrs } = props;
 
-  const methods = useForm<FieldValues>({
-    defaultValues,
-    mode,
-    values,
-  });
+  const methods = useForm<T>();
 
   const providerProps = form ?? methods;
 
@@ -43,7 +23,7 @@ export const Form = <FieldValues extends Record<string, unknown>>(
     <FormProvider {...providerProps}>
       <form
         className={block({}, className)}
-        onSubmit={onSubmit && methods.handleSubmit(onSubmit)}
+        onSubmit={onSubmit && providerProps.handleSubmit(onSubmit)}
         {...attrs}
       >
         {children}

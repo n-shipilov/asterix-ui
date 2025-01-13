@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { ChevronBottom } from "../ChevronBottom";
 import { DropdownOption } from "../Dropdown/Option";
 import { Icon } from "../Icon";
@@ -48,6 +48,10 @@ export const Select: React.FC<SelectProps> = forwardRef(
     const [open, setOpen] = useState(false);
     const [selectValue, setSelectValue] = useState(value);
     const [searchValue, setSearchValue] = useState("");
+
+    useEffect(() => {
+      setSelectValue(value);
+    }, [value]);
 
     const handleOpenChange = () => {
       setOpen((prev) => !prev);

@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { cn } from "../utils/cn";
 import { Item, SegmentedOption } from "./Item";
 import "./Segmented.scss";
@@ -28,6 +28,10 @@ export const Segmented: React.FC<SegmentedProps> = forwardRef(
 
     const [currentValue, setCurrentValue] = useState(value ? value : options[0].value);
 
+    useEffect(() => {
+      setCurrentValue(value ? value : options[0].value);
+    }, [options, value]);
+
     const optionItems = options.map((option) => ({
       ...option,
       disabled: disabled,
@@ -35,7 +39,7 @@ export const Segmented: React.FC<SegmentedProps> = forwardRef(
 
     const handleChange = (value: string) => {
       setCurrentValue(value);
-      onChange && onChange(value);
+      onChange?.(value);
     };
 
     const handlePlateTransitionEnd: React.TransitionEventHandler<HTMLDivElement> = (event) => {

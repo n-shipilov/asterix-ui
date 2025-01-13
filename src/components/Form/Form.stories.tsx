@@ -1,8 +1,17 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button, Checkbox, Input, Radio, RadioGroup, Select, Switch, Textarea } from "components";
+import {
+  Button,
+  Checkbox,
+  Input,
+  Radio,
+  RadioGroup,
+  Select,
+  Switch,
+  Textarea,
+  Segmented,
+} from "../../components";
 import { Form } from "./Form";
-import { Segmented } from "../Segmented/Segmented";
 
 export default {
   component: Form,
@@ -10,57 +19,28 @@ export default {
 
 type Story = StoryObj<typeof Form>;
 
-export const Default: Story = {
-  args: {},
-  render: () => (
-    <Form onSubmit={(data) => console.log("data", data)}>
-      <Form.Field
-        label="Email"
-        name="email"
-        rules={{
-          required: {
-            value: true,
-            message: "Field is required",
-          },
-          pattern: {
-            value: /^\S+@\S+\.\S+$/,
-            message: "Enter a valid email address",
-          },
-        }}
-      >
-        <Input placeholder="Enter your email" />
-      </Form.Field>
-      <Form.Field
-        label="Password"
-        name="password"
-        rules={{
-          required: "Field is required",
-          minLength: {
-            value: 6,
-            message: "The minimum password length should be 6",
-          },
-        }}
-      >
-        <Input type="password" placeholder="Enter your password" />
-      </Form.Field>
-      <Form.Field name="remember">
-        <Checkbox>Remember me</Checkbox>
-      </Form.Field>
-      <Button>Sign in</Button>
-    </Form>
-  ),
+type FormValues = {
+  input: string;
+  number: string;
+  textarea: string;
+  select: any;
+  segmented: string;
+  checkbox: boolean;
+  radio: string;
+  switch: boolean;
 };
 
-export const FormControls: Story = {
-  args: {},
-  render: () => (
-    <Form
-      onSubmit={(data) => console.log("data", data)}
-      defaultValues={{
-        radio: "apple",
-        switch: false,
-      }}
-    >
+const ControlledForm = () => {
+  const form = Form.useForm<FormValues>({
+    defaultValues: {
+      radio: "apple",
+    },
+    mode: "all",
+  });
+  const watch = Form.useWatch({ control: form.control });
+
+  return (
+    <Form form={form} onSubmit={(data) => console.log("data", data)}>
       <Form.Field label="Plain Text">
         <span>Text</span>
       </Form.Field>
@@ -131,7 +111,61 @@ export const FormControls: Story = {
       <Form.Field name="switch">
         <Switch>Switch</Switch>
       </Form.Field>
-      <Button>Submit</Button>
+      {watch?.switch && (
+        <Form.Field name="hidden" label="Hidden Input">
+          <Input hasClear />
+        </Form.Field>
+      )}
+      <Button view="secondary" onClick={() => form.reset()}>
+        Reset Values
+      </Button>
+      <Button type="submit">Submit</Button>
+    </Form>
+  );
+};
+
+export const Default: Story = {
+  args: {},
+  render: () => (
+    <Form onSubmit={(data) => console.log("data", data)}>
+      <Form.Field
+        label="Email"
+        name="email"
+        rules={{
+          required: {
+            value: true,
+            message: "Field is required",
+          },
+          pattern: {
+            value: /^\S+@\S+\.\S+$/,
+            message: "Enter a valid email address",
+          },
+        }}
+      >
+        <Input placeholder="Enter your email" />
+      </Form.Field>
+      <Form.Field
+        label="Password"
+        name="password"
+        rules={{
+          required: "Field is required",
+          minLength: {
+            value: 6,
+            message: "The minimum password length should be 6",
+          },
+        }}
+      >
+        <Input type="password" placeholder="Enter your password" />
+      </Form.Field>
+      <Form.Field name="remember">
+        <Checkbox>Remember me</Checkbox>
+      </Form.Field>
+      <Button>Sign in</Button>
     </Form>
   ),
+};
+
+export const FormControls: Story = {
+  args: {},
+  render: ControlledForm,
 };

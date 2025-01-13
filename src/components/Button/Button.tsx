@@ -28,6 +28,7 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
       disabled,
       loading,
       selected,
+      type = "button",
       ...attrs
     } = props;
 
@@ -78,6 +79,7 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
         ref={ref || buttonRef}
         className={additionalClasses}
         disabled={disabled || loading}
+        type={type}
         {...attrs}
       >
         {preparedChildren(children)}
