@@ -1,6 +1,10 @@
 $block: ".#{variables.$ns}date-picker";
 
 #{$block} {
+  &__control input {
+    cursor: pointer;
+  }
+
   &__popup {
     border-radius: 8px;
     background-color: var(--st-color-base-background);

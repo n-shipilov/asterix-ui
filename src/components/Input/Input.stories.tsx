@@ -19,5 +19,6 @@ export const Default: Story = {
     size: "m",
     disabled: false,
     hasClear: false,
+    value: "",
   },
 };

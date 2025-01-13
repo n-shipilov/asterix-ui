@@ -10,14 +10,25 @@ const block = cn("date-picker");
 type DatePickerProps = {
   locale?: string;
   format: string;
+  placeholder?: string;
+  minDate?: Date;
+  maxDate?: Date;
+  value: Date;
 };
 
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
-  const { locale = "default", format = "DD.MM.YYYY" } = props;
+  const {
+    locale = "default",
+    format = "DD.MM.YYYY",
+    placeholder = "Select date",
+    minDate,
+    maxDate,
+    value,
+  } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [selectedDate, setSelectedDate] = useState<Date>();
+  const [selectedDate, setSelectedDate] = useState<Date>(value);
   const [open, setOpen] = useState(false);
 
   const handleFocus = () => {
@@ -29,16 +40,16 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     setOpen(false);
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {};
-
   return (
     <>
       <div className={block()}>
         <Input
+          className={block("control")}
           controlRef={inputRef}
-          placeholder="Select date"
+          placeholder={placeholder}
           onFocus={handleFocus}
-          onChange={handleChange}
+          value={selectedDate?.toLocaleDateString()}
+          readOnly
         />
       </div>
       <Popup
@@ -48,11 +59,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
         onClose={() => setOpen(false)}
       >
         <div className={block("popup")}>
-          <Calendar
-            locale={locale}
-            selectedDate={selectedDate}
-            onSelectDate={handleSelectDate}
-          />
+          <Calendar locale={locale} selectedDate={selectedDate} onSelectDate={handleSelectDate} />
         </div>
       </Popup>
     </>

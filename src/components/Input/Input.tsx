@@ -1,4 +1,4 @@
-import { forwardRef, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { FieldError } from "react-hook-form";
 import { Icon } from "components";
 import { CloseIcon } from "components/CloseIcon";
@@ -42,6 +42,10 @@ export const Input: React.FC<InputProps<HTMLInputElement>> = forwardRef(
     const handleRef = useForkRef(controlRef, innerControlRef);
 
     const [inputValue, setInputValue] = useState(value ?? "");
+
+    useEffect(() => {
+      if (value) setInputValue(value);
+    }, [value]);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(event.target.value);

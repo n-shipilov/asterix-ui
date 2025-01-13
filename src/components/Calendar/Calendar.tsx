@@ -40,27 +40,19 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
     <div className={block()}>
       <div className={block("header")}>
         {state.calendarMode === "days" && (
-          <Button
-            view="ghost"
-            onClick={() => functions.setCalendarMode("months")}
-          >
+          <Button view="ghost" onClick={() => functions.setCalendarMode("months")}>
             {`${state.monthesNames[state.selectedMonth.monthIndex].month} ${state.selectedYear}`}
           </Button>
         )}
         {state.calendarMode === "months" && (
-          <Button
-            view="ghost"
-            onClick={() => functions.setCalendarMode("years")}
-          >
+          <Button view="ghost" onClick={() => functions.setCalendarMode("years")}>
             {state.selectedYear}
           </Button>
         )}
         {state.calendarMode === "years" && (
           <Button view="ghost" disabled>
             {`${state.selectedYearsInterval[0]} - ${
-              state.selectedYearsInterval[
-                state.selectedYearsInterval.length - 1
-              ]
+              state.selectedYearsInterval[state.selectedYearsInterval.length - 1]
             }`}
           </Button>
         )}
@@ -90,14 +82,9 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
             <div className={block("grid-rowgroup")}>
               {state.calendarDays.map((day) => {
                 const isToday = checkIsToday(day.date);
-                const isSelectedDay = checkDateIsEqual(
-                  day.date,
-                  state.selectedDay.date
-                );
-                const isOutOfBoundary =
-                  day.monthIndex !== state.selectedMonth.monthIndex;
-                const isWeekendDay =
-                  day.dayNumberInWeek === 6 || day.dayNumberInWeek === 0;
+                const isSelectedDay = checkDateIsEqual(day.date, state.selectedDay.date);
+                const isOutOfBoundary = day.monthIndex !== state.selectedMonth.monthIndex;
+                const isWeekendDay = day.dayNumberInWeek === 6 || day.dayNumberInWeek === 0;
 
                 return (
                   <div
@@ -133,8 +120,7 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
                 const isCurrentMonth =
                   new Date().getMonth() === monthesName.monthIndex &&
                   state.selectedYear === new Date().getFullYear();
-                const isSelectedMonth =
-                  monthesName.monthIndex === state.selectedMonth.monthIndex;
+                const isSelectedMonth = monthesName.monthIndex === state.selectedMonth.monthIndex;
 
                 return (
                   <div
@@ -197,9 +183,7 @@ export const Calendar: React.FC<CalendarProps> = (props) => {
                   "out-of-boundary": true,
                 })}
               >
-                {state.selectedYearsInterval[
-                  state.selectedYearsInterval.length - 1
-                ] + 1}
+                {state.selectedYearsInterval[state.selectedYearsInterval.length - 1] + 1}
               </div>
             </div>
           </div>
