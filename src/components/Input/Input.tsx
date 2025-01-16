@@ -19,7 +19,7 @@ export type InputProps<T> = BaseInputProps & {
   error?: FieldError;
 };
 
-const input = cn("input");
+const block = cn("input");
 
 export const Input: React.FC<InputProps<HTMLInputElement>> = forwardRef(
   (props, ref: React.Ref<HTMLInputElement>) => {
@@ -77,9 +77,9 @@ export const Input: React.FC<InputProps<HTMLInputElement>> = forwardRef(
     const isClearControlVisible = hasClear && !disabled && inputValue;
 
     return (
-      <div className={input({ size, disabled, state_error: !!error }, className)} ref={ref}>
+      <div className={block({ size, disabled, state_error: !!error }, className)} ref={ref}>
         <input
-          className={input("control")}
+          className={block("control")}
           ref={handleRef}
           value={inputValue}
           onChange={handleChange}
@@ -87,7 +87,7 @@ export const Input: React.FC<InputProps<HTMLInputElement>> = forwardRef(
           {...attrs}
         ></input>
         {isClearControlVisible && (
-          <button className={input("btn-clear")} onClick={handleClear}>
+          <button className={block("btn-clear")} onClick={handleClear}>
             <Icon data={CloseIcon} size={16} />
           </button>
         )}

@@ -12,6 +12,24 @@ $block: ".#{variables.$ns}select";
     border-color 0.15s linear,
     background-color 0.15s linear;
 
+  &_size {
+    &_s {
+      --select-border-radius: 6px;
+      --select-height: 28px;
+      --select-padding: 4px 8px;
+    }
+
+    &_m {
+      --select-border-radius: 8px;
+      --select-height: 36px;
+      --select-padding: 8px 12px;
+    }
+  }
+
+  &_searchable {
+    cursor: text;
+  }
+
   &_disabled {
     border-color: transparent;
     background-color: var(--st-color-base-generic);
@@ -30,27 +48,9 @@ $block: ".#{variables.$ns}select";
     }
   }
 
-  &_searchable {
-    cursor: text;
-  }
-
-  &_size {
-    &_s {
-      --select-border-radius: 6px;
-      --select-height: 28px;
-      --select-padding: 4px 8px;
-    }
-
-    &_m {
-      --select-border-radius: 8px;
-      --select-height: 36px;
-      --select-padding: 8px 12px;
-    }
-  }
-
   &__control {
     position: relative;
-    width: 100%;
+    flex-grow: 1;
     padding: var(--select-padding);
     user-select: none;
   }
