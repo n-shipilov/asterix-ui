@@ -32,7 +32,7 @@ export const Control: React.FC<ControlProps> = (props) => {
   };
 
   const renderedControl = ({ field }: { field: ControllerRenderProps<FieldValues, string> }) => {
-    const { props } = child;
+    const { props }: { props: any } = child;
     switch (child.type) {
       case Input:
       case Textarea:

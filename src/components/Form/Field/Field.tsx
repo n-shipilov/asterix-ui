@@ -8,6 +8,8 @@ export type FieldRule = {
   pattern?: ValidationRule<RegExp>;
   minLength?: ValidationRule<number>;
   maxLength?: ValidationRule<number>;
+  min?: ValidationRule<number>;
+  max?: ValidationRule<number>;
 };
 
 type FieldProps = {

@@ -16,6 +16,7 @@ type UseCheckboxProps = Pick<
 export const useCheckbox = (props: UseCheckboxProps) => {
   const { name, value, id, defaultChecked, disabled, checked, onChange, onFocus, onBlur } = props;
 
+  // Controlled state
   const [isChecked, setChecked] = useState(checked ?? defaultChecked);
 
   useEffect(() => {
@@ -25,7 +26,9 @@ export const useCheckbox = (props: UseCheckboxProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
 
-    onChange?.(event);
+    if (onChange) {
+      onChange(event);
+    }
   };
 
   const inputProps: React.InputHTMLAttributes<HTMLInputElement> &
@@ -38,6 +41,7 @@ export const useCheckbox = (props: UseCheckboxProps) => {
     disabled,
     onFocus,
     onBlur,
+    checked: isChecked,
     onChange: handleChange,
   };
 
