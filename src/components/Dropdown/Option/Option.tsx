@@ -3,7 +3,7 @@ import { cn } from "../../utils/cn";
 import "./Option.scss";
 
 export type DropdownOption = {
-  key: React.Key;
+  value: React.Key;
   label?: string;
   icon?: React.ReactElement;
   disabled?: boolean;

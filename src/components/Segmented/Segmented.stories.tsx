@@ -1,6 +1,8 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Segmented } from "./Segmented";
+import { Icon as IconComponent } from "../Icon";
+import { SvgIcon } from "../SvgIcon";
 
 export default {
   component: Segmented,
@@ -21,6 +23,21 @@ const options = [
   },
 ];
 
+const optionsWithIcons = [
+  {
+    label: <IconComponent data={SvgIcon} size={16}></IconComponent>,
+    value: "Value 1",
+  },
+  {
+    label: <IconComponent data={SvgIcon} size={16}></IconComponent>,
+    value: "Value 2",
+  },
+  {
+    label: <IconComponent data={SvgIcon} size={16}></IconComponent>,
+    value: "Value 3",
+  },
+];
+
 type Story = StoryObj<typeof Segmented>;
 
 export const Default: Story = {
@@ -28,7 +45,7 @@ export const Default: Story = {
     size: "m",
     options,
     onChange: console.log,
-    width: "max",
+    width: "auto",
   },
   render: (args) => (
     <div style={{ display: "flex", gap: "20px" }}>
@@ -45,6 +62,17 @@ export const Size: Story = {
     <div style={{ display: "flex", gap: "20px" }}>
       <Segmented size="s" {...args} />
       <Segmented size="m" {...args} />
+    </div>
+  ),
+};
+
+export const Icon: Story = {
+  args: {
+    options: optionsWithIcons,
+  },
+  render: (args) => (
+    <div style={{ display: "flex", gap: "20px" }}>
+      <Segmented {...args} />
     </div>
   ),
 };

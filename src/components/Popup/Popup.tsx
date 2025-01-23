@@ -22,7 +22,7 @@ export type PlacementType =
 
 export type PopupProps = {
   /** Элемент, относительно которого позиционируется всплывающее окно */
-  anchorRef: React.RefObject<HTMLElement>;
+  anchorRef: React.RefObject<HTMLElement | null>;
   /** Содержимое всплывающего окна */
   children?: React.ReactNode;
   /** Расстояние от якоря до всплывающего окна */

@@ -24,7 +24,7 @@ export const Segmented: React.FC<SegmentedProps> = forwardRef(
     const { className, value, size = "m", width = "auto", options, disabled, onChange } = props;
 
     const plateRef = React.useRef<HTMLDivElement>(null);
-    const optionRef = React.useRef<HTMLLabelElement>();
+    const optionRef = React.useRef<HTMLLabelElement>(null);
 
     const [currentValue, setCurrentValue] = useState(value ? value : options[0].value);
 

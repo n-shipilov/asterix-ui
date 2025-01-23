@@ -82,6 +82,12 @@ $block: ".#{variables.$ns}segmented";
     &-label {
       display: inline-block;
       padding: var(--segmented-item-padding);
+
+      &_icon {
+        display: flex;
+        height: 100%;
+        align-items: center;
+      }
     }
   }
 

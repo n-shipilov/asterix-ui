@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../Button";
 import { Dropdown } from "./Dropdown";
@@ -14,19 +15,19 @@ export const Default: Story = {
   args: {
     options: [
       {
-        key: 1,
+        value: 1,
         label: "React",
       },
       {
-        key: 2,
+        value: 2,
         label: "Vue",
       },
       {
-        key: 3,
+        value: 3,
         label: "Angular",
       },
       {
-        key: 4,
+        value: 4,
         label: "Ember",
       },
     ],

@@ -15,19 +15,19 @@ export const Default: Story = {
     size: "m",
     options: [
       {
-        key: 1,
+        value: 1,
         label: "React",
       },
       {
-        key: 2,
+        value: 2,
         label: "Vue",
       },
       {
-        key: 3,
+        value: 3,
         label: "Angular",
       },
       {
-        key: 4,
+        value: 4,
         label: "Ember",
       },
     ],

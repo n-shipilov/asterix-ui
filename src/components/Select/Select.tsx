@@ -14,7 +14,7 @@ type BaseSelectProps = Omit<
 type SelectSize = "s" | "m";
 
 type SelectOption = {
-  key: React.Key;
+  value: React.Key;
   label?: string;
 };
 
@@ -128,9 +128,9 @@ export const Select: React.FC<SelectProps> = forwardRef(
                 {filteredOptions?.map((option) => (
                   <li
                     className={select("item", {
-                      selected: option?.key === selectValue?.key,
+                      selected: option?.value === selectValue?.value,
                     })}
-                    key={option.key}
+                    key={option.value}
                     onClick={(event) => handleOptionSelect(event, option)}
                   >
                     <span className={select("item-title")}>{option.label}</span>

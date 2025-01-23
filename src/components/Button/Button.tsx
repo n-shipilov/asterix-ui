@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { isValidElement, useRef } from "react";
 import { cn } from "../utils/cn";
 import { Icon } from "../Icon";
 import "./Button.scss";
@@ -51,13 +51,13 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
       if (items.length === 1) {
         const сhildElement = items[0];
 
-        if (сhildElement.type === Icon) {
+        if (isValidElement(сhildElement) && сhildElement.type === Icon) {
           return <span className={block("icon")}>{сhildElement}</span>;
         } else {
           return <span className={block("text")}>{сhildElement}</span>;
         }
       } else {
-        if (items[1].type === Icon) {
+        if (isValidElement(items[1]) && items[1].type === Icon) {
           return (
             <>
               <span className={block("text")}>{items[0]}</span>

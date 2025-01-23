@@ -37,11 +37,11 @@ export const useCheckbox = (props: UseCheckboxProps) => {
     value,
     id,
     type: "checkbox",
+    checked: isChecked,
     defaultChecked,
     disabled,
     onFocus,
     onBlur,
-    checked: isChecked,
     onChange: handleChange,
   };
 

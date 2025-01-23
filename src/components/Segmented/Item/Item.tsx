@@ -1,5 +1,6 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, isValidElement } from "react";
 import { cn } from "../../utils/cn";
+import { Icon } from "components/Icon";
 
 export type SegmentedOption = {
   label?: React.ReactNode;
@@ -20,19 +21,18 @@ export type ComponentProps = {
 const segmented = cn("segmented");
 
 export const Item = forwardRef(
-  (
-    props: ItemProps & ComponentProps,
-    ref: React.ForwardedRef<HTMLLabelElement>
-  ) => {
+  (props: ItemProps & ComponentProps, ref: React.ForwardedRef<HTMLLabelElement>) => {
     const { option, checked, onChange } = props;
 
     const { label, value, disabled } = option;
+
+    const icon = isValidElement(label) && label.type === Icon;
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { checked } = event.target;
 
       if (checked) {
-        onChange && onChange(value);
+        onChange?.(value);
       }
     };
 
@@ -51,8 +51,8 @@ export const Item = forwardRef(
           disabled={disabled}
           onChange={handleChange}
         />
-        <span className={segmented("item-label")}>{label}</span>
+        <span className={segmented("item-label", { icon })}>{label}</span>
       </label>
     );
-  }
+  },
 );
