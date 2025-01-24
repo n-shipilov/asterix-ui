@@ -1,4 +1,5 @@
 import { ReactNode, forwardRef } from "react";
+import { CloseCircleIcon } from "../../CloseCircleIcon";
 import { CloseIcon } from "../../CloseIcon";
 import { Icon } from "../../Icon";
 import { InfoIcon } from "../../InfoIcon";
@@ -6,13 +7,12 @@ import { cn } from "../../utils/cn";
 import { useToasterContext } from "../ToasterProvider/ToasterProvider";
 import { InternalToastProps, ToastType } from "../types";
 import "./Toast.scss";
-import { CloseCircleIcon } from "../../CloseCircleIcon";
 
 const block = cn("toast");
 
 const TITLE_ICONS: Record<ToastType, ReactNode> = {
   info: <Icon data={InfoIcon} size={20} color="var(--st-color-brand-primary)" />,
-  success: <Icon data={InfoIcon} size={20} color="var(--st-color-base-success)" />,
+  success: <Icon data={InfoIcon} size={20} color="var(--st-color-base-positive)" />,
   warning: <Icon data={InfoIcon} size={20} color="var(--st-color-base-warning)" />,
   error: <Icon data={CloseCircleIcon} size={20} color="var(--st-color-base-danger)" />,
 };

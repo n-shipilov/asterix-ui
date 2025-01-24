@@ -92,7 +92,7 @@ const data: DataItem[] = [
 ];
 
 // TODO: Если передать DataItem как generic, то это вызывет ошибку
-const columns: ColumnsType<DataItem> = [
+const columns: ColumnsType<any> = [
   {
     key: "name",
     title: "Name",
@@ -176,6 +176,7 @@ export const Scroll: Story = {
     columns: columns,
     rowKey: "id",
     scroll: {
+      x: true,
       y: 273,
     },
   },
