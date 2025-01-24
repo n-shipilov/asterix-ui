@@ -17,7 +17,7 @@ export type DropdownProps = {
   ) => void;
 };
 
-const dropdown = cn("dropdown");
+const block = cn("dropdown");
 
 export const Dropdown: React.FC<DropdownProps> = (props) => {
   const {
@@ -39,13 +39,13 @@ export const Dropdown: React.FC<DropdownProps> = (props) => {
     option: DropdownOption,
   ) => {
     setVisible(false);
-    onOptionSelect && onOptionSelect(event, option);
-    onOpenToggle && onOpenToggle(false);
+    onOpenToggle?.(false);
+    onOptionSelect?.(event, option);
   };
 
   const handleChangeVisible = (value: boolean) => {
     setVisible(value);
-    onOpenToggle && onOpenToggle(value);
+    onOpenToggle?.(value);
   };
 
   const handleKeyUp = (event: React.KeyboardEvent) => {
@@ -68,12 +68,12 @@ export const Dropdown: React.FC<DropdownProps> = (props) => {
         onClose={() => handleChangeVisible(false)}
       >
         <div
-          className={dropdown()}
+          className={block()}
           style={{
             width: aligned ? anchorRef.current?.getBoundingClientRect().width : "",
           }}
         >
-          <ul className={dropdown("list")} role="listbox">
+          <ul className={block("list")} role="listbox">
             {options?.map((option) => (
               <Option key={option.value} option={option} onClick={handleOptionClick} />
             ))}

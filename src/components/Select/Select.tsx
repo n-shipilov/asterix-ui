@@ -14,8 +14,8 @@ type BaseSelectProps = Omit<
 type SelectSize = "s" | "m";
 
 type SelectOption = {
-  value: React.Key;
   label?: string;
+  value: string | number;
 };
 
 export type SelectProps = BaseSelectProps & {

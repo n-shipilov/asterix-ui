@@ -3,9 +3,9 @@ import { cn } from "../../utils/cn";
 import { Icon } from "components/Icon";
 
 export type SegmentedOption = {
-  label?: React.ReactNode;
-  value: string;
   disabled?: boolean;
+  label?: React.ReactNode;
+  value: string | number;
 };
 
 export type ItemProps = {
@@ -15,7 +15,7 @@ export type ItemProps = {
 };
 
 export type ComponentProps = {
-  onChange?: (value: string) => void;
+  onChange?: (value: string | number) => void;
 };
 
 const segmented = cn("segmented");

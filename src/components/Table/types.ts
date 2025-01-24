@@ -1,21 +1,24 @@
 import React from "react";
 
-export type Column<RecordType> = {
+export type AlignType = "left" | "center" | "right";
+
+export type ColumnType<RecordType> = {
   /** Идентификатор колонки */
-  key: string;
+  key: keyof RecordType; // или string
   /** Заголовок колонки */
   title: string;
   /** Выравнивание содержимого колонки */
-  align?: "left" | "center" | "right";
+  align?: AlignType;
   /** Сортировка колонки (может быть boolean и function) */
   sorter?: boolean | CompareFn<RecordType>;
   /** Ширина колонки */
   width?: number | string;
   /** Определяет визуализацию ячейки таблицы */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   render?: (value: any, record: RecordType, index: number) => React.ReactNode;
 };
 
-export type ColumnsType<RecordType> = Column<RecordType>[];
+export type ColumnsType<RecordType> = ColumnType<RecordType>[];
 
 export type TableProps<RecordType> = React.TableHTMLAttributes<HTMLTableElement> & {
   /** Источник данных */

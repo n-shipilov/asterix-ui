@@ -66,15 +66,15 @@ const ControlledForm = () => {
         <Select
           options={[
             {
-              key: "red",
+              value: "red",
               label: "Red",
             },
             {
-              key: "green",
+              value: "green",
               label: "Green",
             },
             {
-              key: "blue",
+              value: "blue",
               label: "Blue",
             },
           ]}
@@ -165,7 +165,7 @@ export const Default: Story = {
   ),
 };
 
-export const FormControls: Story = {
+export const Controls: Story = {
   args: {},
   render: ControlledForm,
 };

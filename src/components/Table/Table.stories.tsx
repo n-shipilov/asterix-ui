@@ -92,7 +92,7 @@ const data: DataItem[] = [
 ];
 
 // TODO: Если передать DataItem как generic, то это вызывет ошибку
-const columns: ColumnsType<any> = [
+const columns: ColumnsType<DataItem> = [
   {
     key: "name",
     title: "Name",

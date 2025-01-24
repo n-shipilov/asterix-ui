@@ -2,7 +2,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../Button";
 import { Dropdown } from "./Dropdown";
-import { Icon as IconComponent } from "../Icon";
+import { Icon } from "../Icon";
 import { SvgIcon } from "../SvgIcon";
 
 export default {
@@ -15,20 +15,20 @@ export const Default: Story = {
   args: {
     options: [
       {
-        value: 1,
         label: "React",
+        value: 1,
       },
       {
-        value: 2,
         label: "Vue",
+        value: 2,
       },
       {
-        value: 3,
         label: "Angular",
+        value: 3,
       },
       {
-        value: 4,
         label: "Ember",
+        value: 4,
       },
     ],
     open: true,
@@ -37,7 +37,7 @@ export const Default: Story = {
     return (
       <Dropdown {...args}>
         <Button view="secondary">
-          <IconComponent data={SvgIcon} />
+          <Icon data={SvgIcon} />
         </Button>
       </Dropdown>
     );

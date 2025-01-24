@@ -62,9 +62,9 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
       <div className={block("page-sizer")}>
         Показывать
         <Dropdown
-          onOptionSelect={(_, option) => handleChangePageSize(option.key as number)}
+          onOptionSelect={(_, option) => handleChangePageSize(option.value as number)}
           options={pageSizeOptions.map((item) => ({
-            key: item,
+            value: item,
             label: item.toString(),
           }))}
         >

@@ -9,10 +9,13 @@ import "./Table.scss";
 export const tableWrapper = cn("table-wrapper");
 export const table = cn("table");
 
-export const Table = <RecordType extends object>(props: TableProps<RecordType>) => {
-  const { data, columns, rowKey = "key", rowSelection, scroll, ...attrs } = props;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const Table = <RecordType extends Record<string, any>>(props: TableProps<RecordType>) => {
+  const { className, data, columns, rowKey = "key", rowSelection, scroll, ...attrs } = props;
 
   const providerProps = {
+    className,
+
     data,
     columns,
 
@@ -31,7 +34,7 @@ export const Table = <RecordType extends object>(props: TableProps<RecordType>) 
         })}
         style={{ height: scroll ? scroll.y : undefined }}
       >
-        <table className={table()} {...attrs}>
+        <table className={table({}, className)} {...attrs}>
           <ColGroup />
           <TableHead />
           <TableBody />

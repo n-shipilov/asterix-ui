@@ -3,10 +3,10 @@ import { cn } from "../../utils/cn";
 import "./Option.scss";
 
 export type DropdownOption = {
-  value: React.Key;
-  label?: string;
-  icon?: React.ReactElement;
   disabled?: boolean;
+  icon?: React.ReactElement;
+  label?: string;
+  value: string | number;
 };
 
 type OptionProps = {
@@ -14,7 +14,7 @@ type OptionProps = {
   onClick?: (event: React.MouseEvent<HTMLElement>, option: DropdownOption) => void;
 };
 
-const dropdownOption = cn("dropdown-option");
+const block = cn("dropdown-option");
 
 export const Option: React.FC<OptionProps> = (props) => {
   const { option, onClick } = props;
@@ -23,19 +23,19 @@ export const Option: React.FC<OptionProps> = (props) => {
     if (option.disabled) {
       return;
     }
-    onClick && onClick(event, option);
+    onClick?.(event, option);
   };
 
   return (
     <li
-      className={dropdownOption({
+      className={block({
         disabled: option.disabled,
       })}
       onClick={handleClick}
       role="option"
     >
-      {option.icon && <div className={dropdownOption("icon")}>{option.icon}</div>}
-      <div className={dropdownOption("title")}>{option.label}</div>
+      {option.icon && <div className={block("icon")}>{option.icon}</div>}
+      <div className={block("title")}>{option.label}</div>
     </li>
   );
 };

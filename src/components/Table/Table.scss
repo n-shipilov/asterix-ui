@@ -2,7 +2,6 @@ $wrapper: ".#{variables.$ns}table-wrapper";
 $block: ".#{variables.$ns}table";
 
 #{$wrapper} {
-  display: inline-flex;
   overflow: auto;
 
   &_scroll {
