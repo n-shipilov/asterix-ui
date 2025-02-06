@@ -1,4 +1,4 @@
-import { createContext, createRef, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { InternalToastProps, ToastContext, ToastProps } from "../types";
 
 type Props = React.PropsWithChildren;
@@ -16,7 +16,7 @@ export const ToasterProvider = (props: Props) => {
     const newToast: InternalToastProps = {
       ...toast,
       id: Date.now(),
-      ref: createRef<HTMLDivElement>(),
+      // ref: createRef<HTMLDivElement>(),
     };
 
     setToasts((prev) => [...prev, newToast]);
@@ -38,11 +38,7 @@ export const ToasterProvider = (props: Props) => {
     remove,
   };
 
-  return (
-    <ToasterContext.Provider value={context}>
-      {children}
-    </ToasterContext.Provider>
-  );
+  return <ToasterContext.Provider value={context}>{children}</ToasterContext.Provider>;
 };
 
 export const useToasterContext = (): ToastContext => {

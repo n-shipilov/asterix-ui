@@ -42,7 +42,7 @@ export const Item: React.FC<ItemProps> = (props) => {
       className={block({
         collapsed: collapsed,
       })}
-      // onClick={(event) => handleItemClick(item, event)}
+      onClick={(event) => handleItemClick(item, event)}
     >
       {link ? (
         <a

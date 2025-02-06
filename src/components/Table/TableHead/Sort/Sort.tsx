@@ -2,11 +2,11 @@ import React from "react";
 import { useTableSorting } from "../../hooks";
 import { table } from "../../Table";
 import { useTableContext } from "../../TableContext";
-import { Column } from "../../types";
+import { ColumnType } from "../../types";
 import "./Sort.scss";
 
 type SortProps = {
-  column: Column<any>;
+  column: ColumnType<any>;
 };
 
 export const Sort: React.FC<SortProps> = (props) => {

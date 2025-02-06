@@ -9,6 +9,7 @@ type TooltipDelayProps = {
 };
 
 export type TooltipProps = TooltipDelayProps & {
+  /** Якорный элемент для всплывающей подсказки */
   children: React.ReactElement;
   /** Положение тултипа */
   placement?: PlacementType;
@@ -17,7 +18,7 @@ export type TooltipProps = TooltipDelayProps & {
   offset?: [number, number];
 };
 
-const tooltip = cn("tooltip");
+const block = cn("tooltip");
 
 export const Tooltip: React.FC<TooltipProps> = (props) => {
   const {
@@ -30,7 +31,7 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
   } = props;
 
   const anchorRef = useRef<HTMLElement | null>(null);
-  const timeoutRef = useRef<number>();
+  const timeoutRef = useRef<number>(0);
 
   const [visible, setVisible] = useState(false);
 
@@ -54,7 +55,7 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
         onBlur: () => setVisible(false),
       })}
       <Popup anchorRef={anchorRef} placement={placement} open={visible} offset={offset}>
-        <div className={tooltip()}>{text}</div>
+        <div className={block()}>{text}</div>
       </Popup>
     </>
   );

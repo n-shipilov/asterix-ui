@@ -4,7 +4,7 @@ export type AlignType = "left" | "center" | "right";
 
 export type ColumnType<RecordType> = {
   /** Идентификатор колонки */
-  key: keyof RecordType; // или string
+  key: string;
   /** Заголовок колонки */
   title: string;
   /** Выравнивание содержимого колонки */

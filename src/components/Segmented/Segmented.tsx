@@ -14,7 +14,7 @@ export type SegmentedProps = Omit<
   size?: SegmentedSize;
   width?: SegmentedWidth;
   options: SegmentedOption[];
-  onChange?: (value: string) => void;
+  onChange?: (value: string | number) => void;
 };
 
 const block = cn("segmented");
@@ -37,7 +37,7 @@ export const Segmented: React.FC<SegmentedProps> = forwardRef(
       disabled: disabled,
     }));
 
-    const handleChange = (value: string) => {
+    const handleChange = (value: string | number) => {
       setCurrentValue(value);
       onChange?.(value);
     };

@@ -22,7 +22,7 @@ export const Control: React.FC<ControlProps> = (props) => {
   const { control } = useFormContext();
 
   const getDefaultValue = (child: React.ReactElement) => {
-    const { props, type } = child;
+    const { type } = child;
     if (type === Input || type === Textarea) {
       return "";
     }
