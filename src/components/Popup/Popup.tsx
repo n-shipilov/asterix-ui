@@ -1,78 +1,60 @@
-import { useRef, useState } from "react";
-import { CSSTransition } from "react-transition-group";
-import { usePopper } from "react-popper";
-import { useForkRef, useOutsideClick } from "../../hooks";
+import {
+  Placement,
+  useFloating,
+  offset as floatingOffset,
+  VirtualElement,
+} from "@floating-ui/react";
 import { cn } from "../utils/cn";
 import { Portal } from "../Portal";
 import "./Popup.scss";
+import { useEffect } from "react";
 
-export type PlacementType =
-  | "top-start"
-  | "top"
-  | "top-end"
-  | "bottom-start"
-  | "bottom"
-  | "bottom-end"
-  | "right-start"
-  | "right"
-  | "right-end"
-  | "left-start"
-  | "left"
-  | "left-end";
+export type PopupAnchorElement = Element | VirtualElement;
+
+type OffsetOptions =
+  | number
+  | {
+      mainAxis?: number;
+      crossAxis?: number;
+      alignmentAxis?: number | null;
+    };
 
 export type PopupProps = {
   /** Элемент, относительно которого позиционируется всплывающее окно */
-  anchorRef: React.RefObject<HTMLElement | null>;
+  anchorElement?: PopupAnchorElement | null;
   /** Содержимое всплывающего окна */
   children?: React.ReactNode;
   /** Расстояние от якоря до всплывающего окна */
-  offset?: [number, number];
+  offset?: OffsetOptions;
   /** Позиция всплывающего окна */
-  placement?: PlacementType;
-  /** Видимость всплывающего окна */
+  placement?: Placement;
+  /** Управляет видимостью `Popup` */
   open?: boolean;
-  /** Обработчик, вызывающийся после нажатия мышкой на область вне контейнера */
-  onClose?: () => void;
+  /** Callback для изменения состояния видимость */
+  onOpenChange?: (open: boolean, event?: Event) => void;
 };
 
 const block = cn("popup");
 
 export const Popup: React.FC<PopupProps> = (props) => {
-  const { anchorRef, children, offset = [0, 8], placement, open, onClose } = props;
+  const { anchorElement, children, offset, placement, open, onOpenChange } = props;
 
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
-
-  const handleRef = useForkRef<HTMLDivElement>(setPopperElement, containerRef);
-
-  const { attributes, styles } = usePopper(anchorRef?.current, popperElement, {
-    modifiers: [{ name: "offset", options: { offset } }],
+  const { refs, floatingStyles } = useFloating({
     placement,
+    open,
+    onOpenChange: onOpenChange,
+    middleware: [floatingOffset(offset)],
   });
 
-  useOutsideClick([containerRef, anchorRef], onClose);
+  useEffect(() => {
+    if (anchorElement) refs.setReference(anchorElement);
+  }, [anchorElement, refs]);
 
   return (
     <Portal>
-      <CSSTransition
-        nodeRef={containerRef}
-        in={open}
-        addEndListener={(done) => containerRef.current?.addEventListener("animationend", done)}
-        classNames={block()}
-        mountOnEnter
-        unmountOnExit
-        appear={true}
-      >
-        <div
-          ref={handleRef}
-          style={styles.popper}
-          {...attributes.popper}
-          className={block({ open })}
-        >
-          <div className={block("content")}>{children}</div>
-        </div>
-      </CSSTransition>
+      <div ref={refs.setFloating} style={floatingStyles} className={block({ open })}>
+        <div className={block("content")}>{children}</div>
+      </div>
     </Portal>
   );
 };

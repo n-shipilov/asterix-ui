@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Popup } from "./Popup";
-import { useRef, useState } from "react";
 
 export default {
   component: Popup,
@@ -12,20 +12,15 @@ type Story = StoryObj<typeof Popup>;
 export const Default: Story = {
   args: {},
   render: () => {
-    const anchorRef = useRef<HTMLElement | null>(null);
+    const [anchorElement, setAnchorElement] = React.useState(null);
     const [visible, setVisible] = useState(false);
 
     return (
       <>
-        <span ref={anchorRef} onClick={() => setVisible((prev) => !prev)}>
+        <span ref={anchorElement} onClick={() => setVisible((prev) => !prev)}>
           Open popup
         </span>
-        <Popup
-          anchorRef={anchorRef}
-          placement="bottom-start"
-          open={visible}
-          onClose={() => setVisible(false)}
-        >
+        <Popup anchorElement={anchorElement} placement="bottom-start" open={visible}>
           <div
             style={{
               padding: "8px 12px",
