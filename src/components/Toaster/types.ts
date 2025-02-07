@@ -8,7 +8,7 @@ export interface ToastProps {
 
 export type InternalToastProps = ToastProps & {
   id: number;
-  ref?: React.RefObject<HTMLDivElement>;
+  ref?: React.RefObject<HTMLDivElement | null>;
 };
 
 export type ToastContext = {

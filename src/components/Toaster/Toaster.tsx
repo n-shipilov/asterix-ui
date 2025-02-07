@@ -10,6 +10,7 @@ const block = cn("toast-list");
 
 export const Toaster: FC = () => {
   const { toasts } = useToasterContext();
+
   return (
     <Portal>
       <div className={block()}>

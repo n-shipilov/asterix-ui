@@ -16,7 +16,7 @@ export const ToasterProvider = (props: Props) => {
     const newToast: InternalToastProps = {
       ...toast,
       id: Date.now(),
-      // ref: createRef<HTMLDivElement>(),
+      ref: { current: null },
     };
 
     setToasts((prev) => [...prev, newToast]);
