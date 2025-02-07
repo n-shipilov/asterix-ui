@@ -1,6 +1,6 @@
 import React, { cloneElement, useRef, useState } from "react";
 import { cn } from "../utils/cn";
-import { PlacementType, Popup } from "../Popup";
+import { Popup, PopupOffset, PopupPlacement } from "../Popup";
 import "./Tooltip.scss";
 
 type TooltipDelayProps = {
@@ -9,13 +9,14 @@ type TooltipDelayProps = {
 };
 
 export type TooltipProps = TooltipDelayProps & {
-  /** Якорный элемент для всплывающей подсказки */
+  /** Якорный элемент для тултипа */
   children: React.ReactElement;
   /** Положение тултипа */
-  placement?: PlacementType;
+  placement?: PopupPlacement;
   /** Текст */
   text?: string;
-  offset?: [number, number];
+  /** Расстояние от якоря до тултипа */
+  offset?: PopupOffset;
 };
 
 const block = cn("tooltip");
@@ -30,9 +31,9 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
     closeDelay = 0,
   } = props;
 
-  const anchorRef = useRef<HTMLElement | null>(null);
   const timeoutRef = useRef<number>(0);
 
+  const [anchorElement, setAnchorElement] = useState<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
   const handleMouseEnter = () => {
@@ -45,16 +46,18 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
     timeoutRef.current = window.setTimeout(() => setVisible(false), closeDelay);
   };
 
+  const anchorNode = cloneElement(children, {
+    ref: setAnchorElement,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+    onFocus: () => setVisible(true),
+    onBlur: () => setVisible(false),
+  });
+
   return (
     <>
-      {cloneElement(children, {
-        ref: anchorRef,
-        onMouseEnter: handleMouseEnter,
-        onMouseLeave: handleMouseLeave,
-        onFocus: () => setVisible(true),
-        onBlur: () => setVisible(false),
-      })}
-      <Popup anchorRef={anchorRef} placement={placement} open={visible} offset={offset}>
+      {anchorNode}
+      <Popup anchorElement={anchorElement} placement={placement} open={visible} offset={offset}>
         <div className={block()}>{text}</div>
       </Popup>
     </>

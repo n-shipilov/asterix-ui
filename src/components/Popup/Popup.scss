@@ -1,150 +1,38 @@
 $block: ".#{variables.$ns}popup";
+$transition-duration: 100ms;
 $transition-distance: 10px;
 
 #{$block} {
-  // visibility: hidden;
+  transition-property: opacity, transform;
+  transition-timing-function: ease-out;
 
-  &_open,
-  &-exit-active {
-    // visibility: visible;
+  @at-root [data-floating-ui-status="open"] &,
+    [data-floating-ui-status="close"] & {
+    transition-duration: $transition-duration;
   }
 
-  &-enter-active {
-    &[data-popper-placement*="bottom"] #{$block}__content {
-      animation-name: #{variables.$ns}popup-bottom-open;
-    }
-
-    &[data-popper-placement*="top"] #{$block}__content {
-      animation-name: #{variables.$ns}popup-top-open;
-    }
-
-    &[data-popper-placement*="left"] #{$block}__content {
-      animation-name: #{variables.$ns}popup-left-open;
-    }
-
-    &[data-popper-placement*="right"] #{$block}__content {
-      animation-name: #{variables.$ns}popup-right-open;
-    }
-  }
-
-  &-exit-active {
-    &[data-popper-placement*="bottom"] #{$block}__content {
-      animation-name: #{variables.$ns}popup-bottom;
-    }
-
-    &[data-popper-placement*="top"] #{$block}__content {
-      animation-name: #{variables.$ns}popup-top;
-    }
-
-    &[data-popper-placement*="left"] #{$block}__content {
-      animation-name: #{variables.$ns}popup-left;
-    }
-
-    &[data-popper-placement*="right"] #{$block}__content {
-      animation-name: #{variables.$ns}popup-right;
-    }
-  }
-
-  &__content {
-    position: relative;
-    animation-duration: 0.1s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
-  }
-}
-
-@keyframes #{variables.$ns}popup-bottom {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  100% {
+  @at-root [data-floating-ui-status="initial"] &,
+    [data-floating-ui-status="close"] & {
     opacity: 0;
-    transform: translateY($transition-distance);
   }
-}
 
-@keyframes #{variables.$ns}popup-bottom-open {
-  0% {
-    opacity: 0;
+  @at-root [data-floating-ui-status="initial"][data-floating-ui-placement*="bottom"] &,
+    [data-floating-ui-status="close"][data-floating-ui-placement*="bottom"] & {
     transform: translateY($transition-distance);
   }
 
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes #{variables.$ns}popup-top {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(-$transition-distance);
-  }
-}
-
-@keyframes #{variables.$ns}popup-top-open {
-  0% {
-    opacity: 0;
+  @at-root [data-floating-ui-status="initial"][data-floating-ui-placement*="top"] &,
+    [data-floating-ui-status="close"][data-floating-ui-placement*="top"] & {
     transform: translateY(-$transition-distance);
   }
 
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes #{variables.$ns}popup-left {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(-$transition-distance);
-  }
-}
-
-@keyframes #{variables.$ns}popup-left-open {
-  0% {
-    opacity: 0;
+  @at-root [data-floating-ui-status="initial"][data-floating-ui-placement*="left"] &,
+    [data-floating-ui-status="close"][data-floating-ui-placement*="left"] & {
     transform: translateX(-$transition-distance);
   }
 
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes #{variables.$ns}popup-right {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  100% {
-    opacity: 0;
+  @at-root [data-floating-ui-status="initial"][data-floating-ui-placement*="right"] &,
+    [data-floating-ui-status="close"][data-floating-ui-placement*="right"] & {
     transform: translateX($transition-distance);
-  }
-}
-
-@keyframes #{variables.$ns}popup-right-open {
-  0% {
-    opacity: 0;
-    transform: translateX($transition-distance);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
   }
 }

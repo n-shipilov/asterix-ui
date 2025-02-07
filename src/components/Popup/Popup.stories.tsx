@@ -12,15 +12,20 @@ type Story = StoryObj<typeof Popup>;
 export const Default: Story = {
   args: {},
   render: () => {
-    const [anchorElement, setAnchorElement] = React.useState(null);
+    const [anchorElement, setAnchorElement] = useState<HTMLSpanElement | null>(null);
     const [visible, setVisible] = useState(false);
 
     return (
       <>
-        <span ref={anchorElement} onClick={() => setVisible((prev) => !prev)}>
+        <span ref={setAnchorElement} onClick={() => setVisible((prev) => !prev)}>
           Open popup
         </span>
-        <Popup anchorElement={anchorElement} placement="bottom-start" open={visible}>
+        <Popup
+          anchorElement={anchorElement}
+          open={visible}
+          placement="bottom-start"
+          onOpenChange={setVisible}
+        >
           <div
             style={{
               padding: "8px 12px",

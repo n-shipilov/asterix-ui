@@ -1,23 +1,20 @@
+import { useEffect } from "react";
 import {
-  Placement,
-  useFloating,
+  autoUpdate,
+  flip,
   offset as floatingOffset,
-  VirtualElement,
+  shift,
+  useDismiss,
+  useFloating,
+  useInteractions,
+  useRole,
+  useTransitionStatus,
 } from "@floating-ui/react";
 import { cn } from "../utils/cn";
 import { Portal } from "../Portal";
+import { TRANSITION_DURATION } from "./consts";
+import { PopupAnchorElement, PopupOffset, PopupPlacement } from "./types";
 import "./Popup.scss";
-import { useEffect } from "react";
-
-export type PopupAnchorElement = Element | VirtualElement;
-
-type OffsetOptions =
-  | number
-  | {
-      mainAxis?: number;
-      crossAxis?: number;
-      alignmentAxis?: number | null;
-    };
 
 export type PopupProps = {
   /** Элемент, относительно которого позиционируется всплывающее окно */
@@ -25,36 +22,65 @@ export type PopupProps = {
   /** Содержимое всплывающего окна */
   children?: React.ReactNode;
   /** Расстояние от якоря до всплывающего окна */
-  offset?: OffsetOptions;
+  offset?: PopupOffset;
   /** Позиция всплывающего окна */
-  placement?: Placement;
+  placement?: PopupPlacement;
   /** Управляет видимостью `Popup` */
   open?: boolean;
-  /** Callback для изменения состояния видимость */
-  onOpenChange?: (open: boolean, event?: Event) => void;
+  /** Callback для изменения состояния видимости */
+  onOpenChange?: (open: boolean) => void;
 };
 
 const block = cn("popup");
 
 export const Popup: React.FC<PopupProps> = (props) => {
-  const { anchorElement, children, offset, placement, open, onOpenChange } = props;
+  const { anchorElement, children, offset = 8, placement, open, onOpenChange } = props;
 
-  const { refs, floatingStyles } = useFloating({
-    placement,
+  const {
+    refs,
+    elements,
+    floatingStyles,
+    placement: floatingPlacement,
+    context,
+    update,
+  } = useFloating({
+    placement: placement,
     open,
-    onOpenChange: onOpenChange,
-    middleware: [floatingOffset(offset)],
+    onOpenChange,
+    middleware: [floatingOffset(offset), flip(), shift()],
   });
+
+  const dismiss = useDismiss(context);
+  const role = useRole(context);
+
+  const { getFloatingProps } = useInteractions([dismiss, role]);
+
+  const { isMounted, status } = useTransitionStatus(context, { duration: TRANSITION_DURATION });
 
   useEffect(() => {
     if (anchorElement) refs.setReference(anchorElement);
   }, [anchorElement, refs]);
 
+  useEffect(() => {
+    if (isMounted && elements.reference && elements.floating) {
+      return autoUpdate(elements.reference, elements.floating, update);
+    }
+    return undefined;
+  }, [isMounted, elements, update]);
+
   return (
-    <Portal>
-      <div ref={refs.setFloating} style={floatingStyles} className={block({ open })}>
-        <div className={block("content")}>{children}</div>
-      </div>
-    </Portal>
+    isMounted && (
+      <Portal>
+        <div
+          ref={refs.setFloating}
+          style={floatingStyles}
+          data-floating-ui-placement={floatingPlacement}
+          data-floating-ui-status={status}
+          {...getFloatingProps()}
+        >
+          <div className={block({ open: isMounted })}>{children}</div>
+        </div>
+      </Portal>
+    )
   );
 };

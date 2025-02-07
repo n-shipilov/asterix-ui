@@ -1,9 +1,8 @@
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { resolve } from "path";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import dts from "vite-plugin-dts";
-import checker from "vite-plugin-checker";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -42,18 +41,6 @@ export default defineConfig({
     dts({
       tsconfigPath: resolve(__dirname, "tsconfig.app.json"),
       insertTypesEntry: true,
-    }),
-    checker({
-      typescript: {
-        tsconfigPath: "tsconfig.json",
-      },
-      stylelint: {
-        lintCommand: "stylelint ./src/**/*.{scss}",
-      },
-      eslint: {
-        useFlatConfig: true,
-        lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
-      },
     }),
   ],
 });

@@ -11,6 +11,7 @@ export * from "./Dropdown";
 export * from "./Form";
 export * from "./Icon";
 export * from "./Input";
+export * from "./Modal";
 export * from "./Pagination";
 export * from "./Popup";
 export * from "./Portal";

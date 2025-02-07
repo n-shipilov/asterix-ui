@@ -85,7 +85,7 @@ export const Item: React.FC<ItemProps> = (props) => {
 
   if (collapsed && !visibleSubmenu) {
     return (
-      <Tooltip placement="right" text={label} offset={[0, 12]} openDelay={300}>
+      <Tooltip placement="right" text={label} offset={12} openDelay={300}>
         {renderItem}
       </Tooltip>
     );

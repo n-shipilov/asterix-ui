@@ -14,13 +14,11 @@ export const Toaster: FC = () => {
     <Portal>
       <div className={block()}>
         <TransitionGroup component={null}>
-          {toasts?.map((toast) => {
-            return (
-              <CSSTransition key={toast.id} nodeRef={toast.ref} timeout={300} classNames="item">
-                <Toast {...toast} key={toast.id} />
-              </CSSTransition>
-            );
-          })}
+          {toasts?.map((toast) => (
+            <CSSTransition key={toast.id} nodeRef={toast.ref} timeout={300} classNames="item">
+              <Toast {...toast} key={toast.id} />
+            </CSSTransition>
+          ))}
         </TransitionGroup>
       </div>
     </Portal>

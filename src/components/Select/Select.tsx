@@ -42,7 +42,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
       ...attrs
     } = props;
 
-    const controlRef = useRef<HTMLDivElement | null>(null);
+    const [controlElement, setControlElement] = useState<HTMLDivElement | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const [open, setOpen] = useState(false);
@@ -64,8 +64,8 @@ export const Select: React.FC<SelectProps> = forwardRef(
     ) => {
       const { icon, disabled, ...selectOption } = option;
       setSelectValue(selectOption);
-      setSearchValue("");
       setOpen(false);
+      setSearchValue("");
       return onChange && onChange(event, selectOption);
     };
 
@@ -83,7 +83,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
       <>
         <div
           className={select({ disabled, searchable, size, open }, className)}
-          ref={controlRef}
+          ref={setControlElement}
           onClick={!disabled ? handleOpenChange : undefined}
           {...attrs}
         >
@@ -114,14 +114,14 @@ export const Select: React.FC<SelectProps> = forwardRef(
           </div>
         </div>
         <Popup
-          anchorRef={controlRef}
+          anchorElement={controlElement}
           placement="bottom-start"
           open={open}
-          onClose={() => setOpen(false)}
+          onOpenChange={() => setOpen(false)}
         >
           <div
             className={select("popup")}
-            style={{ width: controlRef.current?.getBoundingClientRect().width }}
+            style={{ width: controlElement?.getBoundingClientRect().width }}
           >
             {filteredOptions && filteredOptions.length > 0 ? (
               <ul className={select("items")} role="listbox">

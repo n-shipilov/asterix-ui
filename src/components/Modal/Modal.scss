@@ -1,0 +1,42 @@
+$block: ".#{variables.$ns}modal";
+
+#{$block} {
+  position: fixed;
+  z-index: 1000;
+  display: grid;
+  overflow: auto;
+  background-color: rgb(43 45 51 / 30%);
+  inset: 0;
+  place-items: center center;
+  transition-duration: 150ms;
+  transition-property: opacity;
+  transition-timing-function: ease-out;
+
+  &[data-floating-ui-status="unmounted"] {
+    display: none;
+    transform: scale(1);
+  }
+
+  &[data-floating-ui-status="initial"],
+  &[data-floating-ui-status="close"] {
+    opacity: 0;
+  }
+
+  &[data-floating-ui-status="open"] {
+    opacity: 1;
+  }
+
+  &[data-floating-ui-status="initial"] #{$block}__content {
+    transform: scale(0.9);
+  }
+
+  &__content {
+    border-radius: 8px;
+    margin: 24px;
+    background-color: var(--st-color-base-background);
+    box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%);
+    transition-duration: 150ms;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+  }
+}

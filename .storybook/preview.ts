@@ -7,11 +7,13 @@ import { WithTheme } from "./decorators/withTheme";
 
 const preview: Preview = {
   decorators: [WithTheme],
+
   parameters: {
     docs: {
       theme: themes.light,
     },
   },
+
   globalTypes: {
     theme: {
       defaultValue: "light",

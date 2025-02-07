@@ -1,53 +1,7 @@
 $block: ".#{variables.$ns}dialog";
-$overlay: ".#{variables.$ns}dialog-overlay";
-
-#{$overlay} {
-  position: fixed;
-  z-index: 1000;
-  display: grid;
-  overflow: auto;
-  background-color: rgb(43 45 51 / 30%);
-  inset: 0;
-  place-items: center center;
-
-  &-enter {
-    opacity: 0;
-
-    & #{$block} {
-      transform: scale(0.9);
-    }
-  }
-
-  &-enter-active {
-    opacity: 1;
-    transition: all 0.16s;
-
-    & #{$block} {
-      transform: scale(1);
-      transition: all 0.16s;
-    }
-  }
-
-  &-exit {
-    opacity: 1;
-
-    & #{$block} {
-      transform: scale(1);
-    }
-  }
-
-  &-exit-active {
-    opacity: 0;
-    transition: all 0.16s;
-  }
-}
 
 #{$block} {
   position: relative;
-  border-radius: 8px;
-  margin: 24px;
-  background-color: var(--st-color-base-background);
-  box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%);
 
   &_size {
     &_s {

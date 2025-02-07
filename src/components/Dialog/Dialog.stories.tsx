@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Dialog, DialogProps } from "./Dialog";
 import { Button } from "../Button";
@@ -18,8 +18,9 @@ const DialogWithHooks = (args: DialogProps) => {
         Open dialog
       </Button>
       <Dialog open={open} onClose={() => setOpen(false)} {...args}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque
+        repellendus eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum
+        impedit voluptates in natus iure cumque eaque?
       </Dialog>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Input } from "../Input";
 import { Popup } from "../Popup";
 import { Calendar } from "../Calendar";
@@ -26,18 +26,18 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     value,
   } = props;
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [anchorElement, setAnchorElement] = useState<HTMLInputElement | null>(null);
 
   const [selectedDate, setSelectedDate] = useState<Date>(value);
   const [open, setOpen] = useState(false);
 
-  const handleFocus = () => {
-    setOpen(true);
-  };
-
   const handleSelectDate = (date: Date) => {
     setSelectedDate(date);
     setOpen(false);
+  };
+
+  const handleOpenChange = (open: boolean) => {
+    setOpen(open);
   };
 
   return (
@@ -45,18 +45,18 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       <div className={block()}>
         <Input
           className={block("control")}
-          controlRef={inputRef}
+          controlRef={setAnchorElement}
           placeholder={placeholder}
-          onFocus={handleFocus}
+          onClick={() => setOpen((prev) => !prev)}
           value={selectedDate?.toLocaleDateString()}
           readOnly
         />
       </div>
       <Popup
-        anchorRef={inputRef}
+        anchorElement={anchorElement}
         placement="bottom-start"
         open={open}
-        onClose={() => setOpen(false)}
+        onOpenChange={handleOpenChange}
       >
         <div className={block("popup")}>
           <Calendar locale={locale} selectedDate={selectedDate} onSelectDate={handleSelectDate} />

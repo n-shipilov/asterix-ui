@@ -12,6 +12,7 @@ export const Default: Story = {
   args: {
     placeholder: "Select option",
     disabled: false,
+    searchable: false,
     size: "m",
     options: [
       {

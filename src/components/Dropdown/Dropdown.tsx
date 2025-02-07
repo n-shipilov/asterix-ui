@@ -1,12 +1,12 @@
-import React, { cloneElement, useRef, useState } from "react";
+import React, { cloneElement, useState } from "react";
 import { cn } from "../utils/cn";
 import { DropdownOption, Option } from "./Option";
-import { PlacementType, Popup } from "../Popup";
+import { Popup, PopupPlacement } from "../Popup";
 import "./Dropdown.scss";
 
 export type DropdownProps = {
   children: React.ReactElement;
-  placement?: PlacementType;
+  placement?: PopupPlacement;
   options?: DropdownOption[];
   aligned?: boolean;
   open?: boolean;
@@ -30,7 +30,7 @@ export const Dropdown: React.FC<DropdownProps> = (props) => {
     onOptionSelect,
   } = props;
 
-  const anchorRef = useRef<HTMLElement | null>(null);
+  const [anchorElement, setAnchorElement] = useState<HTMLElement | null>(null);
 
   const [visible, setVisible] = useState(open);
 
@@ -57,20 +57,20 @@ export const Dropdown: React.FC<DropdownProps> = (props) => {
   return (
     <>
       {cloneElement(children, {
-        ref: anchorRef,
+        ref: setAnchorElement,
         onClick: () => handleChangeVisible(visible ? false : true),
         onKeyUp: handleKeyUp,
       })}
       <Popup
-        anchorRef={anchorRef}
+        anchorElement={anchorElement}
         placement={placement}
         open={visible}
-        onClose={() => handleChangeVisible(false)}
+        onOpenChange={(open) => handleChangeVisible(open)}
       >
         <div
           className={block()}
           style={{
-            width: aligned ? anchorRef.current?.getBoundingClientRect().width : "",
+            width: aligned ? anchorElement?.getBoundingClientRect().width : "",
           }}
         >
           <ul className={block("list")} role="listbox">
