@@ -5,8 +5,7 @@ const config: StorybookConfig = {
   addons: [
     "@storybook/preset-scss",
     "@storybook/addon-essentials",
-    "./theme-addon/register.tsx",
-    "@chromatic-com/storybook"
+    "./theme-addon/register.tsx"
   ],
   framework: {
     name: "@storybook/react-vite",
