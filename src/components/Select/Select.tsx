@@ -1,6 +1,5 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { ChevronBottom } from "../ChevronBottom";
-import { DropdownOption } from "../Dropdown/Option";
 import { Icon } from "../Icon";
 import { Popup } from "../Popup";
 import { cn } from "../utils/cn";
@@ -23,7 +22,10 @@ export type SelectProps = BaseSelectProps & {
   options?: SelectOption[];
   value?: SelectOption;
   searchable?: boolean;
-  onChange?: (event: React.MouseEvent<HTMLElement, MouseEvent>, option: SelectOption) => void;
+  onChange?: (
+    event: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement>,
+    option: SelectOption,
+  ) => void;
 };
 
 const select = cn("select");
@@ -48,6 +50,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
     const [open, setOpen] = useState(false);
     const [selectValue, setSelectValue] = useState(value);
     const [searchValue, setSearchValue] = useState("");
+    const [selectedIndex, setSelectedIndex] = useState(-1);
 
     useEffect(() => {
       setSelectValue(value);
@@ -59,14 +62,40 @@ export const Select: React.FC<SelectProps> = forwardRef(
     };
 
     const handleOptionSelect = (
-      event: React.MouseEvent<HTMLElement, MouseEvent>,
-      option: DropdownOption,
+      event: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement>,
+      option: SelectOption,
     ) => {
-      const { icon, disabled, ...selectOption } = option;
-      setSelectValue(selectOption);
+      setSelectValue(option);
       setOpen(false);
       setSearchValue("");
-      return onChange && onChange(event, selectOption);
+      return onChange && onChange(event, option);
+    };
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+      switch (event.key) {
+        case "Enter":
+          if (open && selectedIndex !== -1) {
+            handleOptionSelect(event, options![selectedIndex]);
+            setOpen(false);
+          } else {
+            handleOpenChange();
+          }
+          break;
+        case "ArrowDown":
+          setSelectedIndex((prevIndex) => (prevIndex + 1) % options!.length);
+          break;
+        case "ArrowUp":
+          setSelectedIndex((prevIndex) => (prevIndex - 1 + options!.length) % options!.length);
+          break;
+        case "Escape":
+          setOpen(false);
+          break;
+        case "Tab":
+          setOpen(false);
+          break;
+        default:
+          break;
+      }
     };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,6 +114,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
           className={select({ disabled, searchable, size, open }, className)}
           ref={setControlElement}
           onClick={!disabled ? handleOpenChange : undefined}
+          onKeyDown={handleKeyDown}
           {...attrs}
         >
           <div className={select("control")} role="group" ref={ref}>
@@ -125,13 +155,16 @@ export const Select: React.FC<SelectProps> = forwardRef(
           >
             {filteredOptions && filteredOptions.length > 0 ? (
               <ul className={select("items")} role="listbox">
-                {filteredOptions?.map((option) => (
+                {filteredOptions?.map((option, index) => (
                   <li
                     className={select("item", {
                       selected: option?.value === selectValue?.value,
                     })}
                     key={option.value}
                     onClick={(event) => handleOptionSelect(event, option)}
+                    onMouseEnter={() => setSelectedIndex(index)}
+                    role="option"
+                    aria-selected={selectedIndex === index}
                   >
                     <span className={select("item-title")}>{option.label}</span>
                   </li>

@@ -145,7 +145,8 @@ $block: ".#{variables.$ns}select";
       white-space: nowrap;
     }
 
-    &:not(#{$block}__item_selected):hover {
+    &:not(#{$block}__item_selected):hover,
+    &:not(#{$block}__item_selected)[aria-selected="true"] {
       background-color: var(--st-color-base-generic);
     }
   }
