@@ -8,6 +8,7 @@ $block: ".#{variables.$ns}select";
   border: 1px solid var(--st-color-border-primary);
   border-radius: var(--select-border-radius);
   cursor: pointer;
+  outline-style: none;
   transition:
     border-color 0.15s linear,
     background-color 0.15s linear;
@@ -38,6 +39,11 @@ $block: ".#{variables.$ns}select";
 
   &:hover:not(#{$block}_disabled) {
     border-color: var(--st-color-border-primary-hover);
+  }
+
+  &:focus,
+  &:focus-within {
+    border-color: var(--st-color-border-primary-active);
   }
 
   &_open:not(#{$block}_disabled) {

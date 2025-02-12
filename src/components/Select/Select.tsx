@@ -72,6 +72,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+      console.log("handleKeyDown");
       switch (event.key) {
         case "Enter":
           if (open && selectedIndex !== -1) {
@@ -115,6 +116,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
           ref={setControlElement}
           onClick={!disabled ? handleOpenChange : undefined}
           onKeyDown={handleKeyDown}
+          tabIndex={searchable ? -1 : 0}
           {...attrs}
         >
           <div className={select("control")} role="group" ref={ref}>
