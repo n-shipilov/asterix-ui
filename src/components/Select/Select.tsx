@@ -46,15 +46,47 @@ export const Select: React.FC<SelectProps> = forwardRef(
 
     const [controlElement, setControlElement] = useState<HTMLDivElement | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const dropdownRef = useRef<HTMLUListElement>(null);
 
     const [open, setOpen] = useState(false);
     const [selectValue, setSelectValue] = useState(value);
     const [searchValue, setSearchValue] = useState("");
-    const [selectedIndex, setSelectedIndex] = useState(-1);
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
     useEffect(() => {
       setSelectValue(value);
     }, [value]);
+
+    // Прокручивание списка к выбранному элементу
+    useEffect(() => {
+      const dropdown = dropdownRef.current;
+      const selectedItem = dropdown?.children[selectedIndex];
+
+      if (selectedItem) {
+        selectedItem.scrollIntoView({ behavior: "auto", block: "nearest" });
+      }
+    }, [selectedIndex, open]);
+
+    // Сброс индекса выбранного элемента при закрытии
+    useEffect(() => {
+      if (open === false) {
+        const selectValueIndex = selectValue
+          ? options!.findIndex((option) => option.value === selectValue.value)
+          : 0;
+
+        setSelectedIndex(selectValueIndex);
+      }
+    }, [open, options, selectValue]);
+
+    // Сброс индекса выбранного элемента при поиске
+    useEffect(() => {
+      const selectedItemIndex =
+        filteredOptions?.findIndex(
+          (filteredOption) => filteredOption.value === selectValue?.value,
+        ) ?? -1;
+
+      setSelectedIndex(selectedItemIndex > -1 ? selectedItemIndex : 0);
+    }, [searchValue]);
 
     const handleOpenChange = () => {
       setOpen((prev) => !prev);
@@ -72,21 +104,26 @@ export const Select: React.FC<SelectProps> = forwardRef(
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-      console.log("handleKeyDown");
       switch (event.key) {
         case "Enter":
           if (open && selectedIndex !== -1) {
-            handleOptionSelect(event, options![selectedIndex]);
+            handleOptionSelect(event, filteredOptions![selectedIndex]);
+            setSelectedIndex(selectedIndex);
             setOpen(false);
           } else {
             handleOpenChange();
           }
           break;
         case "ArrowDown":
-          setSelectedIndex((prevIndex) => (prevIndex + 1) % options!.length);
+          setSelectedIndex((prevIndex) => (prevIndex + 1) % filteredOptions!.length);
           break;
         case "ArrowUp":
-          setSelectedIndex((prevIndex) => (prevIndex - 1 + options!.length) % options!.length);
+          setSelectedIndex((prevIndex) => {
+            if (prevIndex === 0) {
+              return filteredOptions!.length - 1;
+            }
+            return Math.max(prevIndex - 1, 0);
+          });
           break;
         case "Escape":
           setOpen(false);
@@ -96,6 +133,15 @@ export const Select: React.FC<SelectProps> = forwardRef(
           break;
         default:
           break;
+      }
+    };
+
+    const handleInputKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+      switch (event.key) {
+        case "ArrowDown":
+        case "ArrowUp":
+          event.preventDefault();
+          return;
       }
     };
 
@@ -134,6 +180,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
                 className={select("input")}
                 value={searchValue}
                 onChange={handleInputChange}
+                onKeyDown={handleInputKeyDown}
               ></input>
             )}
           </div>
@@ -156,7 +203,7 @@ export const Select: React.FC<SelectProps> = forwardRef(
             style={{ width: controlElement?.getBoundingClientRect().width }}
           >
             {filteredOptions && filteredOptions.length > 0 ? (
-              <ul className={select("items")} role="listbox">
+              <ul ref={dropdownRef} className={select("items")} role="listbox">
                 {filteredOptions?.map((option, index) => (
                   <li
                     className={select("item", {

@@ -37,7 +37,7 @@ export const Default: Story = {
     disabled: false,
     searchable: false,
     size: "m",
-    options: options.slice(0, 4),
+    options: options,
   },
   render: (args) => {
     return <Select {...args} />;
