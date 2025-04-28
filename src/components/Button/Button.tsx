@@ -8,7 +8,6 @@ type ButtonSize = "s" | "m";
 type ButtonView = "primary" | "secondary" | "ghost";
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  /** Размер кнопки */
   size?: ButtonSize;
   view?: ButtonView;
   disabled?: boolean;

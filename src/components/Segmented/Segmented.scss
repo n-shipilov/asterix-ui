@@ -29,6 +29,10 @@ $block: ".#{variables.$ns}segmented";
 
     &_max {
       width: 100%;
+
+      & #{$block}__item {
+        flex: 1;
+      }
     }
   }
 
@@ -42,7 +46,6 @@ $block: ".#{variables.$ns}segmented";
 
   &__item {
     position: relative;
-    flex: 1 1 auto;
     cursor: pointer;
     text-align: center;
     transform: scale(1);

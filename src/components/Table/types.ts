@@ -22,9 +22,9 @@ export type ColumnsType<RecordType> = ColumnType<RecordType>[];
 
 export type TableProps<RecordType> = React.TableHTMLAttributes<HTMLTableElement> & {
   /** Источник данных */
-  data: RecordType[];
+  data?: RecordType[];
   /** Колонки таблицы */
-  columns: ColumnsType<RecordType>;
+  columns?: ColumnsType<RecordType>;
   /** Уникальный ключ строки (по умолчанию "key") */
   rowKey?: string | keyof RecordType;
   /** Опции при выборе строки с помощью чекбокса  */
