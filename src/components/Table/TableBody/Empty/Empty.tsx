@@ -7,7 +7,7 @@ export const Empty: React.FC = () => {
 
   return (
     <tr className={table("row", { empty: true })}>
-      <td className={table("cell")} colSpan={columns.length}>
+      <td className={table("cell")} colSpan={columns?.length}>
         No data
       </td>
     </tr>

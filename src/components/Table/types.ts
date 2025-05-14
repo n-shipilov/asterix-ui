@@ -29,8 +29,8 @@ export type TableProps<RecordType> = React.TableHTMLAttributes<HTMLTableElement>
   rowKey?: string | keyof RecordType;
   /** Опции при выборе строки с помощью чекбокса  */
   rowSelection?: RowSelection;
-  /** Параметры прокрутки таблицы */
-  scroll?: ScrollType;
+  // /** Параметры прокрутки таблицы */
+  // scroll?: ScrollType;
 };
 
 export type TableProviderProps<RecordType> = TableProps<RecordType> & {
@@ -53,9 +53,9 @@ export type RowSelection = {
   onChange?: (selectedRowKeys: Array<string | number>) => void;
 };
 
-export type ScrollType = {
-  /** Задает горизонтальную прокрутку */
-  x?: string | number | true;
-  /** Задает вертикальную прокрутку */
-  y?: string | number;
-};
+// export type ScrollType = {
+//   /** Задает горизонтальную прокрутку */
+//   x?: string | number | true;
+//   /** Задает вертикальную прокрутку */
+//   y?: string | number;
+// };

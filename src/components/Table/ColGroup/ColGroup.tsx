@@ -6,10 +6,10 @@ export const ColGroup: React.FC = () => {
 
   return (
     <colgroup>
-      {rowSelection && <col></col>}
-      {columns.map((column, index) => {
-        const { width } = column;
-        return <col style={{ width }} key={index}></col>;
+      {rowSelection && <col />}
+      {columns?.map((column) => {
+        const { width, key } = column;
+        return <col style={{ width }} key={key}></col>;
       })}
     </colgroup>
   );

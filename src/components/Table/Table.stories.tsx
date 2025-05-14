@@ -169,18 +169,3 @@ export const Selection: Story = {
     return <Table {...args} />;
   },
 };
-
-export const Scroll: Story = {
-  args: {
-    data: data,
-    columns: columns,
-    rowKey: "id",
-    scroll: {
-      x: true,
-      y: 273,
-    },
-  },
-  render: (args) => {
-    return <Table {...args} />;
-  },
-};

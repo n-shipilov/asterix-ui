@@ -22,7 +22,7 @@ export const TableHead: React.FC = () => {
             />
           </th>
         )}
-        {columns.map((column, index) => {
+        {columns?.map((column, index) => {
           const { align, sorter, title } = column;
           return (
             <th className={table("cell", { align })} key={index}>

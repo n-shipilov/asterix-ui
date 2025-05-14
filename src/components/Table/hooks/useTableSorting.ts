@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useTableContext } from "../TableContext";
 
 export const useTableSorting = () => {
@@ -21,20 +22,22 @@ export const useTableSorting = () => {
     }
   };
 
-  const getSortedData = () => {
+  const sortedData = useMemo(() => {
+    const sortedData = data ? [...data] : [];
+
     if (sorting.column) {
-      const sorter = columns.find((column) => column.key === sorting.column)?.sorter;
+      const sorter = columns?.find((column) => column.key === sorting.column)?.sorter;
 
       if (typeof sorter === "boolean") {
         // Если column.sorter = boolean
-        return data;
+        return sortedData;
       } else if (typeof sorter === "function") {
         // Если column.sorter = CompareFn
-        return [...data].sort((a, b) => sorter(a, b) * (sorting.order === "asc" ? 1 : -1));
+        return sortedData.sort((a, b) => sorter(a, b) * (sorting.order === "asc" ? 1 : -1));
       }
     }
     return data;
-  };
+  }, [columns, data, sorting]);
 
-  return { sortedData: getSortedData(), handleChangeSorting };
+  return { sortedData, handleChangeSorting };
 };

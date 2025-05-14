@@ -33,7 +33,7 @@ export const Row: FC<RowProps> = (props) => {
           />
         </td>
       )}
-      {columns.map((column, index) => {
+      {columns?.map((column, index) => {
         const { align, key, render } = column;
         return (
           <td className={table("cell", { align })} key={index}>

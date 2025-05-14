@@ -12,8 +12,9 @@ type TableContext<RecordType> = TableProps<RecordType> & {
 export const TableContext = createContext({});
 
 export const TableProvider = <RecordType extends object>(props: TableProviderProps<RecordType>) => {
-  const { children, data, columns, rowKey, rowSelection, scroll } = props;
+  const { children, data, columns, rowKey, rowSelection } = props;
 
+  // Конфигурация сортировки таблицы
   const [sorting, setSorting] = useState<SortState>({
     column: undefined,
     order: undefined,
@@ -26,11 +27,9 @@ export const TableProvider = <RecordType extends object>(props: TableProviderPro
   const context: TableContext<RecordType> = {
     data,
     columns,
-
     rowKey,
 
     rowSelection,
-    scroll,
 
     ////
 
