@@ -1,5 +1,5 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Toaster } from "./Toaster";
 import { ToasterProvider, useToasterContext } from "./ToasterProvider/ToasterProvider";
 import { Button } from "../Button";

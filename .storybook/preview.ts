@@ -1,7 +1,7 @@
 import "../styles/fonts.scss";
 import "../styles/styles.scss";
 
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/react-vite";
 import { themes } from "./theme";
 import { WithTheme } from "./decorators/withTheme";
 

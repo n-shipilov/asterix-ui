@@ -1,5 +1,5 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Segmented } from "./Segmented";
 import { Icon as IconComponent } from "../Icon";
 import { SvgIcon } from "../SvgIcon";
