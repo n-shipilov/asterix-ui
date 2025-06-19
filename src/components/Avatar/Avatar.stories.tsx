@@ -3,7 +3,13 @@ import { Avatar } from "./Avatar";
 
 export default {
   component: Avatar,
-} as Meta<typeof Avatar>;
+  argTypes: {
+    size: {
+      options: ["xs", "s", "m", "l"],
+      control: { type: "radio" },
+    },
+  },
+} satisfies Meta<typeof Avatar>;
 
 type Story = StoryObj<typeof Avatar>;
 

@@ -23,6 +23,34 @@ $block: ".#{variables.$ns}table";
     font-weight: var(--st-text-subheader-font-weight);
   }
 
+  // Сортировка начало
+  &__sort {
+    display: inline-flex;
+    column-gap: 4px;
+    cursor: pointer;
+    user-select: none;
+
+    &_active {
+      & #{$block}__sort-indicator {
+        color: var(--st-color-text-primary);
+      }
+    }
+  }
+
+  &__sort-indicator {
+    color: var(--st-color-text-hint);
+  }
+
+  &__cell {
+    &_align_right {
+      & #{$block}__sort {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  // Сортировка конец
+
   &__body &__row {
     &:last-child {
       & #{$block}__cell {

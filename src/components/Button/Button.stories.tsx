@@ -1,16 +1,44 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "./Button";
 import { Icon as IconComponent } from "../Icon";
 import { SvgIcon } from "../SvgIcon";
 
-export default {
+const meta = {
   component: Button,
-} as Meta<typeof Button>;
+  argTypes: {
+    view: {
+      options: ["primary", "secondary", "ghost"],
+      control: { type: "radio" },
+    },
+    size: {
+      options: ["s", "m"],
+      control: { type: "radio" },
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
+    loading: {
+      control: { type: "boolean" },
+    },
+    selected: {
+      control: { type: "boolean" },
+    },
+  },
+} satisfies Meta<typeof Button>;
 
-type Story = StoryObj<typeof Button>;
+export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {
+    children: "Button text",
+    view: "primary",
+    size: "m",
+    disabled: false,
+    loading: false,
+    selected: false,
+  },
   render: (args) => <Button {...args} />,
 };
 

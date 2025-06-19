@@ -1,24 +1,25 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Table } from "./Table";
 import { ColumnsType } from "./types";
 
-export default {
+const meta = {
   component: Table,
-} as Meta<typeof Table>;
+} satisfies Meta<typeof Table>;
 
-type Story = StoryObj<typeof Table>;
+export default meta;
 
-interface DataItem {
+type Story = StoryObj<typeof meta>;
+
+type User = {
   id: number;
   name: string;
   city?: string;
   phone: string;
   count: number;
   date: string;
-}
+};
 
-const data: DataItem[] = [
+const data: User[] = [
   {
     id: 1,
     name: "Emily Johnson",
@@ -58,41 +59,9 @@ const data: DataItem[] = [
     count: 82,
     date: "2023-03-15",
   },
-  {
-    id: 6,
-    name: "Emily Johnson",
-    city: "Los Angeles",
-    phone: "+1 987-654-3210",
-    count: 51,
-    date: "2023-11-23",
-  },
-  {
-    id: 7,
-    name: "James Williams",
-    city: "Sydney",
-    phone: "+61 9876-543210",
-    count: 10,
-    date: "2023-05-14",
-  },
-  {
-    id: 8,
-    name: "Olivia Brown",
-    city: "",
-    phone: "+7 (950) 372-56-84",
-    count: 54,
-    date: "2023-03-29",
-  },
-  {
-    id: 9,
-    name: "Ethan Miller",
-    phone: "+1 555-123-4567",
-    count: 75,
-    date: "2023-02-01",
-  },
 ];
 
-// TODO: Если передать DataItem как generic, то это вызывет ошибку
-const columns: ColumnsType<any> = [
+const columns: ColumnsType<User> = [
   {
     key: "name",
     title: "Name",
@@ -135,37 +104,13 @@ const columns: ColumnsType<any> = [
 ];
 
 export const Default: Story = {
-  args: {
-    data: data.slice(0, 5),
-    columns: columns,
-    rowKey: "id",
-  },
-  render: (args) => {
-    return <Table {...args} />;
+  render: () => {
+    return <Table data={data} columns={columns} rowKey="id" />;
   },
 };
 
 export const Empty: Story = {
-  args: {
-    data: [],
-    columns: columns,
-    rowKey: "id",
-  },
-  render: (args) => {
-    return <Table {...args} />;
-  },
-};
-
-export const Selection: Story = {
-  args: {
-    data: data.slice(0, 5),
-    columns: columns,
-    rowSelection: {
-      onChange: (selectedRowKeys) => console.log("selectedRowKeys:", selectedRowKeys),
-    },
-    rowKey: "id",
-  },
-  render: (args) => {
-    return <Table {...args} />;
+  render: () => {
+    return <Table data={[]} columns={columns} rowKey="id" />;
   },
 };

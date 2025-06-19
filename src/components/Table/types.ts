@@ -1,5 +1,7 @@
 import React from "react";
 
+export type DefaultRecordType = Record<string, unknown>;
+
 export type AlignType = "left" | "center" | "right";
 
 export type ColumnType<RecordType> = {
@@ -9,13 +11,16 @@ export type ColumnType<RecordType> = {
   title: string;
   /** Выравнивание содержимого колонки */
   align?: AlignType;
-  /** Сортировка колонки (может быть boolean и function) */
+  /** Сортировка колонки (может быть boolean или function) */
   sorter?: boolean | CompareFn<RecordType>;
   /** Ширина колонки */
   width?: number | string;
   /** Определяет визуализацию ячейки таблицы */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  render?: (value: any, record: RecordType, index: number) => React.ReactNode;
+  render?: (
+    value: RecordType[keyof RecordType],
+    record: RecordType,
+    index: number,
+  ) => React.ReactNode;
 };
 
 export type ColumnsType<RecordType> = ColumnType<RecordType>[];
@@ -27,35 +32,23 @@ export type TableProps<RecordType> = React.TableHTMLAttributes<HTMLTableElement>
   columns?: ColumnsType<RecordType>;
   /** Уникальный ключ строки (по умолчанию "key") */
   rowKey?: string | keyof RecordType;
-  /** Опции при выборе строки с помощью чекбокса  */
-  rowSelection?: RowSelection;
-  // /** Параметры прокрутки таблицы */
-  // scroll?: ScrollType;
 };
 
 export type TableProviderProps<RecordType> = TableProps<RecordType> & {
   children: React.ReactNode;
 };
 
-export type SortOrder = "asc" | "desc";
+export type TableContextType<RecordType> = TableProps<RecordType> & {
+  sorting: SortState;
+  sortedData: RecordType[];
+  handleChangeSorting: (key: string) => void;
+};
+
+export type CompareFn<RecordType> = (a: RecordType, b: RecordType) => number;
+
+export type SortDirection = "asc" | "desc" | null;
 
 export type SortState = {
-  column?: string;
-  order?: SortOrder;
+  key: string | null;
+  direction: SortDirection;
 };
-
-export type CompareFn<T> = (a: T, b: T) => number;
-
-export type RowSelection = {
-  /** Ключи выбранных строк по умолчанию */
-  selectedRowKeys?: Array<string | number>;
-  /** Колбэк функция, выполняющаяся при выборе строк */
-  onChange?: (selectedRowKeys: Array<string | number>) => void;
-};
-
-// export type ScrollType = {
-//   /** Задает горизонтальную прокрутку */
-//   x?: string | number | true;
-//   /** Задает вертикальную прокрутку */
-//   y?: string | number;
-// };
