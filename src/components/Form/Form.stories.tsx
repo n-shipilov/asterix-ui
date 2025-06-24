@@ -1,4 +1,3 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   Button,
@@ -96,6 +95,7 @@ const ControlledForm = () => {
               value: "Value 3",
             },
           ]}
+          width="max"
         />
       </Form.Field>
       <Form.Field name="checkbox">
