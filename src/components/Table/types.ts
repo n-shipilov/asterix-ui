@@ -46,9 +46,14 @@ export type TableContextType<RecordType> = TableProps<RecordType> & {
 
 export type CompareFn<RecordType> = (a: RecordType, b: RecordType) => number;
 
-export type SortDirection = "asc" | "desc" | null;
+export enum SortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
+export type SortDirectionType = SortDirection.ASC | SortDirection.DESC | null;
 
 export type SortState = {
   key: string | null;
-  direction: SortDirection;
+  direction: SortDirectionType;
 };

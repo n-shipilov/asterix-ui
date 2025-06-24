@@ -1,5 +1,11 @@
 import { useCallback, useMemo, useState } from "react";
-import { ColumnsType, DefaultRecordType, SortDirection, SortState } from "../types";
+import {
+  ColumnsType,
+  DefaultRecordType,
+  SortDirection,
+  SortDirectionType,
+  SortState,
+} from "../types";
 
 type UseTableSortingProps<RecordType> = {
   data?: RecordType[];
@@ -27,7 +33,9 @@ export const useTableSorting = <RecordType extends DefaultRecordType>(
         return sortedData;
       } else if (typeof sorter === "function") {
         // Если column.sorter = CompareFn
-        return sortedData.sort((a, b) => sorter(a, b) * (sorting.direction === "asc" ? 1 : -1));
+        return sortedData.sort(
+          (a, b) => sorter(a, b) * (sorting.direction === SortDirection.ASC ? 1 : -1),
+        );
       }
     }
     return sortedData;
@@ -35,13 +43,13 @@ export const useTableSorting = <RecordType extends DefaultRecordType>(
 
   const handleChangeSorting = useCallback((key: string) => {
     setSorting((prev) => {
-      let direction: SortDirection = null;
+      let direction: SortDirectionType = null;
 
       if (prev.key !== key) {
-        direction = "asc";
-      } else if (prev.direction === "asc") {
-        direction = "desc";
-      } else if (prev.direction === "desc") {
+        direction = SortDirection.ASC;
+      } else if (prev.direction === SortDirection.ASC) {
+        direction = SortDirection.DESC;
+      } else if (prev.direction === SortDirection.DESC) {
         direction = null;
       }
 
