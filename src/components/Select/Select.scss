@@ -17,13 +17,13 @@ $block: ".#{variables.$ns}select";
     &_s {
       --select-border-radius: 6px;
       --select-height: 28px;
-      --select-padding: 4px 8px;
+      --select-padding: 4px 0 4px 8px;
     }
 
     &_m {
       --select-border-radius: 8px;
       --select-height: 36px;
-      --select-padding: 8px 12px;
+      --select-padding: 8px 0 8px 12px;
     }
   }
 
@@ -62,12 +62,10 @@ $block: ".#{variables.$ns}select";
   }
 
   &__placeholder {
-    position: absolute;
     color: var(--st-color-text-hint);
   }
 
   &__value {
-    position: absolute;
     transition: color 0.15s linear;
 
     &_unactive,
@@ -77,8 +75,8 @@ $block: ".#{variables.$ns}select";
   }
 
   &__input {
-    position: relative;
-    width: 100%;
+    position: absolute;
+    inset: var(--select-padding);
 
     &::-ms-clear {
       display: none;
